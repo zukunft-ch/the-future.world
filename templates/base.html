@@ -1,0 +1,803 @@
+{% import "macros/nav.html" as nav %}
+{% import "macros/footer.html" as site_footer %}
+{% import "macros/jsonld.html" as jsonld %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>{% block title %}{{ page.title | default(value=section.title | default(value=config.title)) }}{% endblock %} — The Future</title>
+  <meta name="description" content="{% block description %}{{ page.description | default(value=section.description | default(value=config.description)) }}{% endblock %}">
+  <meta name="author" content="The Future">
+  <meta name="theme-color" content="#ffffff" id="meta-theme-color">
+  <script>
+  (function() {
+    var t = localStorage.getItem('theme');
+    var isDark = t === 'dark';
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('meta-theme-color').setAttribute('content', '#0d0d0d');
+    }
+  })();
+  </script>
+
+  {# Canonical (single language, no alternates) #}
+  {% if page %}
+    <link rel="canonical" href="{{ page.permalink }}">
+  {% elif section %}
+    <link rel="canonical" href="{{ section.permalink }}">
+  {% endif %}
+
+  {# Open Graph #}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ page.title | default(value=section.title | default(value=config.title)) }}{% endblock %}">
+  <meta property="og:description" content="{{ page.description | default(value=section.description | default(value=config.description)) }}">
+  <meta property="og:image" content="{{ get_url(path='og-en.png') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page.title | default(value=section.title | default(value=config.title)) }} — The Future">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="{% if page %}{{ page.permalink }}{% elif section %}{{ section.permalink }}{% else %}{{ config.base_url }}{% endif %}">
+  <meta property="og:site_name" content="The Future">
+
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default(value=section.title | default(value=config.title)) }}">
+  <meta name="twitter:description" content="{{ page.description | default(value=section.description | default(value=config.description)) }}">
+  <meta name="twitter:image" content="{{ get_url(path='og-en.png') }}">
+
+  {# Fonts — loaded via link tags for reliable cross-browser loading #}
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@1&f[]=clash-display@600,700&display=swap">
+
+  {# Favicon #}
+  <link rel="icon" href="{{ get_url(path='favicon.svg') }}" type="image/svg+xml">
+  <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ get_url(path='apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ get_url(path='site.webmanifest') }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  {# CSS #}
+  <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+  <noscript><style>.hero__subline,.reveal-up{opacity:1!important;transform:none!important;pointer-events:auto!important}</style></noscript>
+
+  {# Feed #}
+  <link rel="alternate" type="application/atom+xml" title="The Future — Feed" href="{{ get_url(path='atom.xml') }}">
+
+  {# JSON-LD structured data #}
+  {{ jsonld::organization() }}
+  {{ jsonld::website(lang=lang) }}
+  {{ jsonld::webpage(title=page.title | default(value=section.title | default(value=config.title)), description=page.description | default(value=section.description | default(value=config.description)), url=current_url | default(value=config.base_url), lang=lang) }}
+
+  {% block head_extra %}{% endblock %}
+
+  <script>
+  // Wireframe globe renderer — Canvas 2D
+  window.WireGlobe = (function() {
+    // Simplified continent outlines as [lat, lng] polylines (degrees)
+    // ~200 key points for recognisable coastlines
+    var continents = [
+      // North America
+      [[-10,170],[-15,165],[-20,155],[-25,145],[-25,140],[-28,130],[-30,125],[-35,120],[-40,120],[-45,120],[-50,120],[-52,123],[-55,122],[-60,120],[-63,115],[-60,110],[-55,105],[-52,100],[-48,95],[-48,85],[-50,80],[-52,75],[-55,72],[-60,70],[-63,65],[-65,60],[-68,65],[-70,70],[-72,75],[-72,80],[-70,90],[-65,95],[-60,100],[-55,100],[-50,100],[-45,100],[-43,105],[-40,110],[-35,115],[-30,118],[-25,120],[-20,125],[-15,130],[-15,135],[-12,140],[-10,145],[-8,150],[-5,155],[-3,160],[0,165],[5,170],[10,170],[5,165],[0,160],[-5,155],[-10,155]],
+      // South America
+      [[-10,80],[-12,78],[-15,75],[-18,70],[-20,65],[-20,60],[-18,55],[-15,50],[-10,45],[-5,40],[0,35],[5,32],[8,30],[10,27],[13,28],[15,30],[18,33],[20,35],[25,37],[30,40],[35,42],[40,47],[45,50],[50,52],[53,55],[55,60],[53,65],[50,68],[47,72],[42,75],[38,73],[35,72],[30,74],[25,75],[20,78],[15,80],[10,82],[5,80],[0,80],[-5,80],[-10,80]],
+      // Europe
+      [[-10,-5],[-15,-10],[-20,-5],[-25,0],[-30,0],[-35,5],[-38,8],[-40,10],[-42,12],[-45,15],[-48,18],[-50,20],[-52,25],[-55,28],[-58,30],[-60,30],[-62,28],[-65,25],[-68,28],[-70,30],[-70,35],[-68,40],[-65,42],[-60,40],[-55,38],[-52,35],[-50,30],[-48,28],[-45,25],[-42,20],[-40,18],[-38,15],[-35,12],[-33,10],[-30,8],[-28,5],[-25,3],[-22,0],[-20,-2],[-15,-5],[-10,-5]],
+      // Africa
+      [[-35,5],[-33,0],[-30,-5],[-28,-8],[-25,-10],[-20,-15],[-15,-18],[-10,-20],[-5,-20],[0,-18],[5,-15],[10,-12],[15,-10],[20,-15],[25,-20],[30,-25],[33,-28],[35,-30],[35,-35],[33,-38],[30,-35],[25,-30],[20,-25],[15,-20],[10,-15],[5,-10],[0,-5],[-5,0],[-10,-5],[-15,0],[-20,0],[-25,5],[-30,8],[-35,5]],
+      // Asia
+      [[-65,25],[-68,28],[-70,30],[-70,35],[-68,40],[-65,45],[-60,50],[-55,55],[-50,60],[-48,65],[-45,70],[-43,75],[-40,80],[-38,90],[-35,95],[-30,100],[-25,105],[-20,110],[-22,115],[-25,120],[-28,125],[-30,130],[-35,135],[-40,140],[-45,145],[-50,150],[-55,150],[-60,145],[-65,140],[-68,135],[-70,130],[-72,120],[-75,110],[-78,100],[-80,90],[-78,80],[-75,70],[-72,60],[-70,50],[-68,40],[-65,30],[-65,25]],
+      // Australia
+      [[15,-115],[12,-120],[10,-125],[8,-130],[5,-135],[3,-140],[5,-145],[8,-148],[12,-150],[15,-152],[18,-150],[22,-148],[25,-145],[25,-140],[22,-135],[20,-130],[18,-125],[15,-120],[15,-115]],
+    ];
+
+    function create(canvas, opts) {
+      if (!canvas) return;
+      opts = opts || {};
+      var container = canvas.parentElement;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var w, h, dpr;
+      var camZ = opts.cameraZ || 22;
+      var fovRad = (opts.fov || 35) * Math.PI / 180;
+      var camX = opts.camX || 0;
+      var camY = opts.camY || 0;
+      var radius = opts.radius || 4;
+      var gridDensity = opts.gridDensity || 30;
+
+      var rotX = 0.3, rotY = 0.5;
+
+      // Build grid lines on sphere
+      var gridLines = [];
+      var step = 6; // degrees per segment
+
+      // Latitude lines
+      for (var lat = -60; lat <= 60; lat += gridDensity) {
+        var line = [];
+        for (var lng = 0; lng <= 360; lng += step) {
+          var la = lat * Math.PI / 180;
+          var lo = lng * Math.PI / 180;
+          line.push([radius * Math.cos(la) * Math.cos(lo), radius * Math.sin(la), radius * Math.cos(la) * Math.sin(lo)]);
+        }
+        gridLines.push(line);
+      }
+      // Longitude lines
+      for (var lng = 0; lng < 360; lng += gridDensity) {
+        var line = [];
+        for (var lat = -90; lat <= 90; lat += step) {
+          var la = lat * Math.PI / 180;
+          var lo = lng * Math.PI / 180;
+          line.push([radius * Math.cos(la) * Math.cos(lo), radius * Math.sin(la), radius * Math.cos(la) * Math.sin(lo)]);
+        }
+        gridLines.push(line);
+      }
+
+      // Convert continent outlines to 3D sphere coordinates
+      var continentLines = [];
+      for (var c = 0; c < continents.length; c++) {
+        var pts = continents[c];
+        var line = [];
+        for (var i = 0; i < pts.length; i++) {
+          var la = pts[i][0] * Math.PI / 180;
+          var lo = pts[i][1] * Math.PI / 180;
+          line.push([radius * Math.cos(la) * Math.cos(lo), radius * Math.sin(la), radius * Math.cos(la) * Math.sin(lo)]);
+        }
+        continentLines.push(line);
+      }
+
+      function getColor() {
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        return {
+          gridColor: dark ? '#7c3aed' : '#a855f7',
+          gridOpacity: opts.opacity || (dark ? 0.12 : 0.08),
+          coastColor: dark ? '#7c3aed' : '#a855f7',
+          coastOpacity: opts.opacity ? opts.opacity * 2.5 : (dark ? 0.35 : 0.25)
+        };
+      }
+
+      var style = getColor();
+
+      function resize() {
+        w = container.offsetWidth;
+        h = container.offsetHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, w < 768 ? 1.5 : 2);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+      }
+      resize();
+
+      function project(x, y, z) {
+        var f = 1 / Math.tan(fovRad / 2);
+        var px = x - camX;
+        var py = y - camY;
+        var pz = z - camZ;
+        if (pz >= -0.1) return null;
+        var sx = (f * px / -pz) * (h * dpr / 2) + (w * dpr / 2);
+        var sy = (f * -py / -pz) * (h * dpr / 2) + (h * dpr / 2);
+        return [sx, sy];
+      }
+
+      function rotatePoint(x, y, z) {
+        var cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+        var y1 = y * cosX - z * sinX;
+        var z1 = y * sinX + z * cosX;
+        var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+        var x2 = x * cosY + z1 * sinY;
+        var z2 = -x * sinY + z1 * cosY;
+        return [x2, y1, z2];
+      }
+
+      // Check if a point on the sphere faces the camera (front-facing)
+      function isFrontFacing(x, y, z) {
+        var r = rotatePoint(x, y, z);
+        // View direction is toward -Z (camera at +camZ looking at origin)
+        return r[2] < 0;
+      }
+
+      function drawPolyline(line, skipBackface) {
+        var prevVisible = false;
+        for (var i = 0; i < line.length; i++) {
+          var pt = line[i];
+          if (skipBackface && !isFrontFacing(pt[0], pt[1], pt[2])) {
+            prevVisible = false;
+            continue;
+          }
+          var r = rotatePoint(pt[0], pt[1], pt[2]);
+          var p = project(r[0], r[1], r[2]);
+          if (!p) { prevVisible = false; continue; }
+          if (prevVisible) {
+            ctx.lineTo(p[0], p[1]);
+          } else {
+            ctx.moveTo(p[0], p[1]);
+          }
+          prevVisible = true;
+        }
+      }
+
+      var raf;
+      function draw() {
+        raf = requestAnimationFrame(draw);
+        rotY += 0.0015;
+        rotX += 0.0003;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw grid
+        ctx.strokeStyle = style.gridColor;
+        ctx.globalAlpha = style.gridOpacity;
+        ctx.lineWidth = dpr * 0.5;
+        ctx.beginPath();
+        for (var i = 0; i < gridLines.length; i++) {
+          drawPolyline(gridLines[i], true);
+        }
+        ctx.stroke();
+
+        // Draw continents (thicker, more opaque)
+        ctx.strokeStyle = style.coastColor;
+        ctx.globalAlpha = style.coastOpacity;
+        ctx.lineWidth = dpr * 1.5;
+        ctx.beginPath();
+        for (var i = 0; i < continentLines.length; i++) {
+          drawPolyline(continentLines[i], true);
+        }
+        ctx.stroke();
+      }
+      draw();
+
+      window.addEventListener('resize', function() { resize(); });
+
+      var observer = new MutationObserver(function() { style = getColor(); });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      var paused = false;
+      var io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          if (paused) { paused = false; draw(); }
+        } else {
+          paused = true;
+          cancelAnimationFrame(raf);
+        }
+      }, { threshold: 0 });
+      io.observe(container);
+    }
+
+    return { create: create };
+  })();
+  </script>
+</head>
+<body>
+  {{ nav::skip_link(lang=lang) }}
+  {{ nav::topnav(lang=lang) }}
+  {{ nav::sparkle_button(lang=lang) }}
+  {{ nav::command_overlay(lang=lang) }}
+
+  <nav class="progress-tracker" id="progress-tracker" aria-label="{{ trans(key='aria_reading_progress', lang=lang) }}"></nav>
+
+  <button class="to-top" id="to-top" type="button" aria-label="{{ trans(key='aria_scroll_top', lang=lang) }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <main id="main" data-hex-page="{% if page %}{{ page.relative_path | split(pat='.') | first }}{% elif section %}{{ section.relative_path | split(pat='.') | first }}{% endif %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}{{ site_footer::footer(lang=lang) }}{% endblock %}
+
+  <script>
+  (function() {
+    var btns = document.querySelectorAll('.sparkle-btn');
+    var overlay = document.getElementById('command-overlay');
+    var backdrop = document.getElementById('overlay-backdrop');
+    var searchInput = document.getElementById('command-search');
+    var nav = document.getElementById('command-nav');
+    var topnav = document.querySelector('.topnav');
+    var links = nav ? nav.querySelectorAll('.command-overlay__link') : [];
+
+    function open() {
+      overlay.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      btns.forEach(function(b) { b.classList.add('is-open'); b.setAttribute('aria-expanded', 'true'); });
+      overlay.setAttribute('aria-hidden', 'false');
+      if (topnav) topnav.style.display = 'none';
+      setTimeout(function() { searchInput.focus(); }, 150);
+    }
+
+    function close() {
+      overlay.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      btns.forEach(function(b) { b.classList.remove('is-open'); b.setAttribute('aria-expanded', 'false'); });
+      overlay.setAttribute('aria-hidden', 'true');
+      if (topnav) topnav.style.display = '';
+      searchInput.value = '';
+      filterLinks('');
+      if (triggerBtn) { triggerBtn.focus(); triggerBtn = null; }
+    }
+
+    var liveRegion = document.getElementById('search-live');
+    var searchResultOne = '{{ trans(key="search_result_one", lang=lang) }}';
+    var searchResultMany = '{{ trans(key="search_result_many", lang=lang) }}';
+
+    function filterLinks(q) {
+      q = q.toLowerCase().trim();
+      var count = 0;
+      links.forEach(function(link) {
+        var match = !q || link.textContent.toLowerCase().includes(q);
+        link.style.display = match ? '' : 'none';
+        if (match) count++;
+      });
+      if (liveRegion) {
+        liveRegion.textContent = q ? (count + ' ' + (count === 1 ? searchResultOne : searchResultMany)) : '';
+      }
+    }
+
+    var triggerBtn = null;
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (overlay.classList.contains('is-open')) {
+          close();
+        } else {
+          triggerBtn = btn;
+          open();
+        }
+      });
+    });
+
+    backdrop.addEventListener('click', close);
+
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      if (e.key === 'Tab') {
+        var focusable = overlay.querySelectorAll('a:not([style*="display: none"]), button, input, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    });
+
+    overlay.addEventListener('click', function(e) {
+      var link = e.target.closest('.command-overlay__link');
+      if (link) {
+        close();
+      }
+    });
+
+    var settings = overlay.querySelector('.command-overlay__settings');
+    if (settings) {
+      settings.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        filterLinks(this.value);
+        updateScrollArrows();
+      });
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          var visible = nav.querySelector('.command-overlay__link:not([style*="display: none"])');
+          if (visible) window.location.href = visible.href;
+        }
+      });
+    }
+
+    var scrollUp = document.getElementById('nav-scroll-up');
+    var scrollDown = document.getElementById('nav-scroll-down');
+
+    function updateScrollArrows() {
+      if (!nav) return;
+      var atTop = nav.scrollTop <= 0;
+      var atBottom = nav.scrollTop + nav.clientHeight >= nav.scrollHeight - 1;
+      var canScroll = nav.scrollHeight > nav.clientHeight;
+      if (scrollUp) scrollUp.classList.toggle('is-visible', canScroll && !atTop);
+      if (scrollDown) scrollDown.classList.toggle('is-visible', canScroll && !atBottom);
+    }
+
+    if (nav) {
+      nav.addEventListener('scroll', updateScrollArrows);
+    }
+    if (scrollUp) {
+      scrollUp.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.scrollBy({ top: -120, behavior: 'smooth' });
+      });
+    }
+    if (scrollDown) {
+      scrollDown.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.scrollBy({ top: 120, behavior: 'smooth' });
+      });
+    }
+
+    var origOpen = open;
+    open = function() {
+      origOpen();
+      setTimeout(updateScrollArrows, 50);
+    };
+
+    var themeBtn = document.getElementById('theme-toggle');
+    function setThemeColor(color) {
+      var old = document.getElementById('meta-theme-color');
+      if (old) old.remove();
+      var m = document.createElement('meta');
+      m.name = 'theme-color';
+      m.id = 'meta-theme-color';
+      m.content = color;
+      document.head.appendChild(m);
+    }
+    if (themeBtn) {
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        themeBtn.setAttribute('aria-checked', 'true');
+      }
+      themeBtn.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          themeBtn.setAttribute('aria-checked', 'false');
+          setThemeColor('#ffffff');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          themeBtn.setAttribute('aria-checked', 'true');
+          setThemeColor('#0d0d0d');
+        }
+      });
+    }
+  })();
+  </script>
+
+  <script>
+  // Animated plasma — offscreen WebGL rendered into each .canvas section
+  (function() {
+    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motionQuery.matches) return;
+
+    var sections = document.querySelectorAll('main > .canvas');
+    if (!sections.length) return;
+
+    var offscreen = document.createElement('canvas');
+    var gl = offscreen.getContext('webgl', { powerPreference: 'low-power', preserveDrawingBuffer: true });
+    if (!gl) return;
+
+    var vsSource = 'attribute vec2 a_position; void main() { gl_Position = vec4(a_position, 0.0, 1.0); }';
+    var fsSource = 'precision mediump float; uniform float u_time; uniform vec2 u_resolution; uniform vec3 u_color0; uniform vec3 u_color1; uniform vec3 u_color2; uniform float u_scale; uniform float u_lift; uniform float u_saturation; void main() { vec2 uv = gl_FragCoord.xy / u_resolution * 3.0; float t = u_time * 0.12; float v = 0.0; v += sin(uv.x * 1.1 + t); v += sin(uv.y * 1.3 - t * 0.7); v += sin((uv.x + uv.y) * 0.7 + t * 0.5); v += sin(length(uv - vec2(1.5)) * 1.4 - t * 0.6); v = v * 0.25 + 0.5; vec3 col; if (v < 0.33) { col = mix(u_color0, u_color1, v / 0.33); } else if (v < 0.66) { col = mix(u_color1, u_color2, (v - 0.33) / 0.33); } else { col = mix(u_color2, u_color0, (v - 0.66) / 0.34); } float grey = dot(col, vec3(0.299, 0.587, 0.114)); col = mix(vec3(grey), col, u_saturation); col = col * u_scale + vec3(u_lift); gl_FragColor = vec4(col, 1.0); }';
+
+    function compileShader(src, type) {
+      var s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { gl.deleteShader(s); return null; }
+      return s;
+    }
+
+    var vs = compileShader(vsSource, gl.VERTEX_SHADER);
+    var fs = compileShader(fsSource, gl.FRAGMENT_SHADER);
+    if (!vs || !fs) return;
+
+    var program = gl.createProgram();
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return;
+    gl.useProgram(program);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    var aPos = gl.getAttribLocation(program, 'a_position');
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+    var uTime = gl.getUniformLocation(program, 'u_time');
+    var uRes = gl.getUniformLocation(program, 'u_resolution');
+    var uColor0 = gl.getUniformLocation(program, 'u_color0');
+    var uColor1 = gl.getUniformLocation(program, 'u_color1');
+    var uColor2 = gl.getUniformLocation(program, 'u_color2');
+    var uScale = gl.getUniformLocation(program, 'u_scale');
+    var uLift = gl.getUniformLocation(program, 'u_lift');
+    var uSat = gl.getUniformLocation(program, 'u_saturation');
+
+    var lightPresets = [
+      { c: [[0.72,0.55,1.0], [0.45,0.65,1.0], [0.30,0.85,0.90]], scale: 0.33, lift: 0.65, sat: 0.65 },
+      { c: [[1.0,0.60,0.70], [0.85,0.55,0.90], [1.0,0.75,0.60]], scale: 0.33, lift: 0.65, sat: 0.65 },
+      { c: [[0.30,0.90,0.80], [0.45,0.90,0.55], [0.50,0.75,1.0]], scale: 0.33, lift: 0.65, sat: 0.65 },
+      { c: [[1.0,0.85,0.40], [1.0,0.70,0.50], [0.95,0.60,0.65]], scale: 0.33, lift: 0.65, sat: 0.65 }
+    ];
+    var darkPresets = [
+      { c: [[0.55,0.30,0.85], [0.20,0.35,0.75], [0.15,0.55,0.65]], scale: 0.38, lift: 0.06, sat: 0.7 },
+      { c: [[0.75,0.20,0.55], [0.55,0.25,0.75], [0.25,0.35,0.70]], scale: 0.38, lift: 0.06, sat: 0.7 },
+      { c: [[0.15,0.65,0.55], [0.20,0.60,0.35], [0.20,0.45,0.70]], scale: 0.38, lift: 0.06, sat: 0.7 },
+      { c: [[0.75,0.55,0.25], [0.70,0.40,0.20], [0.65,0.30,0.45]], scale: 0.38, lift: 0.06, sat: 0.7 }
+    ];
+    var presetCount = 4;
+    var timeOffset = 25.0;
+
+    var layers = [];
+    sections.forEach(function(sec, idx) {
+      var c = document.createElement('canvas');
+      c.className = 'plasma-layer';
+      c.setAttribute('aria-hidden', 'true');
+      sec.appendChild(c);
+      layers.push({ canvas: c, ctx: c.getContext('2d'), section: sec, visible: false, preset: idx % presetCount });
+    });
+
+    var dprCap = 1.5;
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+      var w = sections[0].offsetWidth;
+      var h = sections[0].offsetHeight;
+      offscreen.width = w * dpr;
+      offscreen.height = h * dpr;
+      gl.viewport(0, 0, offscreen.width, offscreen.height);
+      gl.uniform2f(uRes, offscreen.width, offscreen.height);
+      layers.forEach(function(l) {
+        l.canvas.width = l.section.offsetWidth * dpr;
+        l.canvas.height = l.section.offsetHeight * dpr;
+      });
+    }
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 100);
+    });
+
+    resize();
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        for (var i = 0; i < layers.length; i++) {
+          if (layers[i].section === e.target) { layers[i].visible = e.isIntersecting; break; }
+        }
+      });
+    }, { threshold: 0 });
+    sections.forEach(function(s) { io.observe(s); });
+
+    var raf;
+    var paused = false;
+    var startTime = performance.now();
+
+    function render() {
+      raf = requestAnimationFrame(render);
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var presets = isDark ? darkPresets : lightPresets;
+      var t = (performance.now() - startTime) / 1000;
+      for (var i = 0; i < layers.length; i++) {
+        if (!layers[i].visible) continue;
+        var p = presets[layers[i].preset];
+        gl.uniform1f(uTime, t + layers[i].preset * timeOffset);
+        gl.uniform3fv(uColor0, p.c[0]);
+        gl.uniform3fv(uColor1, p.c[1]);
+        gl.uniform3fv(uColor2, p.c[2]);
+        gl.uniform1f(uScale, p.scale);
+        gl.uniform1f(uLift, p.lift);
+        gl.uniform1f(uSat, p.sat);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        layers[i].ctx.drawImage(offscreen, 0, 0, offscreen.width, offscreen.height, 0, 0, layers[i].canvas.width, layers[i].canvas.height);
+      }
+    }
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) { paused = true; cancelAnimationFrame(raf); }
+      else if (paused) { paused = false; render(); }
+    });
+
+    motionQuery.addEventListener('change', function(e) {
+      if (e.matches) {
+        cancelAnimationFrame(raf);
+        paused = true;
+        document.body.classList.remove('plasma-active');
+        layers.forEach(function(l) { l.canvas.style.display = 'none'; });
+      } else {
+        layers.forEach(function(l) { l.canvas.style.display = ''; });
+        document.body.classList.add('plasma-active');
+        paused = false;
+        render();
+      }
+    });
+
+    document.body.classList.add('plasma-active');
+    render();
+  })();
+  </script>
+
+  <script>
+  // Topnav logo — show when hero scrolls away (or immediately on sub pages)
+  (function() {
+    var logo = document.getElementById('topnav-logo');
+    var navCanvas = document.getElementById('topnav-mesh');
+    var hero = document.querySelector('.hero');
+    if (!logo) return;
+
+    if (navCanvas) WireGlobe.create(navCanvas, { cameraZ: 10, radius: 2, fov: 35, opacity: 0.4, camX: -0.3, gridDensity: 45 });
+
+    if (!hero) {
+      logo.classList.add('is-visible');
+    } else {
+      document.body.classList.add('hero-active');
+      var io = new IntersectionObserver(function(entries) {
+        var gone = entries[0].intersectionRatio < 0.5;
+        logo.classList.toggle('is-visible', gone);
+        document.body.classList.toggle('hero-active', !gone);
+      }, { threshold: [0, 0.5, 1] });
+      io.observe(hero);
+    }
+  })();
+
+  // Footer mesh
+  (function() {
+    var canvas = document.getElementById('footer-mesh');
+    if (!canvas) return;
+    WireGlobe.create(canvas, { cameraZ: 16, radius: 4, fov: 35 });
+  })();
+  </script>
+
+  <script>
+  // Progress tracker — vertical dot nav
+  (function() {
+    var tracker = document.getElementById('progress-tracker');
+    var main = document.getElementById('main');
+    if (!tracker || !main) return;
+
+    var sections = main.querySelectorAll(':scope > section, :scope > .hero');
+    if (sections.length < 2) { tracker.style.display = 'none'; return; }
+
+    sections.forEach(function(sec, i) {
+      var dot = document.createElement('button');
+      dot.className = 'progress-tracker__dot';
+      dot.setAttribute('aria-label', sec.getAttribute('aria-label') || ('Section ' + (i + 1)));
+      dot.addEventListener('click', function() {
+        sec.scrollIntoView({ behavior: 'smooth' });
+      });
+      tracker.appendChild(dot);
+    });
+
+    var dots = tracker.querySelectorAll('.progress-tracker__dot');
+    var visibleRatios = new Array(sections.length).fill(0);
+
+    function updateActive() {
+      var maxIdx = 0;
+      var maxVal = 0;
+      for (var i = 0; i < visibleRatios.length; i++) {
+        if (visibleRatios[i] > maxVal) { maxVal = visibleRatios[i]; maxIdx = i; }
+      }
+      dots.forEach(function(d, i) {
+        d.classList.toggle('is-active', i === maxIdx);
+      });
+    }
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var idx = Array.prototype.indexOf.call(sections, entry.target);
+        if (idx !== -1) visibleRatios[idx] = entry.intersectionRatio;
+      });
+      updateActive();
+    }, { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 1] });
+
+    sections.forEach(function(sec) { io.observe(sec); });
+    if (dots.length) dots[0].classList.add('is-active');
+  })();
+
+  // Smooth scroll-snap
+  (function() {
+    var main = document.getElementById('main');
+    if (!main) return;
+    var sections = main.querySelectorAll(':scope > section, :scope > .hero, :scope > footer');
+    if (sections.length < 2) return;
+
+    var scrollTimer = null;
+    var snapping = false;
+    var gap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.75 || 12;
+
+    function getSnapTarget() {
+      var viewH = window.innerHeight;
+      var best = null;
+      var bestDist = Infinity;
+      sections.forEach(function(sec) {
+        var r = sec.getBoundingClientRect();
+        var dist = Math.abs(r.top - gap);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = sec;
+        }
+      });
+      if (bestDist < viewH * 0.4) return best;
+      return null;
+    }
+
+    function onScrollEnd() {
+      if (snapping) return;
+      var target = getSnapTarget();
+      if (!target) return;
+      var r = target.getBoundingClientRect();
+      var offset = r.top - gap;
+      if (Math.abs(offset) < 2) return;
+      snapping = true;
+      window.scrollBy({ top: offset, behavior: 'smooth' });
+      setTimeout(function() { snapping = false; }, 600);
+    }
+
+    window.addEventListener('scroll', function() {
+      if (snapping) return;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(onScrollEnd, 120);
+    }, { passive: true });
+  })();
+
+  // Hex address anchors
+  (function() {
+    var main = document.getElementById('main');
+    if (!main) return;
+    var pageKey = main.getAttribute('data-hex-page') || '_index';
+    var hexMap = {
+      '_index': 0x00, 'vision': 0x01, 'program': 0x02, 'join': 0x03,
+      'manifesto': 0x10, 'beyond-left-right': 0x11,
+      'digital-sovereignty': 0x20, 'robotics': 0x21,
+      'transitions': 0x22, 'life-science': 0x23,
+      'basic-income': 0x24, 'cities-housing': 0x25,
+      'research-innovation': 0x26, 'energy-resilience': 0x27,
+      'open-government': 0x28, 'peace-neutrality': 0x29,
+      'talent-integration': 0x2A, 'language-understanding': 0x2B,
+      'people': 0x40, 'contact': 0x41,
+      'legal': 0xF0, 'privacy': 0xF1,
+      'info': 0xF2
+    };
+    var page = hexMap[pageKey] != null ? hexMap[pageKey] : 0x00;
+    var sections = main.querySelectorAll(':scope > section, :scope > .hero');
+    sections.forEach(function(sec, i) {
+      var addr = (page << 8) | i;
+      var hex = '0x' + addr.toString(16).toUpperCase().padStart(4, '0');
+      sec.id = sec.id || hex;
+      var a = document.createElement('a');
+      a.className = 'hex-anchor';
+      a.href = '#' + sec.id;
+      a.textContent = hex;
+      a.setAttribute('aria-hidden', 'true');
+      sec.appendChild(a);
+    });
+  })();
+
+  // Scroll-to-top button
+  (function() {
+    var btn = document.getElementById('to-top');
+    var main = document.getElementById('main');
+    if (!btn || !main) return;
+
+    var first = main.querySelector(':scope > section, :scope > .hero');
+    if (!first) return;
+
+    var io = new IntersectionObserver(function(entries) {
+      btn.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    io.observe(first);
+
+    btn.addEventListener('click', function() {
+      first.scrollIntoView({ behavior: 'smooth' });
+    });
+  })();
+  </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+  </script>
+</body>
+</html>

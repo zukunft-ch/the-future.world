@@ -1,0 +1,141 @@
+{# ---- Organization — every page ---- #}
+{% macro organization() %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#organization",
+  "name": "The Future",
+  "url": "{{ config.base_url | trim_end_matches(pat='/') }}",
+  "logo": "{{ config.base_url | trim_end_matches(pat='/') }}/favicon.svg",
+  "email": "hello@the-future.world",
+  "sameAs": []
+}
+</script>
+{% endmacro %}
+
+{# ---- WebSite — every page ---- #}
+{% macro website(lang) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#website",
+  "name": "The Future",
+  "url": "{{ config.base_url | trim_end_matches(pat='/') }}",
+  "inLanguage": "en",
+  "publisher": { "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#organization" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ config.base_url | trim_end_matches(pat='/') }}/#search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{% endmacro %}
+
+{# ---- WebPage — every page ---- #}
+{% macro webpage(title, description, url, lang) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ title | json_encode() | safe }},
+  "description": {{ description | json_encode() | safe }},
+  "url": {{ url | json_encode() | safe }},
+  "inLanguage": "en",
+  "isPartOf": { "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#website" },
+  "publisher": { "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#organization" },
+  "mainEntityOfPage": {{ url | json_encode() | safe }},
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".page-hero__title", ".page-hero__desc", ".hero__big", ".hero__subline"]
+  }
+}
+</script>
+{% endmacro %}
+
+{# ---- BreadcrumbList — content pages (not homepage) ---- #}
+{% macro breadcrumb(title, url, lang) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ config.base_url | trim_end_matches(pat='/') }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ title | json_encode() | safe }},
+      "item": {{ url | json_encode() | safe }}
+    }
+  ]
+}
+</script>
+{% endmacro %}
+
+{# ---- ItemList — program page (pillar listing) ---- #}
+{% macro itemlist(chapters, lang) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Program",
+  "numberOfItems": {{ chapters | length }},
+  "itemListElement": [
+    {% for ch in chapters %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "name": {{ ch.title | json_encode() | safe }},
+      "description": {{ ch.text | json_encode() | safe }}{% if ch.link %},
+      "url": {{ ch.link | json_encode() | safe }}{% endif %}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endmacro %}
+
+{# ---- ContactPage — contact page ---- #}
+{% macro contactpage(url, lang) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact",
+  "url": {{ url | json_encode() | safe }},
+  "mainEntity": {
+    "@type": "Organization",
+    "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#organization"
+  }
+}
+</script>
+{% endmacro %}
+
+{# ---- FAQPage — basic-income template ---- #}
+{% macro faqpage(faq_items) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in faq_items %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | json_encode() | safe }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | json_encode() | safe }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endmacro %}

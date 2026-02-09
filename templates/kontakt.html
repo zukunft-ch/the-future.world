@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "macros/jsonld.html" as jsonld %}
+
+{% block head_extra %}
+{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
+{{ jsonld::contactpage(url=page.permalink, lang=lang) }}
+{% endblock %}
+
+{% block content %}
+{# ===== Page hero ===== #}
+<section class="page-hero" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="page-hero__desc">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== Content + Form ===== #}
+<section class="canvas canvas--content">
+  <div class="container container--narrow">
+    {{ page.content | safe }}
+
+    <form class="contact-form">
+      <div>
+        <label for="name">{{ trans(key="label_name", lang=lang) }}</label>
+        <input type="text" id="name" name="name" disabled>
+      </div>
+
+      <div>
+        <label for="email">{{ trans(key="label_email", lang=lang) }}</label>
+        <input type="email" id="email" name="email" disabled>
+      </div>
+
+      <div>
+        <label for="message">{{ trans(key="label_message", lang=lang) }}</label>
+        <textarea id="message" name="message" disabled></textarea>
+      </div>
+
+      <button type="button" class="btn btn--disabled" disabled>Coming Soon</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,2 @@
+# www → apex redirect
+https://www.the-future.world/* https://the-future.world/:splat 301

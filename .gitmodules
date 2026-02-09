@@ -1,0 +1,3 @@
+[submodule "themes/avenir"]
+	path = themes/avenir
+	url = https://github.com/zukunft-ch/avenir.git

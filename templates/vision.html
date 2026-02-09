@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% import "macros/jsonld.html" as jsonld %}
+
+{% block head_extra %}
+{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
+{% endblock %}
+
+{% block content %}
+{# ===== Page hero ===== #}
+<section class="page-hero page-hero--brandmark" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title">{{ page.title }}.</h1>
+    {% if page.description %}
+    <p class="page-hero__desc">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== Sections — each its own canvas ===== #}
+{% if page.extra.sections %}
+  {% for sec in page.extra.sections %}
+  <section class="canvas canvas--content" aria-label="{{ sec.title }}">
+    <div class="container container--narrow">
+      <h2>{{ sec.title }}</h2>
+      <p>{{ sec.text }}</p>
+      {% if sec.points is defined %}
+      <ul>
+        {% for point in sec.points %}
+        <li>{{ point }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if sec.subsections is defined %}
+        {% for sub in sec.subsections %}
+        <h3>{{ sub.title }}</h3>
+        <p>{{ sub.text }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+  {% endfor %}
+{% endif %}
+
+{# ===== CTA ===== #}
+{% if page.extra.show_cta %}
+<section class="canvas cta-section" aria-label="{{ trans(key='cta_join', lang=lang) }}">
+  <div class="container container--narrow" style="text-align: center;">
+    {% if page.extra.cta_text is defined %}
+    <p class="cta-section__text">{{ page.extra.cta_text }}</p>
+    {% endif %}
+    <a class="btn btn--glow" href="{{ get_url(path='@/join.md') }}">{{ trans(key="cta_join", lang=lang) }}</a>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

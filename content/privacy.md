@@ -9,7 +9,7 @@ template = "page.html"
 ### Responsible party
 
 The Future
-Email: [hello@the-future.world](mailto:hello@the-future.world)
+Email: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
 
 ### Principle
 

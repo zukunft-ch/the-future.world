@@ -9,8 +9,8 @@ intro = "You don't build the future alone. If you want politics that can do futu
 [[extra.sections]]
 title = "Become a contributor"
 text = "Join The Future network and actively shape the movement. Write to us to get started."
-link = "mailto:hello@the-future.world"
-link_text = "hello@the-future.world"
+link = "mailto:hey@die-zukunft.ch"
+link_text = "hey@die-zukunft.ch"
 
 [[extra.sections]]
 title = "Newsletter"

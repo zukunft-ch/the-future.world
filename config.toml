@@ -13,7 +13,7 @@ taxonomies = []
 [markdown]
 
 [extra]
-contact_email = "hello@the-future.world"
+contact_email = "hey@die-zukunft.ch"
 contact_city = "Global"
 formspree_endpoint = "https://formspree.io/f/your-form-id"
 

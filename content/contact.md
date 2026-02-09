@@ -6,4 +6,4 @@ template = "kontakt.html"
 
 Have questions, suggestions or want to get involved? Write to us — we welcome every message.
 
-**Email**: [hello@the-future.world](mailto:hello@the-future.world)
+**Email**: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)

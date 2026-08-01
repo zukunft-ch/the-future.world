@@ -15,7 +15,6 @@ taxonomies = []
 [extra]
 contact_email = "hey@die-zukunft.ch"
 contact_city = "Global"
-formspree_endpoint = "https://formspree.io/f/your-form-id"
 
 [translations]
 nav_vision = "Vision"

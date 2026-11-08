@@ -10,11 +10,13 @@
 {#
   Same layer structure and components as the Swiss homepage (avenir index.html).
     0x0000 hero · 0x0001 conviction · 0x0002 programme · 0x0003 approach
-    0x0004 across borders · 0x0005 join
+    0x0004 across borders · 0x0005 join · 0x0006 theses (shown second)
   Addresses are explicit (data-hex) so they stay stable if a layer is added.
 #}
 {% set x = section.extra %}
 {% set manifesto = get_page(path="manifesto.md") %}
+{% set theses = manifesto.extra.theses | default(value=[]) %}
+{% set news = get_section(path="news/_index.md") %}
 
 {# ===== 0x0000 · Hero ===== #}
 <section class="hero lede" id="hero" data-hex="0x0000" aria-labelledby="lede-title">
@@ -42,17 +44,45 @@
   <p class="lede__annot lede__annot--b" aria-hidden="true"><span>Open source</span><span>EN · CH</span></p>
 
   <div class="lede__foot">
-    <a class="lede__pinned" href="https://die-zukunft.ch/en/">
-      <span class="lede__pinned-label">{{ pin::icon() }} From Switzerland</span>
-      <span class="lede__pinned-title">Die Zukunft — the first chapter</span>
+    {% if news.pages | length > 0 %}{% set latest = news.pages | first %}
+    <a class="lede__pinned" href="{{ latest.permalink }}">
+      <span class="lede__pinned-label">{{ pin::icon() }} {{ trans(key="pinned_by_you", lang=lang) }}</span>
+      <span class="lede__pinned-title">{{ latest.title }}</span>
     </a>
+    {% endif %}
     <a class="lede__depth" href="#0x0001">
       <span class="lede__depth-arrow" aria-hidden="true">↓</span>
       <span>{{ trans(key="depth_deeper", lang=lang) }}</span>
-      <span class="lede__depth-counts">{{ x.pillars | length }} {{ trans(key="depth_pillars", lang=lang) }} · 3 steps</span>
+      <span class="lede__depth-counts">{{ theses | length }} theses · {{ x.pillars | length }} {{ trans(key="depth_pillars", lang=lang) }}</span>
     </a>
   </div>
 </section>
+
+{# ===== 0x0006 · Theses (from the manifesto; added after launch, so next free address) ===== #}
+{% if theses | length > 0 %}
+<section class="canvas layer theses" data-hex="0x0006" aria-labelledby="theses-title">
+  <div class="container">
+    <header class="layer__head">
+      <p class="eyebrow">The manifesto</p>
+      <h2 class="layer__title" id="theses-title">Ten theses.</h2>
+      <p class="layer__intro">{{ manifesto.description }}</p>
+    </header>
+    <ol class="theses__list">
+      {% for t in theses %}
+      <li class="thesis-row reveal-up">
+        <a class="thesis-row__link" href="{{ manifesto.permalink }}#{{ t.hex }}">
+          <span class="thesis-row__hex">{{ t.hex }}</span>
+          <span class="thesis-row__title">{{ t.title }}</span>
+          <span class="thesis-row__arrow" aria-hidden="true">→</span>
+        </a>
+        {{ pin::button(url=manifesto.permalink, hex=t.hex, title=t.title, page=manifesto.title, lang=lang) }}
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="layer__more"><a class="link-arrow" href="{{ manifesto.permalink }}">Read the manifesto</a></p>
+  </div>
+</section>
+{% endif %}
 
 {# ===== 0x0001 · Conviction ===== #}
 <section class="canvas layer" data-hex="0x0001" aria-labelledby="vision-title">
@@ -77,7 +107,7 @@
         <p class="eyebrow">The programme</p>
         <h2 class="layer__title" id="pillars-title">What we build.</h2>
       </div>
-      <p class="layer__intro">Twelve connected areas of work. Concrete proposals, open to scrutiny.</p>
+      <p class="layer__intro">{{ x.pillars | length }} connected areas of work. Concrete proposals, open to scrutiny.</p>
     </header>
     <ul class="pillar-grid">
       {% for item in x.pillars %}

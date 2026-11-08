@@ -6,6 +6,14 @@ template = "page.html"
 [extra]
 show_cta = true
 cta_text = "Strengthen trust in progress. Get active."
+faq_title = "Frequently asked questions"
+faq = [
+  { q = "Who owns health data?", a = "The people themselves — not the state and not industry. The standard is opt-in: data is used only with explicit consent, with narrow exceptions for public health." },
+  { q = "Don't clear rules slow down research?", a = "No — trust is the precondition for people sharing their data at all. Research stays strong only if innovation and trust go together: each is the condition for the other." },
+  { q = "What does 'no black-box medicine' mean?", a = "No automated decisions about medical services or treatments without traceable reasoning, human responsibility and the right to appeal. That is a red line." },
+  { q = "Where do we stand on partnerships with industry?", a = "Collaboration between government, research and industry is important — but every partnership needs clear transparency rules: who finances? Who decides? Who benefits?" },
+  { q = "How are new therapies regulated?", a = "Evidence-based and case-by-case: data instead of ideology. Regulatory decisions must be traceable and justified." },
+]
 
 [[extra.sections]]
 title = "Progress with Trust"
@@ -28,9 +36,8 @@ text = "<strong>No black-box medicine</strong>: No automated decisions about med
 title = "Why This Matters"
 text = ""
 points = [
-  "The biotech industry needs a clear framework to innovate responsibly",
+  "Pharma and biotech hubs need a clear framework to innovate responsibly",
   "Citizens deserve control over their health data",
   "Innovation and trust are not contradictory — they are prerequisites for each other",
 ]
 +++
-

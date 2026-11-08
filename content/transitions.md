@@ -1,11 +1,19 @@
 +++
-title = "Transitions & Upskilling"
+title = "Work Without Fear"
 description = "Career changes, learning, fresh starts as the norm — not the exception."
 template = "page.html"
 
 [extra]
 show_cta = true
 cta_text = "Make transitions possible. Get active."
+faq_title = "Frequently asked questions"
+faq = [
+  { q = "What are 'transitions'?", a = "Career changes, retraining, fresh starts — everything that happens when job profiles evolve. We want this to be normal and supported, not anxiety-inducing and bureaucratic." },
+  { q = "Who pays for retraining?", a = "A combination of employer contributions, public funds and new financing models. The goal: nobody should have to forgo training for financial reasons." },
+  { q = "Why aren't current systems sufficient?", a = "Because they're too slow, too bureaucratic and designed for exceptions. In a world where job profiles change every few years, transitions must be the norm — not the exception." },
+  { q = "What does 'competence before credentials' mean?", a = "That practical skills and work experience are recognised equally — not just formal qualifications. If you can do something, you should be able to prove it, regardless of your educational path." },
+  { q = "Does this only apply to technical professions?", a = "No. Transitions affect all sectors: healthcare, trades, administration, services. Everywhere that automation and digitalisation are transforming job profiles." },
+]
 
 [[extra.sections]]
 title = "Work Without Fear"
@@ -23,20 +31,10 @@ subsections = [
 
 [[extra.sections]]
 title = "Why This Is Urgent"
-text = ""
+text = "A stable income floor makes change easier to face: see <a href=\"/basic-income/\">Basic Income</a>."
 points = [
   "Technology is changing job profiles faster than education systems can respond",
   "People need security to embrace the new",
   "Transitions are becoming the norm — the system must keep up",
 ]
-
-faq_title = "Frequently asked questions"
-faq = [
-  { q = "What are 'transitions'?", a = "Career changes, retraining, fresh starts — everything that happens when job profiles evolve. We want this to be normal and supported, not anxiety-inducing and bureaucratic." },
-  { q = "Who pays for retraining?", a = "A combination of employer contributions, public funds and new financing models. The goal: nobody should have to forgo training for financial reasons." },
-  { q = "Why aren't current systems sufficient?", a = "Because they're too slow, too bureaucratic and designed for exceptions. In a world where job profiles change every few years, transitions must be the norm — not the exception." },
-  { q = "What does 'competence before credentials' mean?", a = "That practical skills and work experience are recognised equally — not just formal qualifications. If you can do something, you should be able to prove it, regardless of your educational path." },
-  { q = "Does this only apply to technical professions?", a = "No. Transitions affect all sectors: healthcare, trades, administration, services. Everywhere that automation and digitalisation are transforming job profiles." },
-]
 +++
-

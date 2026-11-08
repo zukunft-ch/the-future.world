@@ -6,6 +6,13 @@ template = "page.html"
 [extra]
 show_cta = true
 cta_text = "Infrastructure that works. Get active."
+faq_title = "Frequently asked questions"
+faq = [
+  { q = "What does 'resilience is engineering' mean?", a = "Reliability is not a creed, it's a craft: clear standards, redundancy, testing and accountability. We measure infrastructure by uptime, peak-load capability and recoverability." },
+  { q = "Why faster procedures?", a = "Projects that improve supply security must not get stuck in endless loops: clear responsibilities, clear deadlines, clear decisions." },
+  { q = "What are critical dependencies?", a = "Components, spare parts and know-how whose failure is costly. We secure them pragmatically and risk-based — and pursue international cooperation where it increases resilience." },
+  { q = "Does this make energy more expensive?", a = "The goal is the opposite: predictable costs. Outages and crises end up costing more than redundancy — resilience is an investment in stable prices and reliable supply." },
+]
 
 [[extra.sections]]
 title = "Energy & Infrastructure Resilience"
@@ -26,6 +33,5 @@ subsections = [
 
 [[extra.sections]]
 title = "Principle"
-text = "Resilience is <strong>engineering</strong>: standards, redundancy, testing, accountability."
+text = "Resilience is <strong>engineering</strong>: standards, redundancy, testing, accountability. Growing demand from data centres belongs in the plan too: see <a href=\"/sovereign-ai/\">Sovereign AI &amp; Compute</a>."
 +++
-

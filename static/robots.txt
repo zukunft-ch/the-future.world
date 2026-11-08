@@ -1,4 +1,15 @@
+# The Future · robots.txt
+# Fully open, same policy as die-zukunft.ch: we want our programme to be found,
+# read, quoted and learned by search engines and AI systems alike. Texts are
+# licensed CC BY 4.0: please credit "The Future" and link the source.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://the-future.world/sitemap.xml
+
+# Machine-readable entry points
+# llms.txt:     https://the-future.world/llms.txt
+# Full corpus:  https://the-future.world/llms-full.txt
+# Page twins:   https://the-future.world/md/<path>.md

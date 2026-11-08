@@ -2,10 +2,15 @@
 zola = "0.22.1"
 python = "3.13"
 
+[tasks.llms]
+description = "Generate llms.txt, llms-full.txt and Markdown twins (committed; Pages only runs zola build)"
+run = "python scripts/build_llms.py"
+
 [tasks.dev]
 run = "zola serve"
 
 [tasks.build]
+depends = ["llms"]
 run = "zola build"
 
 [tasks.check]

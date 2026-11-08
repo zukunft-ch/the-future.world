@@ -1,0 +1,1530 @@
+# The Future: full text corpus (English)
+
+Source: https://the-future.world/ · Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+# Progress for everyone
+
+> Prosperity, comfort and well-being for all — with a modern social contract that creates security and expands freedom.
+
+Source: https://the-future.world/
+
+- [Sovereign AI & compute](https://the-future.world/sovereign-ai/): Compute is infrastructure: public capacity, open models, and AI we can audit, run and replace ourselves.
+- [Basic income](https://the-future.world/basic-income/): The automation dividend as a stable foundation: simpler welfare, freedom to retrain, tested in pilots.
+- [Work without fear](https://the-future.world/transitions/): Retraining and career changes as the norm: fewer hurdles, skills over diplomas, learning alongside work.
+- [Digital sovereignty](https://the-future.world/digital-sovereignty/): Critical systems under democratic control: no vendor lock-in, open standards, secure supply chains.
+- [Re-industrialisation](https://the-future.world/robotics/): Automated production close to home, in factories, fields and building sites, and affordable for small firms.
+- [Health with trust](https://the-future.world/life-science/): Medical progress with consent: health data opt-in, evidence-based rules, no black-box medicine.
+- [Cities & housing](https://the-future.world/cities-housing/): Affordable homes and short commutes by building upward and inward at transit hubs, not outward.
+- [Research & commons](https://the-future.world/research-innovation/): Testbeds, open standards and public return on public funding, so innovation benefits everyone.
+- [Resilient infrastructure](https://the-future.world/energy-resilience/): Power, networks and supply that keep working: reliability as the metric, fewer critical dependencies.
+- [Open government](https://the-future.world/open-government/): Transparent by law, data via APIs, offices filled on merit: a state citizens can check and build on.
+- [Peace & diplomacy](https://the-future.world/peace-neutrality/): Mediation, dialogue and a strictly defensive stance: strong at home first, credible abroad.
+- [Talent & rule of law](https://the-future.world/talent-integration/): Open to people who want to build something, with clear rules that apply to everyone.
+- [Language & understanding](https://the-future.world/language-understanding/): Local languages stay; a shared bridge language makes cooperation, work and integration easier.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Basic Income
+
+> Basic income as the automation dividend: stability, freedom, simplification.
+
+Source: https://the-future.world/basic-income/
+
+## The Automation Dividend
+
+When machines produce a growing share of value, part of this dividend must flow back to society. Basic income is not charity — it is a structural answer to a structural change.
+
+## From Productivity to Security
+
+A political proposal, not an automatic flow of money: amount, funding and design require democratic decisions and independent pilot evaluation.
+
+- **Create more value**: AI and robotics can enable more output with fewer resources. Additional value creation is an assumption, not a guarantee.
+- **Design the funding**: A share returns through taxes on income, consumption and wealth, alongside reallocations and savings in the social system.
+- **Provide income security**: Basic income provides a regular foundation. A household's net position also depends on additional taxes and the benefits being replaced.
+
+## What It Enables
+
+- **Freedom to Retrain**: Those who lose their job need a bridge, not fear.
+- **Entrepreneurship-friendly**: A stable foundation enables risk-taking for new ideas.
+- **Recognising Care Work**: Unpaid care work is made visible through financial security.
+- **Cutting Bureaucracy**: Dozens of individual benefits are replaced by a transparent system.
+- **Flexible Work**: Part-time, project work or further education become possible without existential fear.
+
+## Not an Experiment — an Evolution
+
+Many countries already have strong social systems. Basic income builds on them: simpler, more direct, more contemporary. It is the logical evolution for societies in transition. The [Swiss chapter](https://die-zukunft.ch/en/basic-income/) publishes an open cost calculator for its own proposal.
+
+## Frequently asked questions
+
+### Isn't this just 'money for everyone'?
+
+No. Basic income replaces a large part of today's social-insurance bureaucracy with a simple, universal basic security. It is a simplification of the system — not a handout.
+
+### How is it financed?
+
+Not through a special robot tax — automation is not punished. It is financed through the normal taxation of growing value creation (income, consumption, wealth), through simplification gains in the social system, and by reallocating existing transfers. Concrete models must be developed for each country with economists and social scientists.
+
+### Will people stop working?
+
+No, but somewhat less. The largest randomised study so far (OpenResearch, USA 2020–2023) found 1 to 2 fewer hours of paid work per week and labour-force participation 3.9 percentage points lower; the time gained went mostly into leisure. In Finland's experiment (2017–2018) employment barely changed and well-being rose. What matters is therefore the amount, the financing and the design.
+
+### Why now?
+
+Automation is accelerating. Without a stabilising foundation, social disruption threatens. Basic income is a preventive measure, not a reactive one.
+
+### Who would be eligible?
+
+The exact design — such as residency requirements and contribution periods — must be decided democratically in each country. The key is the principle of universal basic security.
+
+### What happens to existing social benefits?
+
+Basic income replaces and simplifies existing transfer payments. The goal is not to add more on top, but to make the system simpler, more transparent and fairer.
+
+### Why a pilot and not immediate implementation?
+
+Because we are pragmatic. Pilots compare models (UBI, negative income tax, hybrid), measure impact and create a solid basis for decision-making — instead of ideology.
+
+### What is measured?
+
+Three core areas: well-being and security (existential stress, stability), entrepreneurship and startups, and bureaucracy costs and administrative burden.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Not left. Not right. Future-ready.
+
+> Why The Future doesn't fit the left-right spectrum — and how we make decisions instead.
+
+Source: https://the-future.world/beyond-left-right/
+
+## Not left. Not right. Future-ready.
+
+Today's politics often operates on reflexes: left versus right, crisis versus crisis, camp versus camp. This produces noise — but too rarely solutions. **The Future** doesn't fit neatly into the left-right spectrum, because the major challenges of our time operate on different axes:
+
+- **Sovereignty** vs. dependency
+- **Functionality** vs. bureaucracy
+- **Transparency** vs. black box
+- **Abundance** vs. scarcity thinking
+- **Courage to implement** vs. symbolic politics
+
+## Our Anti-Ideology Promise
+
+Ideology becomes an obstacle when it prevents things from working. Our benchmark is: **What makes life better — measurably, robustly, scalably?**
+
+## How We Make Decisions
+
+Our criteria:
+
+- **Effectiveness**: Is there a real effect in everyday life?
+- **Feasibility**: Is it implementable — legally, financially, operationally?
+- **Sovereignty**: Does it make us more or less dependent in critical areas?
+- **Freedom & Dignity**: Does it expand room to act and security?
+- **Transparency**: Is it verifiable, auditable, correctable?
+
+## The Typical Labels
+
+Why they don't fit:
+
+### "Tech-libertarian?"
+
+No. We are not "state out, market in." We want **capable institutions** that create security, reduce dependencies and enforce transparency — especially for critical infrastructure. Freedom without sovereignty is an illusion.
+
+### "Socialist?"
+
+No. We are not for planned economies or ideology. Our focus is **abundance through productivity** — and welfare systems that empower people, instead of trapping them in bureaucracy.
+
+### "Neoliberal?"
+
+No. We are not for deregulation at any cost. Where markets work: fine. Where lock-in, monopolies or dependencies emerge: **rules, standards, exit obligations, competition**.
+
+## Examples Showing Why We Don't Fit the Spectrum
+
+- **Digital Sovereignty**: not "statist" and not "market-fundamentalist" — but anti-lock-in, pro open standards, pro security.
+- **Re-industrialisation via Robotics**: pro productivity and prosperity, but accessible, socially secured, without fear of decline.
+- **Basic Income (Pilot)**: a safety foundation that reduces bureaucracy and facilitates entrepreneurship — without moral debates, with measurement instead of dogma.
+- **Cities & Housing**: pro densification at transit hubs (including height), so housing becomes more affordable and sprawl is reduced.
+- **Life Science & Health**: pro progress, but with clear limits: no black-box state, opt-in default, transparency.
+
+## What We Reject
+
+- **Fear-based politics** as a permanent state
+- **Symbolic politics** without impact
+- **Black-box systems** in government and health
+- **Culture wars** as a substitute for shaping the future
+
+## What We Stand For
+
+Institutions that make change possible, rather than merely administering it. Societies that remain sovereign and cooperate constructively. A world that translates abundance into prosperity, comfort and well-being. If you've had enough of tribal politics: welcome.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Cities & Housing
+
+> Affordable housing and quality of life through densification at transit hubs — less sprawl, more comfort.
+
+Source: https://the-future.world/cities-housing/
+
+## Cities & Housing
+
+Prosperity and comfort are felt in everyday life: short commutes, affordable housing, less stress, more quality of life. For this, cities must be able to grow — **upward and inward**, not endlessly outward.
+
+## Our Principle
+
+**Densify where infrastructure exists.** This preserves landscape and local character — and curbs sprawl.
+
+## Three Immediate Measures
+
+### 1) More Building Rights at Transit Hubs
+
+Around stations and strong tram and bus corridors, more storeys and higher utilisation should be possible. Those who want city life must be allowed to build it — where it works.
+
+### 2) Fast-track Permits for Dense Housing Projects
+
+Good projects often fail not due to engineering, but due to time and process. We want clear deadlines, unified responsibilities and a one-stop process.
+
+### 3) Minimum Densities in Defined Zones
+
+Near stations and along central corridors, densification should be the norm. This creates supply — and eases pressure on peripheral areas.
+
+## Height: Yes, but with Rules
+
+The goal is not a skyline — but **housing, comfort and proximity**.
+
+- **High-rises** in clearly defined zones (centres/stations) — with strong quality and design requirements.
+- **Mid-rise** (e.g. 6–10 storeys) as the standard where it makes urban sense.
+
+## Affordability Without Ideology
+
+Affordability comes from a mix:
+
+- More supply through targeted densification
+- Complement through cooperatives and non-profit providers
+- Stable rental models and planning certainty
+
+## Why This Is Future Policy
+
+- Less commuting stress, less time lost
+- More integration: the city as a place of encounter and opportunity
+- More nature stays nature — because we don't need to sprawl
+
+## Frequently asked questions
+
+### Why densification instead of building on greenfields?
+
+Densify where infrastructure exists: that creates housing with short commutes while preserving landscape and the character of towns and villages. Sprawl makes commutes longer and infrastructure more expensive.
+
+### Does that mean high-rises everywhere?
+
+No. High-rises only in clearly defined zones (centres, stations) with strong quality requirements; the standard is mid-rise (6–10 storeys) where it makes urban sense. The goal is not a skyline, but housing, comfort and proximity.
+
+### How does this make housing more affordable?
+
+Through more supply in the right places — complemented by cooperatives, non-profit providers and stable rental models. Scarcity is the biggest price driver.
+
+### What are fast-track permits?
+
+Clear deadlines, unified responsibilities and a one-stop process for dense housing projects. Today, good projects often fail not due to engineering, but due to time and process.
+
+### What do people outside the cities gain?
+
+Less pressure on peripheral areas and surrounding rents, less sprawl — and more nature that stays nature.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Contact
+
+> Get in touch with The Future.
+
+Source: https://the-future.world/contact/
+
+Have questions, suggestions or want to get involved? Write to us — we welcome every message.
+
+**Email**: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Digital Sovereignty
+
+> Sovereignty starts with infrastructure: open, auditable, portable — and secure.
+
+Source: https://the-future.world/digital-sovereignty/
+
+## Digital Infrastructure
+
+Digital systems are infrastructure today, like roads and electricity: when they are opaque, insecure or non-cancellable, democracy loses control.
+
+## Our Principle
+
+Local or regional preference only for critical infrastructure and sensitive data. Otherwise: open competition — but always with auditability, portability and security as requirements. (The Swiss chapter, for example, applies a Swiss/EU-first rule to critical systems.)
+
+## The Sovereignty Package
+
+### 1. Anti-Lock-in Law
+
+- Exit plans as a contractual requirement
+- Open standards and format interfaces
+- Data portability and interoperability
+
+### 2. Open-by-default in Government
+
+- Open source where sensible (and maintainable)
+- Funding for maintenance (not just "build and forget")
+- Transparency reports on large government IT systems (risks, dependencies, exit status)
+
+### 3. Security of Critical Systems
+
+- Minimum standard: controls, audits, incident processes
+- Supply-chain security: SBOM, signed builds, traceable provenance
+- Clear responsibilities instead of jurisdictional fog
+
+## Why This Improves Everyday Life
+
+The same logic applies to artificial intelligence: see [Sovereign AI & Compute](https://the-future.world/sovereign-ai/).
+
+- Fewer IT investment failures
+- Less dependency on individual vendors
+- Lower risk in critical services
+- More trust through transparency
+
+## Frequently asked questions
+
+### What does digital sovereignty mean in practice?
+
+Digital sovereignty means that governments and citizens retain control over their data, systems and digital infrastructure — independent of individual vendors or countries.
+
+### Does that mean we can no longer use foreign software?
+
+No. A local or regional preference applies only to critical infrastructure and sensitive data. For everything else: open competition — but always with mandatory auditability, portability and open standards.
+
+### What is an anti-lock-in law?
+
+A law that prevents governments from permanently tying themselves to a single IT vendor. It requires exit plans, open formats and data portability as contractual obligations.
+
+### Isn't open source more expensive than commercial solutions?
+
+Not necessarily. Open source reduces long-term costs through less licence dependency. What matters is that maintenance is also funded — not just the initial deployment.
+
+### How does this affect everyday life?
+
+Fewer IT failures in public services, fewer data breaches, more transparency. And no surprises when a vendor suddenly doubles prices or discontinues their service.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Energy & Infrastructure Resilience
+
+> Reliable, affordable and independent infrastructure as the foundation for prosperity and sovereignty.
+
+Source: https://the-future.world/energy-resilience/
+
+## Energy & Infrastructure Resilience
+
+Comfort means: things work. Electricity, networks, mobility, critical supply — reliably, affordably, robustly. This is the foundation for prosperity.
+
+## Our Goal
+
+Resilient infrastructure that better absorbs outages and crises and makes costs more predictable — without ideology, without alarmism.
+
+## Our Priorities
+
+### 1) Reliability as the Key Metric
+
+Infrastructure planning should focus more on uptime, peak-load capability and recoverability.
+
+### 2) Faster Procedures for Critical Projects
+
+When a project improves supply security, it must not get stuck in endless loops: clear responsibilities, clear deadlines, clear decisions.
+
+### 3) Reduce Critical Dependencies
+
+Where disruptions are costly, we secure components, spare parts and know-how — pragmatically and risk-based. Where international cooperation increases resilience, we pursue it.
+
+## Principle
+
+Resilience is **engineering**: standards, redundancy, testing, accountability. Growing demand from data centres belongs in the plan too: see [Sovereign AI & Compute](https://the-future.world/sovereign-ai/).
+
+## Frequently asked questions
+
+### What does 'resilience is engineering' mean?
+
+Reliability is not a creed, it's a craft: clear standards, redundancy, testing and accountability. We measure infrastructure by uptime, peak-load capability and recoverability.
+
+### Why faster procedures?
+
+Projects that improve supply security must not get stuck in endless loops: clear responsibilities, clear deadlines, clear decisions.
+
+### What are critical dependencies?
+
+Components, spare parts and know-how whose failure is costly. We secure them pragmatically and risk-based — and pursue international cooperation where it increases resilience.
+
+### Does this make energy more expensive?
+
+The goal is the opposite: predictable costs. Outages and crises end up costing more than redundancy — resilience is an investment in stable prices and reliable supply.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Info
+
+> About The Future — navigation, newsletter, legal notices.
+
+Source: https://the-future.world/info/
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Get Involved
+
+> Bring your skills, ideas and local knowledge to a global movement.
+
+Source: https://the-future.world/join/
+
+The future takes people who research, build, write and organise. Bring what you know. Help shape what comes next.
+
+## Become a contributor
+
+Join The Future network and actively shape the movement. Write to us to get started.
+
+[hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
+
+## Stay in touch
+
+Write to us to ask about current work and ways to take part.
+
+[Ask about updates](mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20stay%20in%20touch)
+
+## Volunteer
+
+Whether writing, organising, design or campaign work — we welcome any support.
+
+[Contact us](https://the-future.world/contact/)
+
+## Connect
+
+Do you know experts, organisations or initiatives with similar goals? We actively seek exchange and partnerships.
+
+[Introduce yourself](mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20partnership)
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Language & Understanding
+
+> A model for clear communication, strong diversity and integration without friction.
+
+Source: https://the-future.world/language-understanding/
+
+## Language & Understanding
+
+Multilingual societies know: language is infrastructure. It determines whether people feel welcome, whether work succeeds, whether institutions are comprehensible.
+
+## Our Goal
+
+Become a model for:
+
+- Clear, simple communication
+- Strong cultural diversity
+- Integration without friction
+
+## Local Languages Stay
+
+We don't want to displace any national, regional or minority language. At the same time, we need an **additional shared bridge language** to facilitate cooperation nationally and internationally. Switzerland, with four national languages, shows that both can coexist.
+
+## Why English Is the Pragmatic Choice
+
+English is today's most practical bridge language:
+
+- Science and innovation
+- International business
+- Mobility and exchange across borders
+
+## Openness to Neutral Alternatives
+
+We are open to neutral alternatives like Esperanto, and in the long term to a more inclusive global bridge language that doesn't only reflect European language patterns. This is not a culture war, but a project for understanding.
+
+## Implementation: Step by Step and Measurable
+
+- Multilingual government information (incl. English) where it has impact
+- Voluntary learning pathways and recognition of language competences
+- Programmes for cultural understanding (schools, professional development, integration)
+- Evaluation: integration success, service quality, economic benefit
+
+## Frequently asked questions
+
+### Should local languages be replaced?
+
+No. National, regional and minority languages are part of a society's identity and will remain so. This is about an additional shared bridge language for daily life, business and science — not about displacement.
+
+### Why English?
+
+Because it is today's most practical bridge language: in science and innovation, in international business, and in exchange across borders.
+
+### Isn't this a culture-war topic?
+
+No — language is infrastructure. It determines whether people feel welcome, whether work succeeds and whether institutions are comprehensible. We treat it as a project of understanding, not an identity fight.
+
+### How will this be implemented?
+
+Step by step and measurably: multilingual government information where it has impact, voluntary learning pathways, recognition of language competences — and evaluation of integration success, service quality and economic benefit.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Legal Notice
+
+> Legal notice and information about The Future.
+
+Source: https://the-future.world/legal/
+
+## Legal Notice
+
+**The Future**
+
+**Contact**
+Email: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
+
+## Disclaimer
+
+The contents of this website have been created with the greatest care. However, we cannot guarantee the accuracy, completeness or timeliness of the content.
+
+## Copyright and licence
+
+The texts on the-future.world are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may copy, share, translate, adapt and use them for any purpose, including in AI systems, as long as you credit "The Future" as the source, link to the original page and indicate changes.
+
+Excluded are the name "The Future", the wordmark, the globe mark and third-party content marked as such (including the AI-generated visualisation). They may not be used in a way that suggests origin from or endorsement by The Future.
+
+The continent outlines in the globe are based on Natural Earth data (public domain). The source code of this website is public at [github.com/zukunft-ch/the-future.world](https://github.com/zukunft-ch/the-future.world).
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Life Science & Health
+
+> Enabling progress — with transparency, consent and control.
+
+Source: https://the-future.world/life-science/
+
+## Progress with Trust
+
+Life sciences are opening new possibilities — from personalised therapies to prevention, from new diagnostics to industrial biotechnology. For this progress to continue, clear rules that build trust are needed.
+
+## Our Principles
+
+### Health Data: Opt-in as Standard
+
+Health data belongs to people, not to the state and not to industry. The standard is opt-in, with narrow exceptions only for public health.
+
+### Regulation: Evidence-based and Traceable
+
+New therapies and technologies are assessed case-by-case — based on evidence, not ideology. Regulatory decisions must be traceable and justified.
+
+### Partnerships: Yes — but with Transparency Rules
+
+Collaboration between government, research and industry is important. But every partnership needs clear transparency rules: who finances? Who decides? Who benefits?
+
+## Red Lines
+
+**No black-box medicine**: No automated decisions about medical services or treatments without traceable reasoning, human responsibility and the right to appeal.
+
+## Why This Matters
+
+- Pharma and biotech hubs need a clear framework to innovate responsibly
+- Citizens deserve control over their health data
+- Innovation and trust are not contradictory — they are prerequisites for each other
+
+## Frequently asked questions
+
+### Who owns health data?
+
+The people themselves — not the state and not industry. The standard is opt-in: data is used only with explicit consent, with narrow exceptions for public health.
+
+### Don't clear rules slow down research?
+
+No — trust is the precondition for people sharing their data at all. Research stays strong only if innovation and trust go together: each is the condition for the other.
+
+### What does 'no black-box medicine' mean?
+
+No automated decisions about medical services or treatments without traceable reasoning, human responsibility and the right to appeal. That is a red line.
+
+### Where do we stand on partnerships with industry?
+
+Collaboration between government, research and industry is important — but every partnership needs clear transparency rules: who finances? Who decides? Who benefits?
+
+### How are new therapies regulated?
+
+Evidence-based and case-by-case: data instead of ideology. Regulatory decisions must be traceable and justified.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Manifesto
+
+> Ten theses for the transition into an age of abundance: how any country or city can use artificial intelligence and robotics so that prosperity reaches everyone.
+
+Source: https://the-future.world/manifesto/
+
+## Zero point (0x1001)
+
+For the first time in history, machines can do not only physical work but also cognitive work. Artificial intelligence and robotics will redistribute work, income and power, faster than most institutions can imagine. Technological change is real, but fear is optional. Yet almost everywhere, this future is discussed in the language of fear. This manifesto starts somewhere else: the future is not a fate. It is a construction project. The only open questions are who builds it, by which rules, and for whose benefit. We want prosperity instead of scarcity thinking, security instead of fear, sovereignty instead of dependency.
+
+## Intelligence is becoming infrastructure. (0x1002)
+
+Artificial intelligence makes cognitive work cheap, robotics makes physical work cheap. Whether artificial general intelligence arrives in five years or in twenty: we plan for the case that it comes early. Whoever has compute, models and data shapes the future. Whoever only rents them has to accept it.
+
+## Abundance is possible, but not automatic. (0x1003)
+
+For the first time, technology can create enough for everyone: housing, health, time. **Abundance** means prosperity through productivity, not excess through waste. Whether it reaches everyone or only a few is a political decision. Fear is no answer to that. A plan is.
+
+## Compute is sovereignty. (0x1004)
+
+Sovereignty in the 21st century means: your own compute, open models and enough reliable electricity to run both. Not isolation, but the ability to audit, operate and replace AI yourselves, built on open standards, transparency and security. That holds for a country, a region and a city alike.
+
+## Production is coming back. (0x1005)
+
+Robots in fields, on building sites and in factories make local production competitive again, including in places with high wages. Local means short distances, know-how close to home and less dependence when the world gets turbulent.
+
+## The state becomes the best service provider around. (0x1006)
+
+Transparent by law, open data and APIs, AI in every public office. Routine cases in minutes, every decision explained and open to appeal. Offices are filled on ability, not party membership, and politics is a phase of life, not a profession. Citizens should be able to read the state, check it and build better tools on top of it. Democracy wins when its systems are understandable, verifiable and correctable.
+
+## No black-box decisions about people. (0x1007)
+
+No automated decision about benefits, treatment or rights without a comprehensible justification, human responsibility and a right of appeal. Fast, but under control: powerful systems are tested before they work in critical areas.
+
+## The dividend belongs to everyone. (0x1008)
+
+When machines do a growing share of the work, part of the gains must flow back to everyone. A basic income as a foundation, retraining as the norm: people without existential fear retrain, start companies and try new things. Productivity creates abundance only if it is shared fairly and transitions are secured.
+
+## Talent is the scarcest resource. (0x1009)
+
+Natural resources matter less than minds. Every place that wants to shape the transition has to train the people who build AI and robotics, give them reasons to stay and welcome those who want to do research and found companies there, with talent visas that are fast and welcoming instead of slow and suspicious.
+
+## Engineering instead of ideology. (0x100A)
+
+Not left, not right, but: what works? Hypothesis, pilot, measurement, correction. We disclose what our proposals are based on and change them when the data demands it.
+
+## Small places can go first. (0x100B)
+
+The transition does not have to start with the largest powers. A country, a region or a city that is small enough to learn fast, able to invest and trustworthy enough to be a partner can show how it succeeds, and others can copy what works. Strong at home first, then credible abroad. One example: the Swiss chapter, Die Zukunft, wants to show it from Switzerland, for Europe and beyond.
+
+## Our commitments (0x100C)
+
+- **No black-box politics** No automated decisions about benefits or treatment without a comprehensible justification, human responsibility and a right of appeal.
+- **Sovereign institutions, open systems** Public institutions procure critical systems only in ways that keep them auditable, portable and secure. Lock-in is a risk, and it ends.
+- **Change without collapse** We rebuild welfare systems so that people can switch careers, learn and start something new without existential fear.
+- **Basic income, pragmatically** We start with pilots, independently evaluated, wherever we are active, and measure the effect: bureaucracy costs, start-ups, well-being.
+
+## What we are not (0x100D)
+
+- **No promises of salvation.** Technology solves nothing by itself. People and institutions do.
+- **No enemy images.** We argue about solutions, not about people.
+- **No progress without control.** Fast, but comprehensible, verifiable and democratically steerable.
+- **No programme of renunciation.** We do not administer scarcity. We end it.
+
+November 2026. The Future. Version 1.0, 2026-11-08.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# News
+
+> News and updates from The Future: what we are building, what has changed and why.
+
+Source: https://the-future.world/news/
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# A new face, built in the open
+
+> The Future has a new look: the same design system as the Swiss chapter, a wireframe globe as the international mark, no trackers, and all source code public on GitHub.
+
+Source: https://the-future.world/news/a-new-face/
+
+As of today, the website of The Future has a new look. It is meant to say more clearly what we stand for: artificial intelligence and robotics can create prosperity for everyone, if someone builds the plan for it. The website should be able to show that plan in three seconds and explain it in three hours.
+
+---
+
+## One design system, two marks
+
+The Future shares its design system with its Swiss chapter, [Die Zukunft](https://die-zukunft.ch). The website was meant to feel futuristic, but not kitschy: no neon colours, no robot eyes. Instead, things you can touch: a light ground like ceramic, dark ink, fine lines as on a construction drawing.
+
+The colour is **Alpenglühen** (alpenglow): pink, magenta, violet and indigo, like mountains in the first light of day. It stands for optimism without pathos.
+
+Each site has its own mark. The Swiss chapter uses the cube cross, a Swiss cross made of seven cubes. The international movement uses a **wireframe globe with continent outlines**: drawn in the same fine lines, for a movement that is not bound to one country.
+
+---
+
+## The manifesto, with permanent addresses
+
+The [manifesto](https://the-future.world/manifesto/) now consists of ten theses, adapted from the Swiss manifesto for any country or city. Every section has an address in the corner, for example 0x1002 for the first thesis. The addresses are the same on both sites, so a thesis can be linked and quoted in the same way wherever it appears.
+
+---
+
+## Built in the open
+
+The addresses give away how we work: like an open software project. The source code of this website is public on [GitHub](https://github.com/zukunft-ch/the-future.world). It runs without trackers.
+
+If you find a mistake or have a better wording, you can contribute directly, with an issue or a pull request. A movement that calls for open government should work openly itself.
+
+The future is a construction project. So is this website. [Build it with us.](https://the-future.world/join/)
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Open Government
+
+> A state that enables rather than blocks: transparent by law, data and procedures via APIs, offices filled on competence rather than party membership.
+
+Source: https://the-future.world/open-government/
+
+## Open Government: API-by-default
+
+Government is a service provider for democracy. When data and processes are stuck in silos, gatekeeping emerges: slow, expensive, opaque. That doesn't fit the future. Government makes everything that doesn't concern national security **openly, machine-readably and via APIs** available — so citizens, media and businesses can build solutions that simplify processes and strengthen oversight.
+
+## API-by-default
+
+Agencies publish data not just as PDFs, but as reliable interfaces:
+
+- Unified standards (formats, identifiers)
+- Clear versioning and change logs
+- Stable availability (service level)
+- Documentation, examples, open-source reference clients
+
+## "Open Procedures" Instead of Bureaucratic Jungle
+
+Every process is described digitally as a workflow:
+
+- Requirements and documents
+- Deadlines and status
+- Fees
+- Clear responsibilities
+
+## Transparent by Law
+
+Transparency must not depend on goodwill. Everything is public unless expressly exempted. Exemptions exist only for national security and personal data, and every exemption is justified and itself published.
+
+- Budgets and expenditure, down to the individual line item
+- Procurement and contracts, including prices
+- KPIs for every administrative unit: processing times, backlogs, cost per case
+- Job profiles, salary bands and organisation charts
+
+## Transparency in Politics
+
+For democracy to stay clean, clarity is needed:
+
+- Party financing and donation flows
+- Campaign budgets and major funders
+- Timely and public
+
+## Competence over Careers
+
+Politics should be a phase of life, not a profession. And public offices are filled on ability, not on party membership. (In Switzerland this builds on the militia tradition of part-time, citizen politicians.) Elections remain free: competence is a standard for public offices and the administration, not a barrier to the right to vote or stand for election.
+
+### Term limits
+
+- A clear upper limit on years in the same parliament or the same government (the Swiss chapter proposes twelve)
+- Then back to work, research or business: experience circulates, cronyism does not
+
+### An administration based on merit
+
+- Every post is advertised publicly, with published criteria
+- Senior posts are filled by independent panels, not by party affiliation
+- Goals and results of every administrative unit are measured and published
+
+### All interests declared
+
+- A public register of all mandates, outside income and lobbying meetings of members of parliament and senior officials
+- A cooling-off period before office holders move into lobbying roles
+
+### Decisions with reasons
+
+- Independent expert councils publish their recommendations in full
+- Every government decision comes with a public, machine-readable rationale and the data behind it
+- Anyone who departs from a recommendation explains publicly why
+
+## Citizen Oversight in the 21st Century
+
+Citizen journalists, NGOs, researchers and interested citizens should be able to effectively scrutinise government. A modern state is not afraid of oversight — it gets better because of it.
+
+- Open data
+- Dashboards
+- Audit logs and traceable decisions
+
+## Our Guardrails
+
+So this doesn't become dangerous:
+
+- **National Security**: remains protected.
+- **Privacy-by-design**: minimise personal data, anonymise/aggregate.
+- **Security-by-design**: strong standards, audits, clear accountability.
+- **No Black-box State**: Decisions must be traceable, contestable and accountable.
+
+## Why This Increases Prosperity and Comfort
+
+- Less paper and waiting time
+- Lower administrative costs
+- Better services through competition and innovation
+- More trust through transparency
+
+## Frequently asked questions
+
+### What does API-by-default mean?
+
+Authorities publish data and procedures not just as PDFs, but as reliable, documented interfaces — with unified standards, versioning and stable availability. Everything that doesn't concern national security is open and machine-readable.
+
+### Isn't this a privacy risk?
+
+No — openness applies to the state's data and processes, not to personal data. Privacy-by-design applies (minimise, anonymise, aggregate), as does security-by-design (strong standards, audits, clear responsibilities).
+
+### What does this deliver in everyday life?
+
+Less paperwork and waiting, lower administrative costs and better services — because citizens, media and companies can build better tools on open data.
+
+### Does "competence over careers" mean only experts may be elected?
+
+No. Voting and standing for election remain everyone's right. The standard applies to public offices and the administration: posts filled on ability rather than party membership, term limits, declared interests and reasoned decisions.
+
+### Why term limits?
+
+Because politics benefits from people who come from real life and go back to it. Term limits prevent cronyism and dependencies and keep parliaments open to fresh experience.
+
+### Does transparency also apply to politics itself?
+
+Yes: party financing, donation flows and campaign budgets should be publicly viewable, promptly. That applies to us too.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Peace & Diplomacy
+
+> Diplomacy, mediation and de-escalation as strategic strengths — strong at home first, then credible abroad.
+
+Source: https://the-future.world/peace-neutrality/
+
+## Peace & Diplomacy
+
+Credibility as an honest broker is a strategic asset. Countries that mediate, keep dialogue open and de-escalate rather than inflame gain influence and security — this is not idealism, it is strategy.
+
+## Strong at Home First, Then Credible Abroad
+
+We want countries to work internally first: secure, resilient, sovereign. Only then can they credibly help externally. Our ambition is to lead by example — not to lecture.
+
+## What We Stand For
+
+- No wars of aggression and no offensive military adventures
+- Diplomacy first: exhaust negotiation before escalation
+- Active peace work: mediate, host talks, support humanitarian efforts
+- Respect for international law and multilateral institutions
+
+## Why a Protection and Resilience Focus Makes Sense
+
+Threats have changed: hybrid risks, sabotage, cyber attacks, system failures. Critical infrastructure is the nervous system of modern society. Therefore: expand protection capability without becoming aggressive:
+
+- Protect critical infrastructure (IT/OT, energy, communication, supply)
+- Support civilian authorities in crises
+- Clear, defensive doctrine
+- High professionalism and democratic control
+
+## Places Where Peace Is Negotiated
+
+Every region needs trusted venues for talks, negotiations and agreements — and people trained to run them. We want to build up mediation capacity, fund it reliably and offer it consistently. In Switzerland, for example, the [Swiss chapter](https://die-zukunft.ch/en/neutrality-peace/) wants to strengthen International Geneva and the tradition of good offices.
+
+## Guardrails
+
+- Strictly defensive: protection, not projection
+- Credible and even-handed: no tribal politics
+- Transparent and rule-of-law: clear mandates, clear responsibilities
+
+## Frequently asked questions
+
+### Isn't diplomacy naive in a more dangerous world?
+
+On the contrary: the more tense the world becomes, the more valuable places and people are that conflict parties can still talk to. Mediation, dialogue channels and de-escalation are hard-headed tools, not wishful thinking.
+
+### Does peaceful mean defenceless?
+
+No. Strictly defensive means: building protective capability without becoming aggressive — protecting critical infrastructure, supporting civilian authorities in crises, with a clear doctrine and democratic control.
+
+### What does mediation involve in practice?
+
+Hosting talks and negotiations, offering neutral ground and experienced mediators, keeping communication channels open in a crisis, and supporting humanitarian work.
+
+### What does 'strong at home first, then credible abroad' mean?
+
+A country must first work domestically: secure, resilient, sovereign. Only then can it help credibly abroad. Our ambition is to lead by example — not to lecture.
+
+### How does this fit the new threats?
+
+Hybrid risks, sabotage and cyberattacks target the nervous system of modern societies: their critical infrastructure. That's why peace policy and resilience belong together — protection instead of projection.
+
+### Is this the same as Swiss neutrality?
+
+No. Swiss neutrality is a specific, centuries-old legal status. Our international stance is broader: any country, whatever its alliances, can choose restraint, defensive doctrine and active peace work.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# People
+
+> The people behind The Future.
+
+Source: https://the-future.world/people/
+
+## Core Team
+
+The Future is being built by a growing network of people committed to structural transformation — pragmatic, international, future-oriented.
+
+## Advisory Board
+
+To be announced.
+
+## Join Us
+
+We're looking for builders, thinkers and organisers across the world. If you share our vision, get in touch.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Privacy Policy
+
+> Privacy policy of The Future.
+
+Source: https://the-future.world/privacy/
+
+## Privacy policy
+
+### Responsible party
+
+The Future
+Email: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
+
+### Principle
+
+The protection of your personal data is important to us. We only collect data that is necessary for the operation of this website and our work.
+
+### Email contact
+
+Contact links on this website open your email application. The website does not submit a contact form or newsletter subscription. If you email us, we use the information in your message to respond to your enquiry.
+
+### Display preference
+
+If you switch between light and dark mode, the website stores that choice in your browser’s local storage. It is not sent to us. The website also caches public pages and assets in your browser to make repeat visits more reliable. You can remove this data in your browser’s site settings.
+
+### Hosting
+
+This website is statically hosted. No cookies are set and no tracking tools are used.
+
+### Your rights
+
+You have the right at any time to request information about your stored data, its correction or deletion. Please contact us at the address above.
+
+### Changes
+
+We reserve the right to adapt this privacy policy as needed. The current version can always be found on this page.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Program
+
+> Our program for structural transformation.
+
+Source: https://the-future.world/program/
+
+- [Sovereign AI & Compute](https://the-future.world/sovereign-ai/): Compute is the infrastructure of the 21st century. Every society needs its own capacity, open models and the ability to audit and operate AI itself.
+- [Basic Income](https://the-future.world/basic-income/): Basic income as the automation dividend: stability, freedom, simplification.
+- [Work Without Fear](https://the-future.world/transitions/): Career changes, learning, fresh starts as the norm — not the exception.
+- [Digital Sovereignty](https://the-future.world/digital-sovereignty/): Sovereignty starts with infrastructure: open, auditable, portable — and secure.
+- [Re-industrialisation with Robotics](https://the-future.world/robotics/): More production and value creation close to home: automated, local, open to small businesses. In the field, on the building site and in the factory.
+- [Life Science & Health](https://the-future.world/life-science/): Enabling progress — with transparency, consent and control.
+- [Cities & Housing](https://the-future.world/cities-housing/): Affordable housing and quality of life through densification at transit hubs — less sprawl, more comfort.
+- [Research, Innovation & Commons](https://the-future.world/research-innovation/): The best place for responsible innovation — transparent, interoperable, internationally compatible.
+- [Energy & Infrastructure Resilience](https://the-future.world/energy-resilience/): Reliable, affordable and independent infrastructure as the foundation for prosperity and sovereignty.
+- [Open Government](https://the-future.world/open-government/): A state that enables rather than blocks: transparent by law, data and procedures via APIs, offices filled on competence rather than party membership.
+- [Peace & Diplomacy](https://the-future.world/peace-neutrality/): Diplomacy, mediation and de-escalation as strategic strengths — strong at home first, then credible abroad.
+- [Talent, Integration & Rule of Law](https://the-future.world/talent-integration/): Openness for talent and clear rules — a hub for people who want to contribute.
+- [Language & Understanding](https://the-future.world/language-understanding/): A model for clear communication, strong diversity and integration without friction.
+
+## Our program for transformation
+
+Our program addresses the central challenges of structural change — pragmatic, measurable and adaptable to local conditions worldwide.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Research, Innovation & Commons
+
+> The best place for responsible innovation — transparent, interoperable, internationally compatible.
+
+Source: https://the-future.world/research-innovation/
+
+## Research, Innovation & Commons
+
+Prosperity emerges where new things can be built — quickly, responsibly and with real benefit. Countries and cities can do this far better when politics modernises the framework.
+
+## Our Goal
+
+Create the **best conditions** to develop and scale innovation — transparently, auditably, interoperably — and **internationally compatible**.
+
+## Three Levers
+
+### 1) Testbeds & Sandboxes
+
+New solutions should be trialled in clearly bounded test environments — with measurable goals, transparent evaluation and real learning loops.
+
+### 2) Public Return from Public Funding
+
+When tax money supports innovation, the benefit must be broadly shared:
+
+- Open standards and interoperability as the default
+- Knowledge transfer instead of silos
+- Responsible IP models (where sensible)
+- "Maintenance" built in: not just build, but operate
+
+### 3) Innovation Networks
+
+Connect universities, applied-science institutions, startups, small businesses and industry across regions and borders — with clear rules, transparent governance and fast implementation pathways.
+
+## Why This Matters
+
+Innovation is not an end in itself. It is a means for:
+
+- Better public services
+- A more productive economy
+- More prosperity and comfort for all
+
+## Frequently asked questions
+
+### What is a testbed?
+
+A clearly bounded test environment where new solutions are trialled under real conditions — with measurable goals, transparent evaluation and real learning loops.
+
+### Why 'commons'?
+
+When tax money supports innovation, the benefit must be broadly shared: open standards and interoperability as the default, knowledge transfer instead of silos, and responsible IP models where sensible.
+
+### How does this differ from today's innovation funding?
+
+We build in operations: maintenance is funded, not just construction; results are evaluated transparently; and innovation networks connect universities, startups, small businesses and industry across regions and borders.
+
+### Why does international compatibility matter?
+
+Innovation scales across markets and standards. Where cross-border cooperation increases impact, we use it — without giving up democratic control over the rules.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Re-industrialisation with Robotics
+
+> More production and value creation close to home: automated, local, open to small businesses. In the field, on the building site and in the factory.
+
+Source: https://the-future.world/robotics/
+
+## Why Re-industrialisation?
+
+If we want to bring production back, it must be modern: automated, efficient, resilient. Highly automated manufacturing makes production competitive again, even where wages are high. This is an opportunity, especially for small and medium-sized enterprises.
+
+## Robots in Every Sector
+
+Robotics is not just a topic for the factory floor. It takes load off people wherever work is physically hard, dangerous or short of hands.
+
+### Agriculture
+
+Fewer people work on the land in many countries. Robotics keeps farms productive.
+
+- Autonomous weeding, tending and harvesting robots
+- Shared machinery pools so that small farms can afford robotics too
+- Automated processing close to the farm
+
+### Construction
+
+Building faster means more housing at lower cost.
+
+- Industrial prefabrication of components and modules
+- Construction robotics for heavy, repetitive and dangerous work
+- Digital building permits based on building information models
+
+### Industry
+
+Automation makes existing industrial strengths bigger.
+
+- Highly automated plants for medtech, pharma, precision engineering and electronics
+- Being able to make critical goods locally: medicines, components, food
+- Maintenance, planning and development as new, well-paid industrial occupations
+
+## Producing Locally
+
+Production belongs close to the people who need it. Regional, automated plants shorten supply chains, keep know-how local and reduce dependence on global disruptions. Local does not mean isolated: trade continues in what each place does best.
+
+## Our Priorities
+
+- **Health & Life-Science Supply**: Medtech, pharma-adjacent production
+- **Industrial Core**: Precision engineering, toolmaking, electronics/packaging
+- **Resilience Basics**: Food/agri-tech, grid and supply security
+
+## The Small-Business Package
+
+Financing first: affordable loans, guarantees, co-investments for modernisation and (re-)shoring.
+
+- Tax incentives for automation investments
+- Shared robotics labs / automation centres
+- Training and upskilling vouchers
+- Faster permits for modern production facilities
+- Procurement advantages for critical goods (where appropriate)
+- Regulatory sandboxes for automation
+
+## Measurable Goals
+
+Set a public target for industrial robot density and for local industrial value creation, and report on both every year. The [Swiss chapter](https://die-zukunft.ch/en/robotics/), for example, aims to double robot density in Swiss industry by 2035.
+
+## Automation in the Services Sector
+
+We are pro-automation when it relieves people and increases productivity — with the clear goal: more time, more freedom, more prosperity. The gains must be shared: see [Work Without Fear](https://the-future.world/transitions/) and [Basic Income](https://the-future.world/basic-income/).
+
+## Frequently asked questions
+
+### Will robots take people's jobs?
+
+Not if we do it right. Automation frees people from monotonous and dangerous work. The key lies in retraining, basic income and new job profiles.
+
+### Do only large corporations benefit from robotics?
+
+No — that's exactly what we want to prevent. Our small-business package includes shared robotics labs, affordable loans and training vouchers so small firms can automate too.
+
+### What does re-industrialisation mean?
+
+More local value creation, shorter supply chains and less dependence on global disruptions. Production close to home — modern, automated and competitive.
+
+### Which sectors should be automated?
+
+Wherever it makes sense: medtech, precision manufacturing, food tech, logistics, agriculture, construction. Not as an end in itself, but where automation improves quality, efficiency and resilience.
+
+### Doesn't this require highly qualified specialists?
+
+Yes — which is why training programmes are part of the package. Robotics expertise must not be elite knowledge. Shared labs and modular courses make entry accessible.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Sovereign AI & Compute
+
+> Compute is the infrastructure of the 21st century. Every society needs its own capacity, open models and the ability to audit and operate AI itself.
+
+Source: https://the-future.world/sovereign-ai/
+
+## Why this matters now
+
+AI is becoming the foundation of public administration, health, industry and research. Without its own computing capacity and its own models, a country depends on a few foreign providers: on their prices, their rules and their off switches. What most countries lack is not talent but a strategy that turns research computing and open models into public infrastructure. In Switzerland, for example, the Alps supercomputer and the open language model Apertus give the Swiss chapter a concrete starting point.
+
+## Our principles
+
+- **Compute is infrastructure**, like roads and electricity, not time-limited project money.
+- **Open where possible:** open weights, open training data, open code.
+- **Sovereign where necessary:** critical applications run on systems we can audit, operate and replace.
+- **Accessible to all:** universities, small businesses, municipalities and schools, not just corporations.
+
+## The AI infrastructure package
+
+### 1. Public computing capacity
+
+- Expand publicly accessible AI computing capacity substantially, with a measurable multi-year target
+- Long-term funding instead of time-limited project money
+- Fast permits for data centres with waste-heat recovery and a secure electricity supply
+
+### 2. Open foundation models
+
+- Develop open foundation models with universities and research institutions, and keep improving them
+- Cover all official and regional languages, including smaller ones that commercial providers neglect
+- Public access for citizens, schools and small businesses, not just for research
+
+### 3. AI in government
+
+- Secure AI tools on infrastructure the public sector controls, for every administrative unit
+- Routine cases automated, every decision explained and open to appeal
+- Open tenders instead of lock-in to individual AI providers
+
+### 4. Audit and safeguard
+
+- An independent AI testing lab for safety, robustness and fairness
+- Clear liability and human responsibility for decisions about people
+- Sector-specific rules instead of blanket bans, in line with the Council of Europe's Framework Convention on AI
+
+## What this means in everyday life
+
+- An AI assistant in your own language, whose data stays under rules you can rely on
+- Faster, clearer answers from public authorities
+- Small businesses that can use AI without tying themselves to one corporation
+- Research that creates companies and jobs close to home
+
+## How we measure progress
+
+Benchmarks any country or region can adopt. The [Swiss chapter](https://die-zukunft.ch/en/sovereign-ai/) commits to a concrete timetable: a funded strategy by 2027, an open model in federal use by 2028, and ten times today's public AI compute by 2030.
+
+- **Strategy**: A national AI infrastructure strategy with secured, multi-year funding
+- **Use**: An open model in production use in public administration
+- **Capacity**: Publicly accessible AI computing capacity growing year on year, reported publicly
+
+## Frequently asked questions
+
+### Can smaller countries keep up with the largest AI powers?
+
+Not across the board, and they don't need to. What they need is the ability to audit and adapt models themselves and to operate them for critical tasks. With public research computing, strong universities and open models, that is realistic for many countries and regions.
+
+### Why not simply use the best models from the big providers?
+
+For many applications, that is exactly what we do. But for critical areas such as public administration, health and justice, we need systems we can audit and keep running, even if prices, laws or political relations abroad change.
+
+### Don't data centres use too much electricity?
+
+Their demand is growing, so it has to be planned for rather than ignored: efficiency standards, use of waste heat and additional, reliable generation, especially at times of peak demand.
+
+### What about artificial general intelligence (AGI)?
+
+Nobody knows when systems will arrive that can handle almost any cognitive task at human level. Many researchers consider it likely within the next few decades, some much sooner. Policy should prepare for either case: with own capacity, the ability to audit, and a dividend that shares the gains.
+
+### Does sovereign mean shutting ourselves off?
+
+No. Sovereign means having alternatives. We work across borders, and open models are ideal for that. But critical systems must not depend on a single provider or a single state.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Talent, Integration & Rule of Law
+
+> Openness for talent and clear rules — a hub for people who want to contribute.
+
+Source: https://the-future.world/talent-integration/
+
+## Talent, Integration & Rule of Law
+
+Thriving societies are built on stability, quality and trust — and on people who contribute. We want to strengthen both: **openness for talent** and **clear rules** that apply to everyone.
+
+## A Hub for International Talent
+
+We want people from around the world to be able to research, found companies, work and invest — and for the places that welcome them to become stronger as a result. This is part of our prosperity model. Concretely: a talent visa for outstanding people in AI, robotics, life sciences and research, with a decision within days rather than months, family included and relocation made simple.
+
+## Integration Means Commitment
+
+Those who move to a new country should not just "be there", but **arrive there**:
+
+- Learn the language and orient themselves
+- Access to work and education
+- Participation in social life
+
+## Rule of Law and Security
+
+Rules are the foundation of trust. Clear, fair, without hysteria:
+
+- Expectations are clear and apply to everyone
+- Violations are consistently enforced under the rule of law
+- No generalisations based on origin — responsibility is individual
+
+## Why This Fits The Future
+
+Abundance and comfort emerge in a society that is **open** to capability and commitment — and **reliable** in its rules. Exactly this combination makes societies strong.
+
+## Frequently asked questions
+
+### Do you want more or less migration?
+
+That's the wrong question. We want countries to be open to people who contribute — researchers, founders, skilled professionals — while staying reliable in their rules. The quality of integration is what counts, not symbolic debates.
+
+### What does 'integration means commitment' mean?
+
+Those who move to a new country should truly arrive: learn the language, have access to work and training, take part in social life. It is both an expectation and an offer.
+
+### And those who don't follow the rules?
+
+Rules apply to everyone, and violations are consistently prosecuted under the rule of law. But responsibility is individual — no generalisations by origin.
+
+### Why is talent part of the prosperity model?
+
+Because prosperity emerges where skill and effort are welcome. People who research, found and invest in a place make it stronger — and everyone benefits.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Work Without Fear
+
+> Career changes, learning, fresh starts as the norm — not the exception.
+
+Source: https://the-future.world/transitions/
+
+## Work Without Fear
+
+Upskilling and career changes must become normal: fewer hurdles, more support, clear prospects. Those who adapt deserve a safety net — not a bureaucratic maze.
+
+## What Must Change
+
+### Fewer Bureaucratic Hurdles
+
+Retraining shouldn't be an obstacle course. Applications must be simpler, approvals faster and funding more accessible.
+
+### Better Recognition of Skills and Certificates
+
+Work experience and further training count — even when they don't come from the traditional education system. Competence over diplomas.
+
+### Combining Learning and Work
+
+Part-time models, work-integrated education and modular training must be promoted — for all life stages, not just career starters.
+
+### Focus: Results, Not Forms
+
+Less administration, more impact. Support programmes should be measured by outcomes, not by the number of forms filled in.
+
+## Why This Is Urgent
+
+A stable income floor makes change easier to face: see [Basic Income](https://the-future.world/basic-income/).
+
+- Technology is changing job profiles faster than education systems can respond
+- People need security to embrace the new
+- Transitions are becoming the norm — the system must keep up
+
+## Frequently asked questions
+
+### What are 'transitions'?
+
+Career changes, retraining, fresh starts — everything that happens when job profiles evolve. We want this to be normal and supported, not anxiety-inducing and bureaucratic.
+
+### Who pays for retraining?
+
+A combination of employer contributions, public funds and new financing models. The goal: nobody should have to forgo training for financial reasons.
+
+### Why aren't current systems sufficient?
+
+Because they're too slow, too bureaucratic and designed for exceptions. In a world where job profiles change every few years, transitions must be the norm — not the exception.
+
+### What does 'competence before credentials' mean?
+
+That practical skills and work experience are recognised equally — not just formal qualifications. If you can do something, you should be able to prove it, regardless of your educational path.
+
+### Does this only apply to technical professions?
+
+No. Transitions affect all sectors: healthcare, trades, administration, services. Everywhere that automation and digitalisation are transforming job profiles.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
+# Vision
+
+> Artificial intelligence and robotics are changing what work is and where prosperity comes from. The Future is a movement that shapes this transition: with compute, open AI, talent and production close to home, and with a dividend that reaches everyone.
+
+Source: https://the-future.world/vision/
+
+When machines do cognitive and physical work, prosperity for everyone becomes possible. We make sure communities build it instead of renting it.
+
+## What is happening right now
+
+Artificial intelligence makes cognitive work cheaper, robotics makes physical work cheaper. It is the biggest economic shift since industrialisation, and most institutions are less prepared for it than they need to be.
+
+### 2047: General AI is getting closer
+
+In the largest survey of 2,778 AI researchers, the probability that machines will do every task better than humans by 2047 was put at 50 percent. That is 13 years earlier than in the previous survey. Nobody knows when. We plan for the case that it comes early.
+
+Source: [Grace et al., JAIR](https://jair.org/index.php/jair/article/view/19087)
+
+### 1,220: Automation is uneven
+
+Robots per 10,000 industrial workers in South Korea. Germany has 449, Switzerland 294. Places that automate keep and win back production. Places that hesitate lose it.
+
+Source: [IFR World Robotics 2025](https://ifr.org/ifr-press-releases/news/robot-density-surges-in-europe-asia-and-americas)
+
+### Talent: The race for people has started
+
+Singapore, Hong Kong and the United Kingdom run dedicated visas to attract top researchers and founders. Talent goes where it is welcome, quickly and with its family.
+
+Source: [Singapore ONE Pass, Hong Kong TTPS, UK Global Talent](https://www.gov.uk/global-talent)
+
+Open alternatives already exist. One example: with **Apertus**, ETH Zurich, EPFL and CSCS released one of the world's most open large language models in 2025, trained on the **Alps** supercomputer in Lugano. Public institutions can build, not only buy. What is usually missing is the political will to turn this into a programme.
+
+## A place in 2040
+
+Not science fiction, but what any city, region or country can achieve with today's technology and political will.
+
+### Dealing with the authorities in minutes
+
+Taxes, permits, moving house: the state handles routine cases automatically, with reasons given and a right of appeal. The people in public administration have time for the difficult cases.
+
+### An AI assistant for everyone
+
+Everyone has access to a trustworthy AI assistant in their own language, for health, law, education and everyday life. On infrastructure the community controls, with strong data protection.
+
+### The factories come back
+
+Medicines, precision parts, electronics and food are made in highly automated plants close to where people live. Shorter supply chains, less dependence, new work in planning, maintenance and development.
+
+### Building in half the time
+
+Prefabrication, construction robotics and digital permits bring homes to market faster and more cheaply. More housing is a question of productivity, not of going without.
+
+### Farms with robots
+
+Autonomous machines weed, harvest and tend crops with precision. Farms stay productive and independent, even as fewer people work in agriculture.
+
+### More time, less existential anxiety
+
+The gains from automation flow back to everyone as a dividend: a foundation that makes retraining, starting a business and care work possible.
+
+## The abundance stack
+
+Prosperity from AI does not come from an app. It comes from layers that build on each other. If one is missing, the whole thing does not hold. That is why we think them through together, from energy to the dividend.
+
+### Energy
+
+No electricity, no compute and no robots. Affordable, reliable supply in every season, with the extra demand from data centres and automation planned in from the start.
+
+### Compute
+
+Data centres and AI capacity close to home, accessible to universities, small businesses and public administration. If you only rent compute, you rent your future.
+
+### Sovereign AI
+
+Open models in local languages with transparent data. For critical applications the rule is: models we can audit, operate and replace.
+
+### Talent
+
+Train, keep and attract the best minds, with fast, welcoming visas for people who come to build research, companies and whole industries. Continuing education as the norm.
+
+### Application in every sector
+
+Robots in fields, on building sites and in factories. AI in every service and in public administration. Wherever it takes load off people and keeps value creation close to home.
+
+### Dividend
+
+The productivity gains reach everyone: through a basic income as a foundation, safe transitions between occupations and lower everyday costs.
+
+## Three sectors, one goal
+
+Machines should work where they take load off people and keep value creation close to home. In every sector of the economy.
+
+### Precision instead of drudgery
+
+Agriculture is losing workers in many countries. Robotics keeps farms productive and food supply close to home.
+
+- Autonomous weeding, tending and harvesting robots
+- Shared machinery pools for small and medium-sized farms
+- Sensors for precise use of water and fertiliser
+- Automated processing close to the farm
+
+### Production comes back
+
+Highly automated manufacturing makes local production competitive again, even where wages are high. Local means: short distances, less dependence, know-how that stays.
+
+- Highly automated plants for medtech, pharma, precision and electronics
+- Shared robotics centres for small businesses
+- Construction robotics and industrial prefabrication
+- Being able to make critical goods close to home
+
+### Every service gets better
+
+AI makes services faster, cheaper and more accessible. The state leads the way and becomes the best service provider around.
+
+- Administration: transparent by law, routine cases automated, every decision explained
+- Offices filled on competence, with term limits
+- AI assistance in health, law and education
+- Lower costs in banking, insurance and retail
+- More time for the personal, the complex and the caring
+
+## Fast, but under control
+
+People adopt new technology when they can trust it. That is why clear rules apply for us.
+
+### Human responsibility.
+
+Every decision about people has a responsible person, a stated reason and a right of appeal.
+
+### Auditability.
+
+AI in public use is documented, tested and independently auditable.
+
+### Privacy by design.
+
+Health and personal data only with consent. Critical processing under local control.
+
+### Safety before scale.
+
+Powerful systems are tested for risks before they are deployed in critical areas.
+
+### Freedom of choice.
+
+Personal access to public services remains guaranteed for everyone who needs it.
+
+## Why small places can go first
+
+### Real-world laboratories
+
+Cities and regions can test what national governments only debate. What works in one place, others can adopt. A network learns faster than one big centre.
+
+### Open by default
+
+Methods, code and results are published, so a pilot in one place becomes a blueprint for the next.
+
+### Trust through participation
+
+Change that people help decide is change they carry. Democratic legitimacy is a speed advantage, not a brake.
+
+### Build on strengths
+
+Every place has something: a university, an industry, cheap clean power, a skilled workforce. Automation makes these strengths bigger, not smaller.
+
+### Learning across borders
+
+Local chapters share tools and experience. One example: the Swiss chapter, Die Zukunft, publishes its programme and research openly.
+
+## A movement for this transition.
+
+Established politics argues about how today's pie is divided. AI appears as a risk, as a regulatory question, or not at all. Yet the next ten years will decide who owns tomorrow's value creation.
+
+**The Future** puts this question at the centre. We understand the technology, we take its risks seriously, and we have a plan: compute and open models close to home, the best talent, local production and a dividend for everyone.
+
+Not left, not right. Forward.
+
+## What we push for
+
+- **2028: Open AI models in use in public administration.** Operated on infrastructure the public controls, in local languages, auditable and replaceable.
+- **2028: Basic income pilots under way.** With independent evaluation of bureaucracy costs, business start-ups and well-being.
+- **2028: Fast, welcoming talent visas.** For researchers, founders and specialists in AI, robotics and life sciences: a decision within days, family included.
+- **2030: Every automated decision about people explained and appealable.** A stated reason, a responsible person and a right of appeal, by law.
+- **2030: Publicly accessible AI computing capacity.** For universities, small businesses and public administration, with the electricity demand planned in from the start.
+
+## Sources
+
+- [Grace et al.: Thousands of AI Authors on the Future of AI, Journal of Artificial Intelligence Research](https://jair.org/index.php/jair/article/view/19087)
+- [IFR: Robot density surges in Europe, Asia and Americas (World Robotics 2025)](https://ifr.org/ifr-press-releases/news/robot-density-surges-in-europe-asia-and-americas)
+- [EPFL: Apertus, a fully open, transparent, multilingual language model](https://ai.epfl.ch/apertus-a-fully-open-transparent-multilingual-language-model)
+- [Singapore: Overseas Networks & Expertise (ONE) Pass](https://www.mom.gov.sg/passes-and-permits/overseas-networks-expertise-pass)
+- [Hong Kong: Top Talent Pass Scheme](https://www.immd.gov.hk/eng/services/visas/TTPS.html)
+- [United Kingdom: Global Talent visa](https://www.gov.uk/global-talent)
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.

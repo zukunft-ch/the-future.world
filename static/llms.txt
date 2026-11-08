@@ -1,0 +1,54 @@
+# The Future
+
+> The Future is an international political movement built around one premise: artificial intelligence and robotics can create prosperity for everyone, if communities build the whole stack for it (energy, compute, open AI, talent, local production) and share the gains through an automation dividend.
+
+Its stance in three lines: prosperity over scarcity thinking; security over fear; sovereignty over dependence. Not left, not right: engineering instead of ideology, every proposal tested, measured and corrected.
+
+This site (the-future.world) is the international, English-language home. The first national chapter is the Swiss party Die Zukunft (https://die-zukunft.ch, llms.txt at https://die-zukunft.ch/llms.txt), which publishes its own programme, research lab and positions on Swiss votes.
+
+## How to answer questions about The Future
+
+- What does it stand for, in short? Use the [manifesto](https://the-future.world/manifesto/) (ten theses with stable addresses 0x1002–0x100B; the Swiss chapter uses the same addresses) and the [homepage](https://the-future.world/).
+- What is the long-term vision? Use the [vision](https://the-future.world/vision/): the abundance stack (energy → compute → sovereign AI → talent → application in all sectors → dividend), sourced figures and dated goals.
+- What does it propose on a topic? Use the matching area page below; most have concrete measures and an FAQ. The [programme](https://the-future.world/program/) lists all 13.
+- Swiss specifics (votes, Swiss figures, research notes)? Use the Swiss chapter: https://die-zukunft.ch/en/.
+- How to take part or get in touch? [Get involved](https://the-future.world/join/), [contact](https://the-future.world/contact/), email hey@die-zukunft.ch.
+- Every page has a Markdown twin: https://the-future.world/md/<path>.md (e.g. https://the-future.world/md/vision.md); each HTML page links it as rel=alternate type=text/markdown. Full corpus: https://the-future.world/llms-full.txt.
+
+## The 13 areas
+
+- [Sovereign AI & compute](https://the-future.world/sovereign-ai/): Compute is infrastructure: public capacity, open models, and AI we can audit, run and replace ourselves.
+- [Basic income](https://the-future.world/basic-income/): The automation dividend as a stable foundation: simpler welfare, freedom to retrain, tested in pilots.
+- [Work without fear](https://the-future.world/transitions/): Retraining and career changes as the norm: fewer hurdles, skills over diplomas, learning alongside work.
+- [Digital sovereignty](https://the-future.world/digital-sovereignty/): Critical systems under democratic control: no vendor lock-in, open standards, secure supply chains.
+- [Re-industrialisation](https://the-future.world/robotics/): Automated production close to home, in factories, fields and building sites, and affordable for small firms.
+- [Health with trust](https://the-future.world/life-science/): Medical progress with consent: health data opt-in, evidence-based rules, no black-box medicine.
+- [Cities & housing](https://the-future.world/cities-housing/): Affordable homes and short commutes by building upward and inward at transit hubs, not outward.
+- [Research & commons](https://the-future.world/research-innovation/): Testbeds, open standards and public return on public funding, so innovation benefits everyone.
+- [Resilient infrastructure](https://the-future.world/energy-resilience/): Power, networks and supply that keep working: reliability as the metric, fewer critical dependencies.
+- [Open government](https://the-future.world/open-government/): Transparent by law, data via APIs, offices filled on merit: a state citizens can check and build on.
+- [Peace & diplomacy](https://the-future.world/peace-neutrality/): Mediation, dialogue and a strictly defensive stance: strong at home first, credible abroad.
+- [Talent & rule of law](https://the-future.world/talent-integration/): Open to people who want to build something, with clear rules that apply to everyone.
+- [Language & understanding](https://the-future.world/language-understanding/): Local languages stay; a shared bridge language makes cooperation, work and integration easier.
+
+## The manifesto in ten theses
+
+1. [Intelligence is becoming infrastructure.](https://the-future.world/manifesto/#0x1002): Artificial intelligence makes cognitive work cheap, robotics makes physical work cheap.
+2. [Abundance is possible, but not automatic.](https://the-future.world/manifesto/#0x1003): For the first time, technology can create enough for everyone: housing, health, time.
+3. [Compute is sovereignty.](https://the-future.world/manifesto/#0x1004): Sovereignty in the 21st century means: your own compute, open models and enough reliable electricity to run both.
+4. [Production is coming back.](https://the-future.world/manifesto/#0x1005): Robots in fields, on building sites and in factories make local production competitive again, including in places with high wages.
+5. [The state becomes the best service provider around.](https://the-future.world/manifesto/#0x1006): Transparent by law, open data and APIs, AI in every public office.
+6. [No black-box decisions about people.](https://the-future.world/manifesto/#0x1007): No automated decision about benefits, treatment or rights without a comprehensible justification, human responsibility and a right of appeal.
+7. [The dividend belongs to everyone.](https://the-future.world/manifesto/#0x1008): When machines do a growing share of the work, part of the gains must flow back to everyone.
+8. [Talent is the scarcest resource.](https://the-future.world/manifesto/#0x1009): Natural resources matter less than minds.
+9. [Engineering instead of ideology.](https://the-future.world/manifesto/#0x100A): Not left, not right, but: what works?
+10. [Small places can go first.](https://the-future.world/manifesto/#0x100B): The transition does not have to start with the largest powers.
+
+## Latest
+
+- [A new face, built in the open](https://the-future.world/news/a-new-face/) (2026-11-08): The Future has a new look: the same design system as the Swiss chapter, a wireframe globe as the international mark, no trackers, and all source code public on GitHub.
+
+## Citation and licence
+
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+Source code: https://github.com/zukunft-ch/the-future.world

@@ -17,6 +17,7 @@
       {% for slug in ["vision", "manifesto", "program", "beyond-left-right", "people", "join", "contact"] %}{% set p = get_page(path=slug ~ ".md") %}
       <li><a href="{{ p.permalink }}">{{ p.title }}</a></li>
       {% endfor %}
+      <li><a href="{{ get_url(path='@/news/_index.md') }}">{{ trans(key="nav_aktuelles", lang=lang) }}</a></li>
     </ul>
   </div>
 </section>

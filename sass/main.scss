@@ -38,8 +38,8 @@
   @media (min-width: $bp-xl) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-// Twelve areas (the Swiss site has 13): with the 2x2 first cell the 4-column grid
-// would end in a hole, so the last cell spans two columns there.
-.pillar-grid > .pillar-cell:last-child:nth-child(12) {
-  @media (min-width: $bp-xl + 1) { grid-column: span 2; }
+
+// Vision: three sourced figures instead of the Swiss four.
+.shift-grid--3 {
+  @media (min-width: $bp-md + 1) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

@@ -5,6 +5,7 @@
 {# Same markup as avenir page.html; no Zukunftslabor evidence/monitor blocks on this site. #}
 {% block head_extra %}
 {{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
+{% if page.date %}{{ jsonld::article(page=page, lang=lang) }}{% endif %}
 {% if page.extra.faq is defined %}
 {{ jsonld::faqpage(faq_items=page.extra.faq) }}
 {% endif %}
@@ -20,7 +21,7 @@
     {% endif %}
     {% if page.date %}
     {% set author = page.extra.author | default(value=trans(key="author_default", lang=lang)) %}
-    {% if lang == "en" %}{% set date_fmt = "%B %-d, %Y" %}{% set date_locale = "en_GB" %}
+    {% if lang == "en" %}{% set date_fmt = "%-d %B %Y" %}{% set date_locale = "en_GB" %}
     {% elif lang == "fr" %}{% set date_fmt = "%-d %B %Y" %}{% set date_locale = "fr_CH" %}
     {% elif lang == "it" %}{% set date_fmt = "%-d %B %Y" %}{% set date_locale = "it_CH" %}
     {% else %}{% set date_fmt = "%-d. %B %Y" %}{% set date_locale = "de_CH" %}{% endif %}

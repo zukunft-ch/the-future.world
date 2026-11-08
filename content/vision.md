@@ -4,6 +4,7 @@ description = "The Future is not a fear project — it is a promise of prosperit
 template = "vision.html"
 
 [extra]
+hero_visual = true
 show_cta = true
 cta_text = "Share our vision? Become part of the movement."
 

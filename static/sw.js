@@ -1,4 +1,4 @@
-var CACHE = 'tf-v1';
+var CACHE = 'tf-v2-20261108';
 var SHELL = [
   '/',
   '/main.css',
@@ -18,7 +18,7 @@ self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keys) {
       return Promise.all(
-        keys.filter(function(k) { return k !== CACHE; })
+        keys.filter(function(k) { return k.startsWith('tf-') && k !== CACHE; })
             .map(function(k) { return caches.delete(k); })
       );
     })
@@ -32,11 +32,15 @@ self.addEventListener('fetch', function(e) {
   if (url.origin !== location.origin) return;
   e.respondWith(
     fetch(e.request).then(function(res) {
-      var clone = res.clone();
-      caches.open(CACHE).then(function(cache) { cache.put(e.request, clone); });
+      if (res.ok) {
+        var clone = res.clone();
+        e.waitUntil(caches.open(CACHE).then(function(cache) { return cache.put(e.request, clone); }));
+      }
       return res;
     }).catch(function() {
-      return caches.match(e.request);
+      return caches.match(e.request).then(function(cached) {
+        return cached || new Response('This page is unavailable offline. Please reconnect and try again.', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+      });
     })
   );
 });

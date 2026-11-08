@@ -1,0 +1,12 @@
+[tools]
+zola = "0.22.1"
+python = "3.13"
+
+[tasks.dev]
+run = "zola serve"
+
+[tasks.build]
+run = "zola build"
+
+[tasks.check]
+run = "zola check --skip-external-links"

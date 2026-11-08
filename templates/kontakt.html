@@ -1,45 +1,7 @@
 {% extends "base.html" %}
 {% import "macros/jsonld.html" as jsonld %}
-
-{% block head_extra %}
-{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
-{{ jsonld::contactpage(url=page.permalink, lang=lang) }}
-{% endblock %}
-
+{% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{{ jsonld::contactpage(url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
-{# ===== Page hero ===== #}
-<section class="page-hero" aria-label="{{ page.title }}">
-  <div class="container container--narrow">
-    <h1 class="page-hero__title">{{ page.title }}</h1>
-    {% if page.description %}
-    <p class="page-hero__desc">{{ page.description }}</p>
-    {% endif %}
-  </div>
-</section>
-
-{# ===== Content + Form ===== #}
-<section class="canvas canvas--content">
-  <div class="container container--narrow">
-    {{ page.content | safe }}
-
-    <form class="contact-form">
-      <div>
-        <label for="name">{{ trans(key="label_name", lang=lang) }}</label>
-        <input type="text" id="name" name="name" disabled>
-      </div>
-
-      <div>
-        <label for="email">{{ trans(key="label_email", lang=lang) }}</label>
-        <input type="email" id="email" name="email" disabled>
-      </div>
-
-      <div>
-        <label for="message">{{ trans(key="label_message", lang=lang) }}</label>
-        <textarea id="message" name="message" disabled></textarea>
-      </div>
-
-      <button type="button" class="btn btn--disabled" disabled>Coming Soon</button>
-    </form>
-  </div>
-</section>
+<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">Start a<br>conversation.</h1><p class="page-hero__desc">Questions, ideas, or a project we should know about? We would like to hear from you.</p></div></section>
+<section class="container contact-panel" aria-labelledby="email-title"><p class="eyebrow" id="email-title">Write to us</p><a class="contact-email" href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }} ↗</a><div class="prose"><p>Tell us a little about yourself, where you are based and what you would like to work on. Research, local organising, design, software and policy all have a place here.</p><p class="muted">The email link opens your mail app. You can also copy the address into your email service.</p></div></section>
 {% endblock %}

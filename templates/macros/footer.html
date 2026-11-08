@@ -1,56 +1,14 @@
 {% macro footer(lang) %}
-<footer class="canvas footer">
-  <div class="container">
-    <div class="footer__brandmark">
-      <canvas class="footer__mesh" id="footer-mesh" aria-hidden="true"></canvas>
-      <p class="footer__wordmark">the future.</p>
-      <p class="footer__subline">{{ trans(key="brand_subline", lang=lang) }}</p>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark" href="{{ get_url(path='@/_index.md') }}">the future<span>.</span></a>
+      <p>A global movement for a good life in the 21st century.</p>
+      <a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
     </div>
-
-    <nav class="footer__columns" aria-label="Footer navigation">
-      <div class="footer__col">
-        <p class="footer__heading">{{ trans(key="footer_nav", lang=lang) }}</p>
-        <a href="{{ get_url(path='@/_index.md') }}">{{ trans(key="nav_home", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/vision.md') }}">{{ trans(key="nav_vision", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/program.md') }}">{{ trans(key="nav_programm", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/manifesto.md') }}">{{ trans(key="nav_manifest", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/beyond-left-right.md') }}">{{ trans(key="nav_kein_links_rechts", lang=lang) }}</a>
-      </div>
-
-      <div class="footer__col">
-        <p class="footer__heading">{{ trans(key="nav_programm", lang=lang) }}</p>
-        <a href="{{ get_url(path='@/digital-sovereignty.md') }}">{{ trans(key="nav_digitale_souveraenitaet", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/robotics.md') }}">{{ trans(key="nav_robotik", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/transitions.md') }}">{{ trans(key="nav_uebergaenge", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/life-science.md') }}">{{ trans(key="nav_life_science", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/basic-income.md') }}">{{ trans(key="nav_grundeinkommen", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/cities-housing.md') }}">{{ trans(key="nav_stadte_wohnen", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/research-innovation.md') }}">{{ trans(key="nav_research_innovation", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/energy-resilience.md') }}">{{ trans(key="nav_energy_resilience", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/open-government.md') }}">{{ trans(key="nav_offener_staat", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/peace-neutrality.md') }}">{{ trans(key="nav_neutralitaet_frieden", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/talent-integration.md') }}">{{ trans(key="nav_talent_integration", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/language-understanding.md') }}">{{ trans(key="nav_sprache_verstaendigung", lang=lang) }}</a>
-      </div>
-
-      <div class="footer__col">
-        <p class="footer__heading">{{ trans(key="footer_contact", lang=lang) }}</p>
-        <a href="{{ get_url(path='@/contact.md') }}">{{ trans(key="nav_kontakt", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/people.md') }}">{{ trans(key="nav_menschen", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/join.md') }}">{{ trans(key="nav_mitmachen", lang=lang) }}</a>
-      </div>
-
-      <div class="footer__col">
-        <p class="footer__heading">{{ trans(key="footer_legal", lang=lang) }}</p>
-        <a href="{{ get_url(path='@/legal.md') }}">{{ trans(key="footer_impressum", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="footer_datenschutz", lang=lang) }}</a>
-        <a href="{{ get_url(path='@/info.md') }}">{{ trans(key="nav_info", lang=lang) }}</a>
-      </div>
-    </nav>
-
-    <p class="footer__copy">&copy; {{ now() | date(format="%Y") }} The Future.
-      {{ trans(key="footer_copyright", lang=lang) }}
-    </p>
+    <nav aria-label="Explore"><p class="eyebrow">Explore</p>{% for slug in ["vision", "manifesto", "program", "beyond-left-right"] %}{% set p = get_page(path=slug ~ '.md') %}<a href="{{ p.permalink }}">{{ p.title }}</a>{% endfor %}</nav>
+    <nav aria-label="Take part"><p class="eyebrow">Take part</p>{% for slug in ["join", "people", "contact"] %}{% set p = get_page(path=slug ~ '.md') %}<a href="{{ p.permalink }}">{{ p.title }}</a>{% endfor %}<a href="https://die-zukunft.ch/en/">Die Zukunft · Switzerland ↗</a></nav>
   </div>
+  <div class="container footer-bottom"><p>© {{ now() | date(format="%Y") }} The Future</p><nav aria-label="Legal and site information"><a href="{{ get_url(path='@/legal.md') }}">Legal</a><a href="{{ get_url(path='@/privacy.md') }}">Privacy</a><a href="{{ get_url(path='@/info.md') }}">All pages</a><a href="https://github.com/zukunft-ch/the-future.world">Source ↗</a></nav><p>No tracking. Self-hosted fonts.</p></div>
 </footer>
 {% endmacro %}

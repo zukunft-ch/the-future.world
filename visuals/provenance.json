@@ -1,0 +1,74 @@
+{
+  "slot": "world-tomorrow",
+  "generated_on": "2026-11-08",
+  "tool": "OpenAI built-in image_gen",
+  "source": "visuals/incoming/world-tomorrow.png",
+  "source_sha256": "55699bc0eeb4fb46eb761a653e358e26595457f3ba7aaa7cc8f78c7982b6b994",
+  "prompt_file": "visuals/incoming/world-tomorrow.txt",
+  "prompt": "Use case: photorealistic-natural. Asset: landscape 3:2 editorial hero for The Future, an international movement about human wellbeing, technology and democratic institutions.\nAn imagined near-future coastal city at dawn, not an identifiable real location. View from a planted hillside terrace across a compact, green neighbourhood toward a broad sea and distant soft mountains. Human-scale buildings of pale ceramic, light timber and glass, rooftop solar, a quiet tram line, gardens and a tree-lined waterfront. A few small unposed people walking and cycling in the middle distance, no identifiable faces. Nature, sea and open sky occupy about two thirds of the image. Mature infrastructure is ordinary and understated.\nDocumentary photograph, natural colours, subtle film grain, clear air and light haze. Pale rose-violet dawn sky, warm sun on timber and trees, restrained colours. A calm and tangible place to live. High horizon, wide composition, detailed foreground planting.\nNo text, logos, flags, signs, screens, holograms, neon, chrome, flying vehicles, monumental skyscrapers, crowds or glossy CGI. No existing city or real project is represented. 1536 by 1024 pixels.",
+  "outputs": [
+    {
+      "path": "static/visuals/world-tomorrow-600.avif",
+      "width": 600,
+      "format": "avif",
+      "quality": 50,
+      "bytes": 26553
+    },
+    {
+      "path": "static/visuals/world-tomorrow-600.webp",
+      "width": 600,
+      "format": "webp",
+      "quality": 78,
+      "bytes": 53484
+    },
+    {
+      "path": "static/visuals/world-tomorrow-600.jpg",
+      "width": 600,
+      "format": "jpg",
+      "quality": 80,
+      "bytes": 62794
+    },
+    {
+      "path": "static/visuals/world-tomorrow-960.avif",
+      "width": 960,
+      "format": "avif",
+      "quality": 50,
+      "bytes": 66589
+    },
+    {
+      "path": "static/visuals/world-tomorrow-960.webp",
+      "width": 960,
+      "format": "webp",
+      "quality": 78,
+      "bytes": 132168
+    },
+    {
+      "path": "static/visuals/world-tomorrow-960.jpg",
+      "width": 960,
+      "format": "jpg",
+      "quality": 80,
+      "bytes": 157888
+    },
+    {
+      "path": "static/visuals/world-tomorrow-1536.avif",
+      "width": 1536,
+      "format": "avif",
+      "quality": 50,
+      "bytes": 150807
+    },
+    {
+      "path": "static/visuals/world-tomorrow-1536.webp",
+      "width": 1536,
+      "format": "webp",
+      "quality": 78,
+      "bytes": 306542
+    },
+    {
+      "path": "static/visuals/world-tomorrow-1536.jpg",
+      "width": 1536,
+      "format": "jpg",
+      "quality": 80,
+      "bytes": 369924
+    }
+  ]
+}

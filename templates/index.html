@@ -1,345 +1,38 @@
 {% extends "base.html" %}
-{% import "macros/pillar_cards.html" as cards %}
-
-{% block title %}{{ section.title | default(value=section.extra.hero_title | default(value=config.title)) }}{% endblock %}
-
-{% block head_extra %}{% endblock %}
-
+{% import "macros/world_visual.html" as visual %}
 {% block content %}
-
-{# ===== Hero — brandmark ===== #}
-<section class="hero" id="hero" aria-label="Hero">
-  <canvas class="hero__mesh" id="hero-mesh" aria-hidden="true"></canvas>
-  <div class="hero__display">
-    <h1 class="hero__big">The Future.</h1>
-    {% if section.extra.hero_subline %}
-    <p class="hero__subline" id="hero-subline">{{ section.extra.hero_subline }}</p>
-    {% endif %}
+<section class="world-hero container" aria-labelledby="hero-title">
+  <div class="world-hero__copy">
+    <p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span> A global movement</p>
+    <h1 id="hero-title">Progress.<br><span>For everyone.</span></h1>
+    <p class="hero-lead">AI and robotics can create more prosperity, freedom and time. We build the politics that make those gains shared.</p>
+    <div class="actions"><a class="btn" href="{{ get_url(path='@/join.md') }}">Build with us <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ get_url(path='@/manifesto.md') }}">Read the manifesto <span aria-hidden="true">→</span></a></div>
+    <p class="hero-footnote">Open systems. Human dignity. A future we shape together.</p>
   </div>
+  {{ visual::scene(eager=true) }}
 </section>
-
-{# ===== Subtitle / positioning + CTA ===== #}
-<section class="canvas canvas--hex" aria-label="Subtitle">
-  <div class="container container--narrow" style="text-align: center;">
-    {% if section.extra.hero_descriptor %}
-    <p class="subtitle-descriptor">{{ section.extra.hero_descriptor }}</p>
-    {% endif %}
-    <h2>{{ section.extra.hero_subtitle | default(value="") }}</h2>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-      <a class="btn btn--glow" href="{{ get_url(path='@/join.md') }}">{{ trans(key="cta_join", lang=lang) }}</a>
-      <a class="btn btn--outline" href="{{ get_url(path='@/program.md') }}">{{ trans(key="cta_program", lang=lang) }}</a>
-    </div>
-  </div>
+<div class="principle-strip container" aria-label="Our stance"><p><span>01</span> Prosperity over scarcity.</p><p><span>02</span> Security over fear.</p><p><span>03</span> Sovereignty over dependence.</p></div>
+<section class="world-section container" id="vision" aria-labelledby="vision-title">
+  <div class="section-heading"><p class="eyebrow">01 / The conviction</p><h2 id="vision-title">The future is<br>a shared project.</h2></div>
+  <div class="editorial-split"><p class="statement">Better technology should mean a better life.</p><div><p>More productive economies can give people room to learn, create, care and start again. Getting there takes institutions that protect dignity, distribute opportunity and remain under democratic control.</p><p>We bring these questions together: how we produce, how we live and how we govern.</p><a class="text-link" href="{{ get_url(path='@/vision.md') }}">Explore the vision →</a></div></div>
 </section>
-
-{# ===== What's changing — title ===== #}
-{% if section.extra.changes %}
-<section class="canvas canvas--hex" aria-label="{{ section.extra.changes_title | default(value='What is changing') }}">
-  <div class="container container--narrow" style="text-align: center;">
-    <h2>{{ section.extra.changes_title | default(value="") }}</h2>
-    {% if section.extra.changes_intro %}
-    <p style="margin-top: 1rem; opacity: 0.85;">{{ section.extra.changes_intro }}</p>
-    {% endif %}
-  </div>
+<section class="world-section container" id="program" aria-labelledby="program-title">
+  <div class="section-heading section-heading--split"><div><p class="eyebrow">02 / The programme</p><h2 id="program-title">What we build.</h2></div><p>Twelve connected areas of work.<br>Concrete proposals, open to scrutiny.</p></div>
+  <ol class="pillar-list">
+    {% for item in section.extra.pillars %}
+    <li><a href="{{ get_url(path=item.link) }}"><span class="index" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span><div><h3>{{ item.title }}</h3><p>{{ item.text }}</p></div><span class="row-arrow" aria-hidden="true">↗</span></a></li>
+    {% endfor %}
+  </ol>
+  <a class="text-link section-link" href="{{ get_url(path='@/program.md') }}">Read the full programme →</a>
 </section>
-
-{# ===== What's changing — cards ===== #}
-<section class="canvas canvas--hex" aria-label="{{ section.extra.changes_title | default(value='What is changing') }}">
-  <div class="container">
-    <div class="bento-grid">
-      {% for item in section.extra.changes %}
-      <div class="glass-card reveal-up reveal-delay-{{ loop.index }}">
-        {% if item.icon %}<p class="glass-card__icon">{{ item.icon }}</p>{% endif %}
-        <h3 class="glass-card__title">{{ item.title }}</h3>
-        <p class="glass-card__text">{{ item.text }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    {% if section.extra.changes_cta %}
-    <p style="text-align: center; margin-top: 2rem; font-weight: 600;">{{ section.extra.changes_cta }}</p>
-    {% endif %}
-  </div>
+<section class="world-section approach-section" aria-labelledby="approach-title"><div class="container">
+  <div class="section-heading"><p class="eyebrow">03 / The approach</p><h2 id="approach-title">Build. Test.<br>Learn. Improve.</h2></div>
+  <div class="approach-grid"><p class="statement">Ambition, with a method.</p><div><p>Progress needs more than a promise. Start with a clear proposal, test it in practice, publish the evidence and change course when the results demand it.</p><a class="text-link" href="{{ get_url(path='@/beyond-left-right.md') }}">Beyond left and right →</a></div></div>
+  <ol class="method-steps"><li><span>01</span><h3>Make it concrete</h3><p>Turn shared principles into proposals people can examine.</p></li><li><span>02</span><h3>Test in practice</h3><p>Use pilots and independent evaluation to learn what works.</p></li><li><span>03</span><h3>Share what we learn</h3><p>Open methods and results so progress can travel.</p></li></ol>
+</div></section>
+<section class="world-section container" id="network" aria-labelledby="network-title">
+  <div class="section-heading"><p class="eyebrow">04 / Across borders</p><h2 id="network-title">Rooted locally.<br>Connected globally.</h2></div>
+  <div class="network-grid"><div><p>Places face different realities. The questions connect us: who controls our infrastructure, who benefits from progress, and how do we make change safe?</p><p>Our ambition is a network of people and initiatives sharing ideas, tools and experience across borders.</p><a class="text-link" href="{{ get_url(path='@/contact.md') }}">Start a conversation →</a></div><aside class="chapter-feature"><p class="eyebrow">From Switzerland</p><h3>Die Zukunft.</h3><p>Explore the Swiss political project: a programme, a public research lab and proposals grounded in local institutions.</p><a class="text-link" href="https://die-zukunft.ch/en/">Visit Die Zukunft ↗</a></aside></div>
 </section>
-{% endif %}
-
-{# ===== What we propose — title + carousel ===== #}
-{% if section.extra.pillars %}
-<section class="canvas canvas--hex" aria-label="{{ section.extra.pillars_title | default(value='Pillars') }}">
-  <div class="container container--narrow" style="text-align: center;">
-    <h2>{{ section.extra.pillars_title | default(value="") }}</h2>
-  </div>
-</section>
-
-<section class="canvas canvas--carousel" aria-label="{{ section.extra.pillars_title | default(value='Pillars') }}" aria-roledescription="carousel">
-  <div class="carousel" id="pillar-carousel">
-    <div class="carousel__track" aria-live="off" id="carousel-track">
-      {% for item in section.extra.pillars %}
-      <div class="glass-card carousel__card" role="group" aria-roledescription="slide" aria-label="{{ item.title }}">
-        {% if item.icon %}<p class="glass-card__icon">{{ item.icon }}</p>{% endif %}
-        <h3 class="glass-card__title">{{ item.title }}</h3>
-        <p class="glass-card__text">{{ item.text }}</p>
-        {% if item.link %}<a class="btn btn--sm" href="{{ get_url(path=item.link) }}">{{ trans(key="cta_learn_more", lang=lang) }}</a>{% endif %}
-      </div>
-      {% endfor %}
-      {% for item in section.extra.pillars %}
-      <div class="glass-card carousel__card" aria-hidden="true">
-        {% if item.icon %}<p class="glass-card__icon">{{ item.icon }}</p>{% endif %}
-        <h3 class="glass-card__title">{{ item.title }}</h3>
-        <p class="glass-card__text">{{ item.text }}</p>
-        {% if item.link %}<a class="btn btn--sm" href="{{ get_url(path=item.link) }}" tabindex="-1">{{ trans(key="cta_learn_more", lang=lang) }}</a>{% endif %}
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{# ===== How we start (timeline) ===== #}
-{% if section.extra.timeline %}
-<section class="canvas canvas--hex" aria-label="{{ section.extra.timeline_title | default(value='Timeline') }}">
-  <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-    <h2 style="text-align: center; margin-bottom: 2rem;">{{ section.extra.timeline_title | default(value="") }}</h2>
-    <div class="timeline">
-      {% for step in section.extra.timeline %}
-      <div class="timeline__item reveal-up reveal-delay-{{ loop.index }}">
-        <div class="timeline__marker">{{ loop.index }}</div>
-        <div class="timeline__content">
-          <p class="timeline__phase">{{ step.phase }}</p>
-          <p class="timeline__title">{{ step.title }}</p>
-          <p class="timeline__text">{{ step.text }}</p>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{# ===== CTA — get involved ===== #}
-{% if section.extra.cta_title %}
-<section class="canvas cta-section" aria-label="{{ section.extra.cta_title }}">
-  <div class="container container--narrow" style="text-align: center;">
-    <h2>{{ section.extra.cta_title }}</h2>
-    {% if section.extra.cta_text %}
-    <p class="cta-section__text">{{ section.extra.cta_text }}</p>
-    {% endif %}
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a class="btn btn--glow" href="{{ get_url(path='@/join.md') }}">{{ trans(key="cta_join", lang=lang) }}</a>
-      <a class="btn btn--outline" href="{{ get_url(path='@/program.md') }}">{{ trans(key="cta_program", lang=lang) }}</a>
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<script>
-(function() {
-  var canvas = document.getElementById('hero-mesh');
-  if (!canvas) return;
-  WireGlobe.create(canvas, { cameraZ: 18, radius: 5, fov: 35 });
-})();
-
-// Hero subline — page starts locked, first scroll gesture reveals subline, then unlocks
-(function() {
-  var subline = document.getElementById('hero-subline');
-  var hero = document.getElementById('hero');
-  if (!subline || !hero) return;
-  var done = false;
-  var root = document.documentElement;
-
-  root.style.overflow = 'hidden';
-
-  function unlock() {
-    root.style.overflow = '';
-  }
-
-  function reveal() {
-    if (done) return;
-    done = true;
-    subline.classList.add('is-visible');
-    setTimeout(function() {
-      unlock();
-      cleanup();
-    }, 800);
-  }
-
-  function cleanup() {
-    window.removeEventListener('wheel', onWheel);
-    window.removeEventListener('touchstart', onRevealTouch);
-    window.removeEventListener('keydown', onKeyDown);
-  }
-
-  function onWheel(e) {
-    if (done) return;
-    if (e.deltaY > 0) {
-      e.preventDefault();
-      reveal();
-    }
-  }
-  function onRevealTouch(e) {
-    if (done) return;
-    reveal();
-  }
-  function onKeyDown(e) {
-    if (done) return;
-    var keys = ['ArrowDown', 'PageDown', ' '];
-    if (keys.indexOf(e.key) !== -1) {
-      e.preventDefault();
-      reveal();
-    }
-  }
-
-  window.addEventListener('wheel', onWheel, { passive: false });
-  window.addEventListener('touchstart', onRevealTouch, { passive: true });
-  window.addEventListener('keydown', onKeyDown);
-})();
-
-// Reveal-on-scroll
-(function() {
-  var els = document.querySelectorAll('.reveal-up');
-  if (!els.length) return;
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  els.forEach(function(el) { io.observe(el); });
-})();
-
-// Pillar carousel
-(function() {
-  var track = document.querySelector('.carousel__track');
-  if (!track) return;
-  var cards = track.children;
-  var half = cards.length / 2;
-  var totalWidth = 0;
-  for (var i = 0; i < half; i++) {
-    totalWidth += cards[i].offsetWidth;
-  }
-  var gap = parseFloat(getComputedStyle(track).gap) || 24;
-  totalWidth += gap * half;
-
-  var pos = 0;
-  var speed = 0.5;
-  var raf;
-  var dragging = false;
-  var hoverPaused = false;
-  var offscreen = false;
-
-  var dragStartX = 0;
-  var dragStartY = 0;
-  var dragStartPos = 0;
-  var dragLocked = false;
-  var dragRejected = false;
-  var lastX = 0;
-  var lastTime = 0;
-  var velocity = 0;
-
-  function isRunning() { return !dragging && !hoverPaused && !offscreen; }
-
-  function wrapPos() { while (pos > 0) pos -= totalWidth; while (pos < -totalWidth) pos += totalWidth; }
-
-  function animate() {
-    raf = requestAnimationFrame(animate);
-    if (!dragging) {
-      if (Math.abs(velocity) > 0.3) {
-        pos += velocity;
-        velocity *= 0.95;
-        wrapPos();
-      } else {
-        velocity = 0;
-        pos -= speed;
-        wrapPos();
-      }
-    }
-    track.style.transform = 'translateX(' + pos + 'px)';
-  }
-
-  function start() { if (!raf) animate(); }
-  function stop() { cancelAnimationFrame(raf); raf = null; }
-
-  function sync() { isRunning() ? start() : stop(); }
-
-  function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
-  function getY(e) { return e.touches ? e.touches[0].clientY : e.clientY; }
-
-  function onDragStart(e) {
-    dragging = true;
-    dragLocked = false;
-    dragRejected = false;
-    dragStartX = getX(e);
-    dragStartY = getY(e);
-    dragStartPos = pos;
-    lastX = dragStartX;
-    lastTime = Date.now();
-    velocity = 0;
-    track.style.cursor = 'grabbing';
-    sync();
-  }
-
-  function onDragMove(e) {
-    if (!dragging || dragRejected) return;
-    var cx = getX(e);
-    var cy = getY(e);
-    var dx = cx - dragStartX;
-    var dy = cy - dragStartY;
-
-    if (!dragLocked) {
-      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-      if (Math.abs(dy) > Math.abs(dx)) {
-        dragRejected = true;
-        dragging = false;
-        track.style.cursor = '';
-        sync();
-        return;
-      }
-      dragLocked = true;
-    }
-
-    if (e.cancelable) e.preventDefault();
-    var now = Date.now();
-    var dt = now - lastTime;
-    if (dt > 0) velocity = (cx - lastX) / dt * 16;
-    lastX = cx;
-    lastTime = now;
-    pos = dragStartPos + dx;
-    wrapPos();
-    track.style.transform = 'translateX(' + pos + 'px)';
-  }
-
-  function onDragEnd() {
-    if (!dragging && !dragLocked) return;
-    dragging = false;
-    dragLocked = false;
-    track.style.cursor = '';
-    sync();
-  }
-
-  track.addEventListener('touchstart', function(e) { onDragStart(e); }, { passive: true });
-  track.addEventListener('touchmove', function(e) { onDragMove(e); }, { passive: false });
-  track.addEventListener('touchend', onDragEnd);
-  track.addEventListener('touchcancel', onDragEnd);
-
-  track.addEventListener('mousedown', function(e) { e.preventDefault(); onDragStart(e); });
-  document.addEventListener('mousemove', function(e) { if (dragging) onDragMove(e); });
-  document.addEventListener('mouseup', onDragEnd);
-
-  track.addEventListener('mouseenter', function() { if (!dragging) { hoverPaused = true; sync(); } });
-  track.addEventListener('mouseleave', function() { hoverPaused = false; sync(); });
-
-  var section = track.closest('.canvas--carousel');
-  if (section) {
-    var io = new IntersectionObserver(function(entries) {
-      offscreen = !entries[0].isIntersecting;
-      sync();
-    }, { threshold: 0 });
-    io.observe(section);
-  } else {
-    sync();
-  }
-})();
-</script>
-
+<section class="join-banner container" aria-labelledby="join-title"><p class="eyebrow">The next step is yours</p><h2 id="join-title">Bring your<br>piece of the future.</h2><div class="join-banner__bottom"><p>Research, write, build, organise.<br>There is more than one way to take part.</p><a class="btn" href="{{ get_url(path='@/join.md') }}">Get involved <span aria-hidden="true">↗</span></a></div></section>
 {% endblock %}

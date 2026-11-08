@@ -1,67 +1,7 @@
 {% extends "base.html" %}
-
+{% import "macros/jsonld.html" as jsonld %}
+{% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
-{# ===== Page hero ===== #}
-<section class="page-hero" aria-label="{{ page.title }}">
-  <div class="container container--narrow">
-    <h1 class="page-hero__title">The Future</h1>
-    <p class="page-hero__desc">A global movement for structural transformation.</p>
-  </div>
-</section>
-
-{# ===== Navigation ===== #}
-<section class="canvas canvas--content" aria-label="{{ trans(key='footer_nav', lang=lang) }}">
-  <div class="container container--narrow">
-    <h2>{{ trans(key="footer_nav", lang=lang) }}</h2>
-    <ul>
-      <li><a href="{{ get_url(path='@/_index.md') }}">{{ trans(key="nav_home", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/vision.md') }}">{{ trans(key="nav_vision", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/program.md') }}">{{ trans(key="nav_programm", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/people.md') }}">{{ trans(key="nav_menschen", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/join.md') }}">{{ trans(key="nav_mitmachen", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/contact.md') }}">{{ trans(key="nav_kontakt", lang=lang) }}</a></li>
-    </ul>
-  </div>
-</section>
-
-{# ===== Program ===== #}
-<section class="canvas canvas--content" aria-label="{{ trans(key='nav_programm', lang=lang) }}">
-  <div class="container container--narrow">
-    <h2>{{ trans(key="nav_programm", lang=lang) }}</h2>
-    <ul>
-      <li><a href="{{ get_url(path='@/basic-income.md') }}">{{ trans(key="nav_grundeinkommen", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/digital-sovereignty.md') }}">{{ trans(key="nav_digitale_souveraenitaet", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/robotics.md') }}">{{ trans(key="nav_robotik", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/transitions.md') }}">{{ trans(key="nav_uebergaenge", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/life-science.md') }}">{{ trans(key="nav_life_science", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/cities-housing.md') }}">{{ trans(key="nav_stadte_wohnen", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/research-innovation.md') }}">{{ trans(key="nav_research_innovation", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/energy-resilience.md') }}">{{ trans(key="nav_energy_resilience", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/open-government.md') }}">{{ trans(key="nav_offener_staat", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/peace-neutrality.md') }}">{{ trans(key="nav_neutralitaet_frieden", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/talent-integration.md') }}">{{ trans(key="nav_talent_integration", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/language-understanding.md') }}">{{ trans(key="nav_sprache_verstaendigung", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/beyond-left-right.md') }}">{{ trans(key="nav_kein_links_rechts", lang=lang) }}</a></li>
-    </ul>
-  </div>
-</section>
-
-{# ===== Contact & Legal ===== #}
-<section class="canvas canvas--content" aria-label="{{ trans(key='footer_contact', lang=lang) }}">
-  <div class="container container--narrow">
-    <h2>{{ trans(key="footer_contact", lang=lang) }}</h2>
-    <p><a href="{{ get_url(path='@/contact.md') }}">{{ trans(key="nav_kontakt", lang=lang) }}</a></p>
-    <p><a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a></p>
-
-    <h3>{{ trans(key="footer_legal", lang=lang) }}</h3>
-    <ul>
-      <li><a href="{{ get_url(path='@/legal.md') }}">{{ trans(key="footer_impressum", lang=lang) }}</a></li>
-      <li><a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="footer_datenschutz", lang=lang) }}</a></li>
-    </ul>
-
-    <p>&copy; {{ now() | date(format="%Y") }} The Future.
-      {{ trans(key="footer_copyright", lang=lang) }}
-    </p>
-  </div>
-</section>
+<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">Find your way.</h1><p class="page-hero__desc">The vision, the programme and the people building it. Every page in one place.</p></div></section>
+<nav class="container site-directory" aria-label="Site directory"><a href="{{ get_url(path='@/_index.md') }}">Home →</a>{% set home = get_section(path='_index.md') %}{% for entry in home.pages | sort(attribute="title") %}<a href="{{ entry.permalink }}">{{ entry.title }} →</a>{% endfor %}</nav>
 {% endblock %}

@@ -1,0 +1,10 @@
+{% macro scene(eager=false) %}
+<figure class="world-visual">
+  <picture>
+    <source type="image/avif" srcset="{{ get_url(path='visuals/world-tomorrow-600.avif') }} 600w, {{ get_url(path='visuals/world-tomorrow-960.avif') }} 960w, {{ get_url(path='visuals/world-tomorrow-1536.avif') }} 1536w" sizes="(min-width: 1100px) 620px, (min-width: 800px) 48vw, 92vw">
+    <source type="image/webp" srcset="{{ get_url(path='visuals/world-tomorrow-600.webp') }} 600w, {{ get_url(path='visuals/world-tomorrow-960.webp') }} 960w, {{ get_url(path='visuals/world-tomorrow-1536.webp') }} 1536w" sizes="(min-width: 1100px) 620px, (min-width: 800px) 48vw, 92vw">
+    <img src="{{ get_url(path='visuals/world-tomorrow-960.jpg') }}" srcset="{{ get_url(path='visuals/world-tomorrow-600.jpg') }} 600w, {{ get_url(path='visuals/world-tomorrow-960.jpg') }} 960w, {{ get_url(path='visuals/world-tomorrow-1536.jpg') }} 1536w" sizes="(min-width: 1100px) 620px, (min-width: 800px) 48vw, 92vw" width="1536" height="1024" alt="Imagined coastal neighbourhood with solar roofs, a tram and tree-lined streets overlooking the sea at dawn." loading="{% if eager %}eager{% else %}lazy{% endif %}" fetchpriority="{% if eager %}high{% else %}auto{% endif %}" decoding="async">
+  </picture>
+  <figcaption>Visualisation · AI-generated. An imagined place, not an existing project.</figcaption>
+</figure>
+{% endmacro %}

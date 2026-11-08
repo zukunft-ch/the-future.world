@@ -15,13 +15,13 @@ Email: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
 
 The protection of your personal data is important to us. We only collect data that is necessary for the operation of this website and our work.
 
-### Contact form
+### Email contact
 
-When you contact us via the contact form, your details (name, email, message) are processed through the service Formspree. This data is used exclusively to handle your enquiry and is not shared with third parties.
+Contact links on this website open your email application. The website does not submit a contact form or newsletter subscription. If you email us, we use the information in your message to respond to your enquiry.
 
-### Newsletter
+### Display preference
 
-When you sign up for our newsletter, we store your email address. You can unsubscribe at any time. We use your address exclusively for sending our updates.
+If you switch between light and dark mode, the website stores that choice in your browser’s local storage. It is not sent to us. The website also caches public pages and assets in your browser to make repeat visits more reliable. You can remove this data in your browser’s site settings.
 
 ### Hosting
 

@@ -2,7 +2,25 @@
 {% import "macros/jsonld.html" as jsonld %}
 {% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
-<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">Build with us.</h1><p class="page-hero__desc">{{ page.description }}</p></div></section>
-<div class="container"><p class="join-intro">{{ page.extra.intro }}</p></div>
-{% for sec in page.extra.sections %}<section class="canvas" aria-labelledby="join-{{ loop.index }}"><div class="container content-section"><div><span class="section-index" aria-hidden="true">0{{ loop.index }}</span><h2 id="join-{{ loop.index }}">{{ sec.title }}</h2></div><div class="prose"><p>{{ sec.text }}</p>{% if sec.link_text is defined %}<a class="btn btn--outline" href="{{ sec.link }}">{{ sec.link_text }} ↗</a>{% endif %}</div></div></section>{% endfor %}
+{# Same structure as avenir mitmachen.html, without the newsletter form (no backend here). #}
+<section class="page-hero page-hero--brandmark" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title wm wm--word">{{ page.title }}<span class="brand-dot">.</span></h1>
+    {% if page.description %}<p class="page-hero__desc">{{ page.description }}</p>{% endif %}
+  </div>
+</section>
+{% if page.extra.intro %}
+<section class="canvas" aria-label="{{ page.title }}">
+  <div class="container container--narrow" style="text-align: center;"><h2>{{ page.extra.intro }}</h2></div>
+</section>
+{% endif %}
+{% for sec in page.extra.sections | default(value=[]) %}
+<section class="canvas canvas--content" aria-label="{{ sec.title }}">
+  <div class="container container--narrow">
+    <h2>{{ sec.title }}</h2>
+    <p>{{ sec.text }}</p>
+    {% if sec.link_text is defined %}<a class="btn btn--outline" href="{{ sec.link }}">{{ sec.link_text }} →</a>{% endif %}
+  </div>
+</section>
+{% endfor %}
 {% endblock %}

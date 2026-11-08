@@ -2,6 +2,42 @@
 {% import "macros/jsonld.html" as jsonld %}
 {% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
-<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">Find your way.</h1><p class="page-hero__desc">The vision, the programme and the people building it. Every page in one place.</p></div></section>
-<nav class="container site-directory" aria-label="Site directory"><a href="{{ get_url(path='@/_index.md') }}">Home →</a>{% set home = get_section(path='_index.md') %}{% for entry in home.pages | sort(attribute="title") %}<a href="{{ entry.permalink }}">{{ entry.title }} →</a>{% endfor %}</nav>
+{# Same structure as avenir info.html: a directory of the site. #}
+<section class="page-hero" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title">The Future</h1>
+    <p class="page-hero__desc">{{ page.description | default(value="A global movement for structural transformation.") }}</p>
+  </div>
+</section>
+<section class="canvas canvas--content" aria-label="{{ trans(key='footer_nav', lang=lang) }}">
+  <div class="container container--narrow">
+    <h2>{{ trans(key="footer_nav", lang=lang) }}</h2>
+    <ul>
+      <li><a href="{{ get_url(path='@/_index.md') }}">{{ trans(key="nav_home", lang=lang) }}</a></li>
+      {% for slug in ["vision", "manifesto", "program", "beyond-left-right", "people", "join", "contact"] %}{% set p = get_page(path=slug ~ ".md") %}
+      <li><a href="{{ p.permalink }}">{{ p.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+<section class="canvas canvas--content" aria-label="{{ trans(key='nav_programm', lang=lang) }}">
+  <div class="container container--narrow">
+    <h2>{{ trans(key="nav_programm", lang=lang) }}</h2>
+    <ul>
+      {% set home = get_section(path="_index.md") %}
+      {% for item in home.extra.pillars %}<li><a href="{{ get_url(path=item.link) }}">{{ item.title }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+<section class="canvas canvas--content" aria-label="{{ trans(key='footer_legal', lang=lang) }}">
+  <div class="container container--narrow">
+    <h2>{{ trans(key="footer_legal", lang=lang) }}</h2>
+    <ul>
+      <li><a href="{{ get_url(path='@/legal.md') }}">{{ trans(key="footer_impressum", lang=lang) }}</a></li>
+      <li><a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="footer_datenschutz", lang=lang) }}</a></li>
+      <li><a href="https://die-zukunft.ch/en/">Die Zukunft (Switzerland) ↗</a></li>
+      <li><a href="https://github.com/zukunft-ch/the-future.world">Source code ↗</a></li>
+    </ul>
+  </div>
+</section>
 {% endblock %}

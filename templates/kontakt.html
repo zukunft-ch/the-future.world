@@ -2,6 +2,19 @@
 {% import "macros/jsonld.html" as jsonld %}
 {% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{{ jsonld::contactpage(url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
-<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">Start a<br>conversation.</h1><p class="page-hero__desc">Questions, ideas, or a project we should know about? We would like to hear from you.</p></div></section>
-<section class="container contact-panel" aria-labelledby="email-title"><p class="eyebrow" id="email-title">Write to us</p><a class="contact-email" href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }} ↗</a><div class="prose"><p>Tell us a little about yourself, where you are based and what you would like to work on. Research, local organising, design, software and policy all have a place here.</p><p class="muted">The email link opens your mail app. You can also copy the address into your email service.</p></div></section>
+<section class="page-hero" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title">{{ page.title }}</h1>
+    {% if page.description %}<p class="page-hero__desc">{{ page.description }}</p>{% endif %}
+  </div>
+</section>
+{# No contact-form backend on this site: email only. #}
+<section class="canvas canvas--content" aria-label="Write to us">
+  <div class="container container--narrow">
+    <h2>Write to us</h2>
+    <a class="contact-email" href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
+    <p>Tell us a little about yourself, where you are based and what you would like to work on. Research, local organising, design, software and policy all have a place here.</p>
+    {% if page.content %}{{ page.content | safe }}{% endif %}
+  </div>
+</section>
 {% endblock %}

@@ -11,24 +11,31 @@ mise run build
 mise run check
 ```
 
-The theme submodule is pinned to an existing upstream commit. The international
-site owns its templates and `sass/main.scss`, and imports only the shared reset,
-tokens and typography. Its English content and existing page URLs remain local
-to this repository. No npm packages or client framework are needed.
+## Design system: same as the Swiss site
 
-## November 2026 redesign
+The site uses the Swiss site's (die-zukunft.ch) design system, not a separate
+one. `sass/main.scss` imports the **full** avenir stylesheet. The templates are
+world copies of avenir's, with the same markup and classes:
 
-- Ceramic/charcoal surfaces, rose-to-violet brand accents, generous editorial type.
-- Homepage with a future scene, twelve programme areas, method, international
-  ambition, a link to the Swiss project and a participation invitation.
-- Consistent policy pages, section navigation, native FAQ disclosures, contact
-  and participation pages, and a complete site directory.
-- Responsive navigation with optional search, light/dark mode, keyboard dismissal
-  and focus return. Content and all page links remain available without JavaScript.
-- Contact uses email links. Disabled forms were removed; there is no newsletter
-  subscription or contact-form backend on this site. Privacy text reflects this.
-- Local fonts and assets, updated globe icons and social image, responsive
-  AVIF/WebP/JPEG artwork, and a versioned offline cache.
+- `templates/base.html` is a copy of `avenir/templates/base.html`: top bar, pins,
+  command overlay, hex section tags + share overlay, reading progress, ground
+  lattice, colophon. The deliberate differences are English only, this site's URLs
+  and feed, its own hex map, and a **wireframe globe** (`shape: 'globe'` in the
+  shared `SwissCross` renderer) instead of the Swiss cross for the nav logo and the
+  ground lattice. The globe is The Future's mark (favicon).
+- `macros/nav.html` and `macros/footer.html` are avenir's macros with world links.
+- `index.html` uses the Swiss homepage layers (lede, layer heads, pillar grid,
+  tiles, join). `page.html` and `programm.html` are avenir's templates without the
+  Zukunftslabor evidence blocks.
+
+**When avenir's base.html, nav or footer change, port the change here.**
+Otherwise the two sites drift apart again.
+
+Hex map (in `base.html`): the same address as the Swiss site for the same topic:
+`0x00` home, `0x01` vision, `0x02` program, `0x03` join, `0x10` manifesto,
+`0x11` beyond-left-right, `0x20`–`0x2B` the twelve areas (see `content/_index.md`
+`hex`), `0x40` people, `0x41` contact, `0xF0` legal, `0xF1` privacy, `0xF2` info.
+Stability rule: never renumber.
 
 The original AI-generated image and exact prompt are in `visuals/incoming/`.
 `visuals/provenance.json` records the tool, date, checksum and delivery sizes.
@@ -40,15 +47,6 @@ The native favicon source is `static/favicon.svg`.
 
 ## Verification
 
-Production build and internal-link check pass: 22 content pages, 24 HTML files
-including home and 404. Output checks covered local URLs and fragments, assets,
-font URLs, unique IDs, one H1 per document, valid JSON-LD, image dimensions/alt
-text and the absence of disabled controls. JavaScript syntax and focused logic
-checks passed for themes (including blocked storage), search, no-results state,
-Escape/focus return and outside-click dismissal. New source/output checksums and
-image dimensions were verified; social artwork and icons were inspected.
-
-Desktop/mobile browser layout and interaction review is **not verified**. The
-browser connector was unavailable, native Chrome use conflicted with concurrent
-user activity, and opening native Firefox stalled. Complete that review before
-publishing. These changes have not been deployed.
+`mise run build` and `mise run check` pass (22 pages). Desktop, phone and dark mode
+were checked in Chrome (Playwright) side by side with die-zukunft.ch/en. Also checked:
+the menu overlay and search, pins, and no console errors on the main page types.

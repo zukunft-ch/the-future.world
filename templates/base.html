@@ -1,51 +1,984 @@
 {% import "macros/nav.html" as nav %}
 {% import "macros/footer.html" as site_footer %}
 {% import "macros/jsonld.html" as jsonld %}
+
 <!DOCTYPE html>
+{#
+  World copy of avenir/templates/base.html (the Swiss site's layout), so both sites
+  share one design system. Differences on purpose: single language (en), own URLs,
+  feeds and hex map, and a wireframe globe instead of the Swiss cross for the nav
+  logo and the ground lattice. When avenir's base.html changes, port it here.
+#}
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {% set title = page.title | default(value=section.title | default(value=config.title)) %}
   {% set description = page.description | default(value=section.description | default(value=config.description)) %}
-  {% set canonical = page.permalink | default(value=section.permalink | default(value=config.base_url)) %}
+  {% if page %}{% set self_canonical = page.permalink %}{% elif section %}{% set self_canonical = section.permalink %}{% else %}{% set self_canonical = config.base_url ~ "/" %}{% endif %}
+
   <title>{% block title %}{{ title }}{% endblock %} — The Future</title>
-  <meta name="description" content="{{ description }}">
-  <meta name="theme-color" content="#eef0ec" id="theme-color">
+  <meta name="description" content="{% block description %}{{ description }}{% endblock %}">
+  <meta name="author" content="The Future">
+  <meta name="theme-color" content="#eef0ec" id="meta-theme-color">
   <script>
-  try { if (localStorage.getItem('theme') === 'dark') { document.documentElement.dataset.theme = 'dark'; document.getElementById('theme-color').content = '#101315'; } } catch (e) {}
+  (function() {
+    var t = null;
+    try { t = localStorage.getItem('dz-theme'); } catch (e) {}
+    if (t === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('meta-theme-color').setAttribute('content', '#0b0d0e');
+    }
+  })();
   </script>
-  <link rel="canonical" href="{{ canonical }}">
+  <link rel="canonical" href="{{ self_canonical }}">
+
+  {# Open Graph #}
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ title }} — The Future">
+  <meta property="og:title" content="{% block og_title %}{{ title }}{% endblock %}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="{{ canonical }}">
-  <meta property="og:site_name" content="The Future">
-  <meta property="og:locale" content="en_GB">
-  <meta property="og:image" content="{{ get_url(path='og-en.png') }}">
+  {% set og_image_path = page.extra.og_image | default(value='og-en.png') %}
+  <meta property="og:image" content="{{ get_url(path=og_image_path) }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The Future. Progress for everyone. A global movement.">
+  <meta property="og:image:alt" content="{{ title }} — The Future">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="{{ self_canonical }}">
+  <meta property="og:site_name" content="The Future">
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title }} — The Future">
+  <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="{{ get_url(path='og-en.png') }}">
+  <meta name="twitter:image" content="{{ get_url(path=og_image_path) }}">
+
+  {# Fonts — self-hosted (theme static/fonts), @font-face in avenir _typography.scss #}
+  <link rel="preload" href="/fonts/MozillaHeadline-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/switzer-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/clash-display-700.woff2" as="font" type="font/woff2" crossorigin>
+
   <link rel="icon" href="{{ get_url(path='favicon.svg') }}" type="image/svg+xml">
   <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="32x32">
   <link rel="apple-touch-icon" href="{{ get_url(path='apple-touch-icon.png') }}">
   <link rel="manifest" href="{{ get_url(path='site.webmanifest') }}">
-  <link rel="preload" href="{{ get_url(path='fonts/switzer-variable.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
   <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
+  <noscript><style>.hero__subline,.reveal-up{opacity:1!important;transform:none!important;pointer-events:auto!important}</style></noscript>
+  <link rel="alternate" type="application/atom+xml" title="The Future — Feed" href="{{ get_url(path='atom.xml') }}">
+
   {{ jsonld::organization() }}
   {{ jsonld::website(lang=lang) }}
-  {{ jsonld::webpage(title=title, description=description, url=canonical, lang=lang) }}
+  {{ jsonld::webpage(title=title, description=description, url=self_canonical, lang=lang) }}
+
   {% block head_extra %}{% endblock %}
-  <script src="{{ get_url(path='js/site.js', cachebust=true) }}" defer></script>
+
+  <script>
+  // Shared Swiss cross mesh helper — Canvas 2D (no WebGL)
+  window.SwissCross = (function() {
+    function buildPositions(arm, thick) {
+      arm = arm != null ? arm : 3;
+      thick = thick != null ? thick : 1;
+      var positions = [];
+      var seen = {};
+      function add(x, y, z) {
+        var key = x + ',' + y + ',' + z;
+        if (!seen[key]) { seen[key] = true; positions.push([x, y, z]); }
+      }
+      for (var x = -arm; x <= arm; x++)
+        for (var y = -thick; y <= thick; y++)
+          for (var z = -thick; z <= thick; z++) add(x, y, z);
+      for (var x = -thick; x <= thick; x++)
+        for (var y = -arm; y <= arm; y++)
+          for (var z = -thick; z <= thick; z++) add(x, y, z);
+      for (var x = -thick; x <= thick; x++)
+        for (var y = -thick; y <= thick; y++)
+          for (var z = -arm; z <= arm; z++) add(x, y, z);
+      return positions;
+    }
+
+    // Wireframe globe (The Future's mark): latitude rings + meridians as line segments.
+    function buildGlobe(r, lat, lon) {
+      var edges = [], seg = 48, i, j, a0, a1;
+      for (i = 1; i < lat; i++) {
+        var phi = -Math.PI / 2 + Math.PI * i / lat, y = r * Math.sin(phi), rr = r * Math.cos(phi);
+        for (j = 0; j < seg; j++) {
+          a0 = 2 * Math.PI * j / seg; a1 = 2 * Math.PI * (j + 1) / seg;
+          edges.push([rr * Math.cos(a0), y, rr * Math.sin(a0), rr * Math.cos(a1), y, rr * Math.sin(a1)]);
+        }
+      }
+      for (i = 0; i < lon; i++) {
+        var th = Math.PI * i / lon, c = Math.cos(th), sn = Math.sin(th);
+        for (j = 0; j < seg; j++) {
+          a0 = 2 * Math.PI * j / seg; a1 = 2 * Math.PI * (j + 1) / seg;
+          edges.push([r * Math.cos(a0) * c, r * Math.sin(a0), r * Math.cos(a0) * sn, r * Math.cos(a1) * c, r * Math.sin(a1), r * Math.cos(a1) * sn]);
+        }
+      }
+      return edges;
+    }
+
+    var cubeEdges = [[0,1],[1,3],[3,2],[2,0],[4,5],[5,7],[7,6],[6,4],[0,4],[1,5],[2,6],[3,7]];
+    var cubeVerts = [[-0.5,-0.5,-0.5],[0.5,-0.5,-0.5],[-0.5,0.5,-0.5],[0.5,0.5,-0.5],[-0.5,-0.5,0.5],[0.5,-0.5,0.5],[-0.5,0.5,0.5],[0.5,0.5,0.5]];
+
+    function create(canvas, opts) {
+      if (!canvas) return;
+      opts = opts || {};
+      var container = canvas.parentElement;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var w, h, dpr;
+      var camZ = opts.cameraZ || 22;
+      var cubeSize = opts.cubeSize || 0.88;
+      var fovRad = (opts.fov || 35) * Math.PI / 180;
+      var camX = opts.camX || 0;
+      var camY = opts.camY || 0;
+      var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+
+      var positions = opts.shape === 'globe' ? [] : buildPositions(opts.arm, opts.thick);
+
+      var allEdges = opts.shape === 'globe' ? buildGlobe(opts.radius || 5, opts.lat || 7, opts.lon || 12) : [];
+      for (var i = 0; i < positions.length; i++) {
+        var p = positions[i];
+        for (var e = 0; e < cubeEdges.length; e++) {
+          var a = cubeVerts[cubeEdges[e][0]];
+          var b = cubeVerts[cubeEdges[e][1]];
+          allEdges.push([
+            p[0] + a[0] * cubeSize, p[1] + a[1] * cubeSize, p[2] + a[2] * cubeSize,
+            p[0] + b[0] * cubeSize, p[1] + b[1] * cubeSize, p[2] + b[2] * cubeSize
+          ]);
+        }
+      }
+
+      var rotX = 0.4, rotY = 0.6;
+
+      function getColor() {
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var op = dark ? (opts.opacityDark || opts.opacity || 0.25) : (opts.opacityLight || opts.opacity || 0.18);
+        return { color: dark ? '#a78bfa' : '#6d28d9', opacity: op };
+      }
+      var grad = null;
+      function buildGradient() {
+        if (!opts.gradient) { grad = null; return; }
+        grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Stops come from the CSS brand palette (--brand-stops), so the lattice
+        // always matches the wordmark, in both themes.
+        var raw = getComputedStyle(document.documentElement).getPropertyValue('--brand-stops') || '';
+        var stops = raw.split(',').map(function(c) { return c.trim(); }).filter(Boolean);
+        if (stops.length < 2) stops = ['#f43f5e', '#c026d3', '#6d28d9', '#4338ca'];
+        stops.forEach(function(c, i) { grad.addColorStop(i / (stops.length - 1), c); });
+      }
+
+      var style = getColor();
+
+      var coarse = window.matchMedia ? window.matchMedia('(pointer: coarse)').matches : false;
+      function resize(e) {
+        var nw = container.offsetWidth, nh = container.offsetHeight;
+        // iOS/Android: the browser toolbar collapsing while scrolling changes only the
+        // height by ~50-120px. Re-allocating the canvas then causes a visible flash,
+        // so ignore height-only changes below 160px (the lattice is framed by width).
+        if (e && nw === w && Math.abs(nh - h) < 160) return;
+        w = nw;
+        h = nh;
+        dpr = Math.min(window.devicePixelRatio || 1, w < 768 ? 1.25 : 2);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        if (opts.frame) { var fr = opts.frame(w, h); camX = fr.camX; camY = fr.camY; camZ = fr.camZ || camZ; }
+        buildGradient();
+      }
+      resize();
+
+      function project(x, y, z) {
+        var f = 1 / Math.tan(fovRad / 2);
+        var px = x - camX;
+        var py = y - camY;
+        var pz = z - camZ;
+        if (pz >= -0.1) return null;
+        var sx = (f * px / -pz) * (h * dpr / 2) + (w * dpr / 2);
+        var sy = (f * -py / -pz) * (h * dpr / 2) + (h * dpr / 2);
+        return [sx, sy];
+      }
+
+      function rotatePoint(x, y, z) {
+        var cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+        var y1 = y * cosX - z * sinX;
+        var z1 = y * sinX + z * cosX;
+        var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+        var x2 = x * cosY + z1 * sinY;
+        var z2 = -x * sinY + z1 * cosY;
+        return [x2, y1, z2];
+      }
+
+      var raf;
+      var lastScroll = window.pageYOffset || 0;
+      var frame = 0;
+      function draw() {
+        if (!reduceMotion) {
+          raf = requestAnimationFrame(draw);
+          // Touch devices: draw every second frame (~30 fps) to save battery and keep
+          // scrolling smooth; the rotation speed is doubled to compensate.
+          if (coarse && (frame++ & 1)) return;
+          if (coarse) { rotY += 0.002; rotX += 0.0005; }
+          rotY += 0.002;
+          rotX += 0.0005;
+          if (opts.scrollSpin) {
+            var sy = window.pageYOffset || 0;
+            var d = Math.max(-80, Math.min(80, sy - lastScroll));
+            lastScroll = sy;
+            rotY += d * 0.0011;
+            rotX += d * 0.00035;
+          }
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = grad || style.color;
+        ctx.globalAlpha = style.opacity;
+        ctx.lineWidth = dpr;
+        ctx.beginPath();
+
+        for (var i = 0; i < allEdges.length; i++) {
+          var e = allEdges[i];
+          var ra = rotatePoint(e[0], e[1], e[2]);
+          var rb = rotatePoint(e[3], e[4], e[5]);
+          var pa = project(ra[0], ra[1], ra[2]);
+          var pb = project(rb[0], rb[1], rb[2]);
+          if (!pa || !pb) continue;
+          ctx.moveTo(pa[0], pa[1]);
+          ctx.lineTo(pb[0], pb[1]);
+        }
+
+        ctx.stroke();
+      }
+      draw();
+
+      window.addEventListener('resize', function(e) { resize(e); if (reduceMotion) draw(); });
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) { cancelAnimationFrame(raf); paused = true; }
+        else if (paused) { paused = false; draw(); }
+      });
+
+      var observer = new MutationObserver(function() { style = getColor(); buildGradient(); if (reduceMotion) draw(); });
+      document.addEventListener('dz:brand', function() { buildGradient(); if (reduceMotion) draw(); });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      var paused = false;
+      var io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          if (paused) { paused = false; draw(); }
+        } else {
+          paused = true;
+          cancelAnimationFrame(raf);
+        }
+      }, { threshold: 0 });
+      io.observe(container);
+    }
+
+    return { create: create };
+  })();
+  </script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="icon-gradient" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#f43f5e"/><stop offset=".35" stop-color="#c026d3"/><stop offset=".7" stop-color="#6d28d9"/><stop offset="1" stop-color="#4338ca"/></linearGradient></defs></svg>
   {{ nav::skip_link(lang=lang) }}
+  <div class="ground" id="ground" aria-hidden="true"><canvas id="ground-mesh"></canvas></div>
   {{ nav::topnav(lang=lang) }}
-  <main id="main" tabindex="-1">{% block content %}{% endblock %}</main>
-  {{ site_footer::footer(lang=lang) }}
+  {{ nav::command_overlay(lang=lang) }}
+
+  <div class="share-overlay" id="share-overlay" aria-hidden="true" role="dialog" aria-label="Share">
+    <button class="share-overlay__close" id="share-close" type="button" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="share-overlay__inner">
+      <div class="share-overlay__meta">
+        <span class="share-overlay__hex" id="share-hex">0x0000</span>
+        <span class="share-overlay__breadcrumb" id="share-breadcrumb"></span>
+        <h2 class="share-overlay__title" id="share-title"></h2>
+      </div>
+      <button class="pin-btn pin-btn--labelled share-overlay__pin" type="button" id="share-pin" data-pin data-pin-url="" data-pin-hex="" data-pin-title="" data-pin-page="" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l-1 6 4 4H6l4-4z"/><path d="M12 13v8"/></svg><span class="pin-btn__label">{{ trans(key='pin_add', lang=lang) }}</span></button>
+      <div class="share-overlay__url-row">
+        <input class="share-overlay__url" id="share-url" readonly>
+        <button class="share-overlay__copy" id="share-copy" type="button">Copy</button>
+      </div>
+      <nav class="share-overlay__links" aria-label="Share on">
+        <a class="share-overlay__link" id="share-x" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
+        <a class="share-overlay__link" id="share-linkedin" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+        <a class="share-overlay__link" id="share-whatsapp" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+        <a class="share-overlay__link" id="share-telegram" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0 12 12 0 0011.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</a>
+        <a class="share-overlay__link" id="share-email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="read-progress" id="read-progress" aria-hidden="true"><span></span></div>
+
+  <button class="to-top" id="to-top" type="button" aria-label="{{ trans(key='aria_scroll_top', lang=lang) }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <main id="main" data-hex-page="{% if page %}{{ page.relative_path | split(pat='.') | first }}{% elif section %}{{ section.relative_path | split(pat='.') | first }}{% endif %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}{{ site_footer::footer(lang=lang) }}{% endblock %}
+
+  <script>
+  // Pins — the reader's own index of the site. Stored on this device only
+  // (localStorage, key dz-pins-v1); nothing is sent anywhere. A pin is a
+  // pathname + hex address, so it survives redesigns as long as addresses do.
+  window.DZPins = (function() {
+    var KEY = 'dz-pins-v1';
+    var T = {
+      add: '{{ trans(key="pin_add", lang=lang) }}',
+      remove: '{{ trans(key="pin_remove", lang=lang) }}',
+      added: '{{ trans(key="pin_added", lang=lang) }}',
+      removed: '{{ trans(key="pin_removed", lang=lang) }}',
+      copied: '{{ trans(key="link_copied", lang=lang) }}',
+      pinned: '{{ trans(key="pinned_by_you", lang=lang) }}',
+      importMsg: '{{ trans(key="pins_import", lang=lang) }}',
+      accept: '{{ trans(key="pins_accept", lang=lang) }}',
+      dismiss: '{{ trans(key="pins_dismiss", lang=lang) }}'
+    };
+    var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3h6l-1 6 4 4H6l4-4z"/><path d="M12 13v8"/></svg>';
+
+    function norm(u) { try { return new URL(u || window.location.pathname, window.location.href).pathname; } catch (e) { return u; } }
+    function idOf(u, hex) { return norm(u) + '#' + hex; }
+    function load() {
+      try { var v = JSON.parse(window.localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v : []; }
+      catch (e) { return []; }
+    }
+    var pins = load();
+    function persist() { try { window.localStorage.setItem(KEY, JSON.stringify(pins)); } catch (e) {} sync(); }
+    function has(id) { for (var i = 0; i < pins.length; i++) if (pins[i].id === id) return true; return false; }
+    function add(p) {
+      var id = idOf(p.url, p.hex);
+      if (has(id)) return;
+      pins.unshift({ id: id, url: norm(p.url), hex: p.hex, title: p.title || p.hex, page: p.page || '', t: Date.now() });
+      persist();
+    }
+    function remove(id) { pins = pins.filter(function(p) { return p.id !== id; }); persist(); }
+    function toggle(p) { var id = idOf(p.url, p.hex); if (has(id)) { remove(id); return false; } add(p); return true; }
+
+    function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+    function button(p) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pin-btn';
+      b.setAttribute('data-pin', '');
+      b.setAttribute('data-pin-url', p.url);
+      b.setAttribute('data-pin-hex', p.hex);
+      b.setAttribute('data-pin-title', p.title);
+      b.setAttribute('data-pin-page', p.page || '');
+      b.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-label', T.add + ': ' + p.title);
+      b.title = T.add;
+      b.innerHTML = ICON + '<span class="pin-btn__label">' + esc(T.add) + '</span>';
+      return b;
+    }
+
+    var toastTimer;
+    function toast(msg) {
+      var el = document.getElementById('pins-toast');
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() { el.classList.remove('is-visible'); }, 1800);
+    }
+
+    function sync() {
+      document.querySelectorAll('[data-pin]').forEach(function(b) {
+        var on = has(idOf(b.getAttribute('data-pin-url'), b.getAttribute('data-pin-hex')));
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var title = b.getAttribute('data-pin-title') || '';
+        b.setAttribute('aria-label', (on ? T.remove : T.add) + ': ' + title);
+        b.title = on ? T.remove : T.add;
+        var l = b.querySelector('.pin-btn__label');
+        if (l) l.textContent = on ? T.pinned : T.add;
+      });
+      var count = document.getElementById('pins-count');
+      var toggleBtn = document.getElementById('pins-toggle');
+      if (count) count.textContent = pins.length;
+      if (toggleBtn) toggleBtn.classList.toggle('has-pins', pins.length > 0);
+      var list = document.getElementById('pins-list');
+      var empty = document.getElementById('pins-empty');
+      var foot = document.getElementById('pins-foot');
+      if (list) {
+        list.innerHTML = pins.map(function(p) {
+          return '<li class="pins-tray__item"><span class="pins-tray__hex">' + esc(p.hex) + '</span>' +
+            '<a href="' + esc(p.url + '#' + p.hex) + '"><span class="pins-tray__title">' + esc(p.title) + '</span><span class="pins-tray__page">' + esc(p.page) + '</span></a>' +
+            '<button class="pins-tray__remove" type="button" data-unpin="' + esc(p.id) + '" aria-label="' + esc(T.remove + ': ' + p.title) + '">×</button></li>';
+        }).join('');
+      }
+      if (empty) empty.hidden = pins.length > 0;
+      if (foot) foot.hidden = pins.length === 0;
+      var cmd = document.getElementById('command-pins');
+      if (cmd) {
+        cmd.innerHTML = pins.length ? '<p>' + esc(T.pinned) + '</p>' + pins.slice(0, 6).map(function(p) {
+          return '<a class="command-overlay__link" href="' + esc(p.url + '#' + p.hex) + '"><span>' + esc(p.hex) + '</span>' + esc(p.title) + '</a>';
+        }).join('') : '';
+      }
+    }
+
+    // Shareable pin sets: /#pins=<base64url(JSON)>
+    function encode(list) {
+      var json = JSON.stringify(list.map(function(p) { return [p.url, p.hex, p.title, p.page]; }));
+      return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+    function decode(str) {
+      try {
+        var b = str.replace(/-/g, '+').replace(/_/g, '/');
+        while (b.length % 4) b += '=';
+        var arr = JSON.parse(decodeURIComponent(escape(atob(b))));
+        return Array.isArray(arr) ? arr.slice(0, 50).filter(function(a) { return Array.isArray(a) && /^0x[0-9A-F]{4}$/i.test(a[1]) && /^\//.test(a[0]); }) : [];
+      } catch (e) { return []; }
+    }
+
+    function copy(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() { toast(T.copied); }, function() { window.prompt('', text); });
+      }
+    }
+
+    var tray, trayBtn;
+    function setTray(open) {
+      if (!tray) return;
+      tray.classList.toggle('is-open', open);
+      tray.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (trayBtn) trayBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    document.addEventListener('click', function(e) {
+      var b = e.target.closest('[data-pin]');
+      if (b) {
+        e.preventDefault();
+        e.stopPropagation();
+        var on = toggle({ url: b.getAttribute('data-pin-url'), hex: b.getAttribute('data-pin-hex'), title: b.getAttribute('data-pin-title'), page: b.getAttribute('data-pin-page') });
+        b.classList.remove('is-popping'); void b.offsetWidth; b.classList.add('is-popping');
+        toast(on ? T.added : T.removed);
+        return;
+      }
+      var c = e.target.closest('[data-copy-link]');
+      if (c) { copy(window.location.origin + window.location.pathname + c.getAttribute('data-copy-link')); return; }
+      var u = e.target.closest('[data-unpin]');
+      if (u) { remove(u.getAttribute('data-unpin')); return; }
+      if (tray && tray.classList.contains('is-open') && !e.target.closest('#pins-tray') && !e.target.closest('#pins-toggle')) setTray(false);
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') setTray(false); });
+    window.addEventListener('storage', function(e) { if (e.key === KEY) { pins = load(); sync(); } });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      tray = document.getElementById('pins-tray');
+      trayBtn = document.getElementById('pins-toggle');
+      if (trayBtn) trayBtn.addEventListener('click', function() { setTray(!tray.classList.contains('is-open')); });
+      var share = document.getElementById('pins-share');
+      if (share) share.addEventListener('click', function() { copy(window.location.origin + '/#pins=' + encode(pins)); });
+      var clear = document.getElementById('pins-clear');
+      if (clear) {
+        var label = clear.textContent;
+        clear.addEventListener('click', function() {
+          if (clear.getAttribute('data-armed')) { pins = []; persist(); clear.removeAttribute('data-armed'); clear.textContent = label; return; }
+          clear.setAttribute('data-armed', '1');
+          clear.textContent = clear.getAttribute('data-confirm');
+          setTimeout(function() { clear.removeAttribute('data-armed'); clear.textContent = label; }, 3000);
+        });
+      }
+      // Incoming shared set
+      var m = window.location.hash.match(/^#pins=([A-Za-z0-9_-]+)/);
+      if (m) {
+        var incoming = decode(m[1]);
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+        var box = document.getElementById('pins-import');
+        if (incoming.length && box) {
+          box.className = 'pins-tray__import';
+          box.innerHTML = '<p>' + esc(T.importMsg.replace('{n}', incoming.length)) + '</p><div><button class="btn btn--sm" type="button" data-import="1">' + esc(T.accept) + '</button><button class="btn btn--sm btn--outline" type="button" data-import="0">' + esc(T.dismiss) + '</button></div>';
+          box.addEventListener('click', function(ev) {
+            var d = ev.target.closest('[data-import]');
+            if (!d) return;
+            if (d.getAttribute('data-import') === '1') incoming.slice().reverse().forEach(function(a) { add({ url: a[0], hex: a[1], title: a[2], page: a[3] }); });
+            box.className = ''; box.innerHTML = '';
+          });
+          setTray(true);
+        }
+      }
+      sync();
+    });
+
+    return { button: button, sync: sync, toggle: toggle, all: function() { return pins.slice(); } };
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var btns = document.querySelectorAll('[data-menu-toggle]');
+    var overlay = document.getElementById('command-overlay');
+    var backdrop = document.getElementById('overlay-backdrop');
+    var searchInput = document.getElementById('command-search');
+    var nav = document.getElementById('command-nav');
+    var topnav = document.querySelector('.topnav');
+    var links = nav ? nav.querySelectorAll('.command-overlay__link') : [];
+
+    function open() {
+      /* Close share overlay if open */
+      var shareOv = document.getElementById('share-overlay');
+      if (shareOv && shareOv.classList.contains('is-open')) {
+        shareOv.classList.remove('is-open');
+        shareOv.setAttribute('aria-hidden', 'true');
+      }
+      overlay.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      btns.forEach(function(b) { b.classList.add('is-open'); b.setAttribute('aria-expanded', 'true'); });
+      overlay.setAttribute('aria-hidden', 'false');
+      setTimeout(function() { searchInput.focus(); }, 150);
+    }
+
+    function close() {
+      overlay.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      btns.forEach(function(b) { b.classList.remove('is-open'); b.setAttribute('aria-expanded', 'false'); });
+      overlay.setAttribute('aria-hidden', 'true');
+      searchInput.value = '';
+      filterLinks('');
+      if (triggerBtn) { triggerBtn.focus(); triggerBtn = null; }
+    }
+
+    var liveRegion = document.getElementById('search-live');
+    var searchResultOne = '{{ trans(key="search_result_one", lang=lang) }}';
+    var searchResultMany = '{{ trans(key="search_result_many", lang=lang) }}';
+
+    function filterLinks(q) {
+      q = q.toLowerCase().trim();
+      var count = 0;
+      links.forEach(function(link) {
+        var match = !q || link.textContent.toLowerCase().includes(q);
+        link.style.display = match ? '' : 'none';
+        if (match) count++;
+      });
+      if (liveRegion) {
+        liveRegion.textContent = q ? (count + ' ' + (count === 1 ? searchResultOne : searchResultMany)) : '';
+      }
+    }
+
+    var triggerBtn = null;
+
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (overlay.classList.contains('is-open')) {
+          close();
+        } else {
+          triggerBtn = btn;
+          open();
+        }
+      });
+    });
+
+    backdrop.addEventListener('click', close);
+
+    // Close on Escape + focus trap
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      // Focus trap: keep Tab within overlay
+      if (e.key === 'Tab') {
+        var focusable = overlay.querySelectorAll('a:not([style*="display: none"]), button, input, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    });
+
+    // Clicking inside the overlay only closes if it's a nav link
+    overlay.addEventListener('click', function(e) {
+      var link = e.target.closest('.command-overlay__link');
+      if (link) {
+        close();
+      }
+    });
+
+    // Prevent lang switcher and settings from closing overlay
+    var settings = overlay.querySelector('.command-overlay__settings');
+    if (settings) {
+      settings.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        filterLinks(this.value);
+        updateScrollArrows();
+      });
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          var visible = nav.querySelector('.command-overlay__link:not([style*="display: none"])');
+          if (visible) window.location.href = visible.href;
+        }
+      });
+    }
+
+    // Nav scroll arrows
+    var scrollUp = document.getElementById('nav-scroll-up');
+    var scrollDown = document.getElementById('nav-scroll-down');
+
+    function updateScrollArrows() {
+      if (!nav) return;
+      var atTop = nav.scrollTop <= 0;
+      var atBottom = nav.scrollTop + nav.clientHeight >= nav.scrollHeight - 1;
+      var canScroll = nav.scrollHeight > nav.clientHeight;
+      if (scrollUp) scrollUp.classList.toggle('is-visible', canScroll && !atTop);
+      if (scrollDown) scrollDown.classList.toggle('is-visible', canScroll && !atBottom);
+    }
+
+    if (nav) {
+      nav.addEventListener('scroll', updateScrollArrows);
+    }
+    if (scrollUp) {
+      scrollUp.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.scrollBy({ top: -120, behavior: 'smooth' });
+      });
+    }
+    if (scrollDown) {
+      scrollDown.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.scrollBy({ top: 120, behavior: 'smooth' });
+      });
+    }
+
+    // Update arrows when overlay opens
+    var origOpen = open;
+    open = function() {
+      origOpen();
+      setTimeout(updateScrollArrows, 50);
+    };
+
+    // Theme switch
+    var themeBtn = document.getElementById('theme-toggle');
+    function setThemeColor(color) {
+      var old = document.getElementById('meta-theme-color');
+      if (old) old.remove();
+      var m = document.createElement('meta');
+      m.name = 'theme-color';
+      m.id = 'meta-theme-color';
+      m.content = color;
+      document.head.appendChild(m);
+    }
+    if (themeBtn) {
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        themeBtn.setAttribute('aria-checked', 'true');
+      }
+      themeBtn.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          try { localStorage.setItem('dz-theme', 'light'); } catch (e) {}
+          themeBtn.setAttribute('aria-checked', 'false');
+          setThemeColor('#eef0ec');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          try { localStorage.setItem('dz-theme', 'dark'); } catch (e) {}
+          themeBtn.setAttribute('aria-checked', 'true');
+          setThemeColor('#0b0d0e');
+        }
+      });
+    }
+  })();
+  </script>
+
+  <script>
+  // Top bar state, nav logo, and the ground lattice
+  (function() {
+    var bar = document.getElementById('topnav');
+    var navCanvas = document.getElementById('topnav-mesh');
+    if (navCanvas) SwissCross.create(navCanvas, { shape: 'globe', radius: 1.25, lat: 5, lon: 6, cameraZ: 7, fov: 35, opacity: 0.85, camX: -0.7, gradient: true });
+
+    var ground = document.getElementById('ground');
+    var groundCanvas = document.getElementById('ground-mesh');
+    var hero = document.querySelector('main > .hero');
+    var isHome = !!hero;
+    if (groundCanvas) {
+      SwissCross.create(groundCanvas, {
+        shape: 'globe', radius: 3.9, lat: 9, lon: 12, fov: 35, gradient: true, scrollSpin: true,
+        opacityLight: 0.42, opacityDark: 0.5,
+        // Frame the lattice to the right of the text on wide screens,
+        // above it on phones. (Same geometry as the original hero.)
+        frame: function(w, h) {
+          var wide = w >= 992;
+          return wide ? { camX: -(w / h) * 3.1, camY: 0.4, camZ: 22 } : { camX: -1.2, camY: -5.2, camZ: 30 };
+        }
+      });
+    }
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var y = window.pageYOffset || 0;
+      if (bar) bar.classList.toggle('is-scrolled', y > 8);
+      if (ground) {
+        var p = isHome ? Math.max(0, Math.min(1, y / (window.innerHeight * 0.85))) : 1;
+        ground.style.setProperty('--ground-p', p.toFixed(3));
+      }
+    }
+    window.addEventListener('scroll', function() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Colophon: what this page weighs, measured in the reader's own browser.
+  // 1) Resource Timing (Chrome/Firefox). 2) Fallback for Safari / service-worker
+  // responses, which report 0: re-read the same-origin files from the local cache
+  // and add up their sizes (uncompressed, so shown as "≈"). 3) If neither works,
+  // hide the item instead of showing a dash.
+  (function() {
+    var el = document.getElementById('page-weight');
+    if (!el) return;
+    var item = el.parentNode;
+    function show(bytes, approx) { el.textContent = (approx ? '≈ ' : '') + Math.round(bytes / 1024) + ' kB'; item.hidden = false; }
+    function hide() { item.hidden = true; }
+    function measure() {
+      if (!window.performance || !performance.getEntriesByType) return hide();
+      var entries = [performance.getEntriesByType('navigation')[0]].concat(performance.getEntriesByType('resource')).filter(Boolean);
+      var total = 0;
+      entries.forEach(function(e) { total += Math.max(e.transferSize || 0, e.encodedBodySize || 0); });
+      if (total > 2048) return show(total, false);
+      if (!window.fetch) return hide();
+      var seen = {}, urls = [window.location.href.split('#')[0]].concat(entries.map(function(e) { return e.name; }))
+        .filter(function(u) { if (u.indexOf(window.location.origin) !== 0 || seen[u]) return false; seen[u] = 1; return true; });
+      Promise.all(urls.map(function(u) {
+        return fetch(u, { cache: 'force-cache', credentials: 'same-origin' }).then(function(r) { return r.blob(); }).then(function(b) { return b.size; }, function() { return 0; });
+      })).then(function(sizes) {
+        var t = sizes.reduce(function(a, b) { return a + b; }, 0);
+        t > 2048 ? show(t, true) : hide();
+      }, hide);
+    }
+    function later() {
+      var go = function() { setTimeout(measure, 600); };
+      (document.fonts && document.fonts.ready) ? document.fonts.ready.then(go, go) : go();
+    }
+    document.readyState === 'complete' ? later() : window.addEventListener('load', later);
+  })();
+  </script>
+
+  <script>
+  // Reading progress — a thin ink line under the top bar, long pages only
+  (function() {
+    var bar = document.getElementById('read-progress');
+    if (!bar) return;
+    var fill = bar.firstElementChild;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var long = max > window.innerHeight * 1.5;
+      var y = window.pageYOffset || 0;
+      bar.classList.toggle('is-visible', long && y > 24);
+      fill.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', function() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* Hex address anchors — each page gets a unique base (0x00, 0x10, 0x20…) */
+  (function() {
+    var main = document.getElementById('main');
+    if (!main) return;
+    var pageKey = main.getAttribute('data-hex-page') || '_index';
+    /* 0xPPSS — PP = page (0x00–0xFF), SS = section (0x00–0xFF) */
+    /* The Future (international). Mirrors the Swiss site's addresses for the
+       same topic (Manifesto 0x10, Digital sovereignty 0x20, …) — see
+       the-future.world/README.md. Stability rule: never renumber. */
+    var hexMap = {
+      '_index': 0x00, 'vision': 0x01, 'program': 0x02, 'join': 0x03,
+      'manifesto': 0x10, 'beyond-left-right': 0x11,
+      'digital-sovereignty': 0x20, 'robotics': 0x21, 'transitions': 0x22,
+      'life-science': 0x23, 'basic-income': 0x24, 'cities-housing': 0x25,
+      'research-innovation': 0x26, 'energy-resilience': 0x27,
+      'open-government': 0x28, 'peace-neutrality': 0x29,
+      'talent-integration': 0x2A, 'language-understanding': 0x2B,
+      'people': 0x40, 'contact': 0x41,
+      'legal': 0xF0, 'privacy': 0xF1, 'info': 0xF2
+    };
+    var page = hexMap[pageKey] != null ? hexMap[pageKey] : 0x00;
+    var sections = main.querySelectorAll(':scope > section, :scope > .hero');
+    var counter = 0;
+    sections.forEach(function(sec) {
+      var hex;
+      if (sec.dataset.hex) {
+        hex = sec.dataset.hex;
+      } else {
+        var addr = (page << 8) | counter;
+        hex = '0x' + addr.toString(16).toUpperCase().padStart(4, '0');
+        counter++;
+      }
+      sec.id = sec.id || hex;
+      var a = document.createElement('a');
+      a.className = 'hex-anchor';
+      a.href = '#' + sec.id;
+      a.textContent = hex;
+      a.setAttribute('aria-hidden', 'true');
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        openShareOverlay(sec, hex, a);
+      });
+      var tag = document.createElement('div');
+      tag.className = 'sec-tag';
+      tag.appendChild(a);
+      if (window.DZPins && !sec.hasAttribute('data-no-pin')) {
+        var hd = sec.querySelector('h1, h2, h3');
+        var pt = document.title.split(' — ')[0] || document.title;
+        tag.appendChild(DZPins.button({ url: window.location.pathname, hex: hex, title: hd ? hd.textContent.trim().replace(/\s+/g, ' ') : pt, page: pt }));
+      }
+      sec.appendChild(tag);
+    });
+    if (window.DZPins) DZPins.sync();
+
+    /* Share overlay logic */
+    var shareOverlay = document.getElementById('share-overlay');
+    var backdrop = document.getElementById('overlay-backdrop');
+    var shareClose = document.getElementById('share-close');
+    var shareHex = document.getElementById('share-hex');
+    var shareBreadcrumb = document.getElementById('share-breadcrumb');
+    var shareTitle = document.getElementById('share-title');
+    var shareUrl = document.getElementById('share-url');
+    var shareCopy = document.getElementById('share-copy');
+    var shareX = document.getElementById('share-x');
+    var shareLI = document.getElementById('share-linkedin');
+    var shareWA = document.getElementById('share-whatsapp');
+    var shareTG = document.getElementById('share-telegram');
+    var shareEmail = document.getElementById('share-email');
+    var triggerAnchor = null;
+
+    var brandName = 'The Future';
+
+    function openShareOverlay(sec, hex, anchor) {
+      /* Close command overlay if open */
+      var cmdOverlay = document.getElementById('command-overlay');
+      if (cmdOverlay && cmdOverlay.classList.contains('is-open')) {
+        cmdOverlay.classList.remove('is-open');
+        backdrop.classList.remove('is-open');
+        cmdOverlay.setAttribute('aria-hidden', 'true');
+        var sparkleBtns = document.querySelectorAll('[data-menu-toggle]');
+        sparkleBtns.forEach(function(b) { b.classList.remove('is-open'); b.setAttribute('aria-expanded', 'false'); });
+      }
+
+      triggerAnchor = anchor;
+
+      /* Extract section heading */
+      var heading = sec.querySelector('h2, h3');
+      var headingText = heading ? heading.textContent.trim() : '';
+      var pageTitle = document.title.split(' — ')[0] || document.title;
+      var url = window.location.origin + window.location.pathname + '#' + sec.id;
+
+      /* Populate overlay */
+      shareHex.textContent = hex;
+      shareBreadcrumb.textContent = brandName + ' > ' + pageTitle;
+      shareTitle.textContent = headingText || pageTitle;
+      shareUrl.value = url;
+      var sp = document.getElementById('share-pin');
+      if (sp) {
+        sp.setAttribute('data-pin-url', window.location.pathname);
+        sp.setAttribute('data-pin-hex', hex);
+        sp.setAttribute('data-pin-title', headingText || pageTitle);
+        sp.setAttribute('data-pin-page', pageTitle);
+        if (window.DZPins) DZPins.sync();
+      }
+
+      /* Build share URLs */
+      var encodedUrl = encodeURIComponent(url);
+      var encodedTitle = encodeURIComponent(headingText || pageTitle);
+      shareX.href = 'https://x.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedTitle;
+      shareLI.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl;
+      shareWA.href = 'https://wa.me/?text=' + encodedTitle + '%20' + encodedUrl;
+      shareTG.href = 'https://t.me/share/url?url=' + encodedUrl + '&text=' + encodedTitle;
+      shareEmail.href = 'mailto:?subject=' + encodedTitle + '&body=' + encodedUrl;
+
+      /* Show overlay + backdrop */
+      shareOverlay.classList.add('is-open');
+      shareOverlay.setAttribute('aria-hidden', 'false');
+      backdrop.classList.add('is-open');
+
+      setTimeout(function() { shareCopy.focus(); }, 150);
+    }
+
+    function closeShareOverlay() {
+      shareOverlay.classList.remove('is-open');
+      shareOverlay.setAttribute('aria-hidden', 'true');
+      backdrop.classList.remove('is-open');
+      if (triggerAnchor) { triggerAnchor.focus(); triggerAnchor = null; }
+    }
+
+    shareClose.addEventListener('click', closeShareOverlay);
+
+    /* Copy button */
+    shareCopy.addEventListener('click', function() {
+      navigator.clipboard.writeText(shareUrl.value).then(function() {
+        shareCopy.textContent = 'Copied!';
+        shareCopy.classList.add('is-copied');
+        setTimeout(function() {
+          shareCopy.textContent = 'Copy';
+          shareCopy.classList.remove('is-copied');
+        }, 2000);
+      });
+    });
+
+    /* Close on backdrop click (only if share overlay is open) */
+    backdrop.addEventListener('click', function() {
+      if (shareOverlay.classList.contains('is-open')) {
+        closeShareOverlay();
+      }
+    });
+
+    /* Escape + focus trap */
+    document.addEventListener('keydown', function(e) {
+      if (!shareOverlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') {
+        closeShareOverlay();
+        return;
+      }
+      if (e.key === 'Tab') {
+        var focusable = shareOverlay.querySelectorAll('a[href], button, input');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    });
+  })();
+
+  // Scroll-to-top button
+  (function() {
+    var btn = document.getElementById('to-top');
+    var main = document.getElementById('main');
+    if (!btn || !main) return;
+    var first = main.querySelector(':scope > section, :scope > .hero');
+    if (!first) return;
+    var io = new IntersectionObserver(function(entries) {
+      btn.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    io.observe(first);
+    btn.addEventListener('click', function() { window.scrollTo({ top: 0 }); });
+  })();
+  </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+  </script>
+  {% block body_end %}{% endblock body_end %}
 </body>
 </html>

@@ -1,14 +1,57 @@
+{% import "macros/brand.html" as brandmark %}
+{# World copy of avenir macros/footer.html: same markup and classes, the-future.world links. #}
 {% macro footer(lang) %}
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="wordmark" href="{{ get_url(path='@/_index.md') }}">the future<span>.</span></a>
-      <p>A global movement for a good life in the 21st century.</p>
-      <a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
+<footer class="canvas footer">
+  <div class="footer__main">
+    <div class="footer__about">
+      <a class="footer__wordmark wm" href="{{ get_url(path='@/_index.md') }}">{{ brandmark::wordmark(lang=lang) }}</a>
+      <p class="footer__subline">{{ trans(key="brand_subline", lang=lang) }}</p>
+      <p class="footer__desc">{{ trans(key="footer_about", lang=lang) }}</p>
+      <p class="footer__contact">
+        <a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
+        <span>{{ trans(key="footer_city", lang=lang) }}</span>
+      </p>
+      <a class="footer__world" href="https://die-zukunft.ch/en/" target="_blank" rel="noopener noreferrer">{{ trans(key="footer_movement", lang=lang) }}</a>
     </div>
-    <nav aria-label="Explore"><p class="eyebrow">Explore</p>{% for slug in ["vision", "manifesto", "program", "beyond-left-right"] %}{% set p = get_page(path=slug ~ '.md') %}<a href="{{ p.permalink }}">{{ p.title }}</a>{% endfor %}</nav>
-    <nav aria-label="Take part"><p class="eyebrow">Take part</p>{% for slug in ["join", "people", "contact"] %}{% set p = get_page(path=slug ~ '.md') %}<a href="{{ p.permalink }}">{{ p.title }}</a>{% endfor %}<a href="https://die-zukunft.ch/en/">Die Zukunft · Switzerland ↗</a></nav>
+
+    <nav class="footer__columns" aria-label="{{ trans(key='footer_nav', lang=lang) }}">
+      <div class="footer__col">
+        <p class="footer__heading">{{ trans(key="footer_nav", lang=lang) }}</p>
+        {% for slug in ["vision", "manifesto", "program", "beyond-left-right"] %}{% set p = get_page(path=slug ~ ".md") %}
+        <a href="{{ p.permalink }}">{{ p.title }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="footer__col footer__col--wide">
+        <p class="footer__heading">{{ trans(key="nav_programm", lang=lang) }}</p>
+        {% set home = get_section(path="_index.md") %}
+        {% for item in home.extra.pillars %}
+        <a href="{{ get_url(path=item.link) }}">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__heading">{{ trans(key="nav_mitmachen", lang=lang) }}</p>
+        {% for slug in ["join", "people", "contact"] %}{% set p = get_page(path=slug ~ ".md") %}
+        <a href="{{ p.permalink }}">{{ p.title }}</a>
+        {% endfor %}
+        <a href="https://die-zukunft.ch/en/" target="_blank" rel="noopener noreferrer">{{ trans(key="footer_movement_link", lang=lang) }}</a>
+      </div>
+    </nav>
   </div>
-  <div class="container footer-bottom"><p>© {{ now() | date(format="%Y") }} The Future</p><nav aria-label="Legal and site information"><a href="{{ get_url(path='@/legal.md') }}">Legal</a><a href="{{ get_url(path='@/privacy.md') }}">Privacy</a><a href="{{ get_url(path='@/info.md') }}">All pages</a><a href="https://github.com/zukunft-ch/the-future.world">Source ↗</a></nav><p>No tracking. Self-hosted fonts.</p></div>
+
+  <div class="footer__bottom">
+    <p class="footer__legal">
+      <span>&copy; {{ now() | date(format="%Y") }} The Future</span>
+      <a href="{{ get_url(path='@/legal.md') }}">{{ trans(key="footer_impressum", lang=lang) }}</a>
+      <a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="footer_datenschutz", lang=lang) }}</a>
+      <a href="{{ get_url(path='@/info.md') }}">{{ trans(key="nav_info", lang=lang) }}</a>
+    </p>
+    <p class="colophon" title="{{ trans(key='colophon_static', lang=lang) }} · {{ trans(key='colophon_fonts', lang=lang) }}">
+      <span>{{ trans(key="colophon_trackers", lang=lang) }}</span>
+      <span hidden>{{ trans(key="colophon_weight", lang=lang) }} <span id="page-weight"></span></span>
+      <span><a href="https://github.com/zukunft-ch/the-future.world" target="_blank" rel="noopener noreferrer">{{ trans(key="colophon_source", lang=lang) }}</a></span>
+    </p>
+  </div>
 </footer>
 {% endmacro %}

@@ -1,9 +1,61 @@
 {% extends "base.html" %}
 {% import "macros/jsonld.html" as jsonld %}
-{% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{{ jsonld::itemlist(chapters=page.extra.chapters, lang=lang) }}{% endblock %}
+{% import "macros/icons.html" as icons %}
+
+{% block head_extra %}
+{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
+{% if page.extra.chapters %}
+{{ jsonld::itemlist(chapters=page.extra.chapters, lang=lang) }}
+{% endif %}
+{% endblock %}
+
 {% block content %}
-<section class="page-hero" aria-labelledby="page-title"><div class="container"><a class="breadcrumb" href="{{ get_url(path='@/_index.md') }}">The Future /</a><h1 class="page-hero__title" id="page-title">A programme<br>for progress.</h1><p class="page-hero__desc">{{ page.description }}</p></div></section>
-{% if page.content %}<div class="container"><div class="prose program-intro">{{ page.content | safe }}</div></div>{% endif %}
-<section class="container program-index" aria-label="Programme chapters"><ol class="pillar-list">{% for ch in page.extra.chapters %}<li><a href="{{ get_url(path=ch.link) }}"><span class="index" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span><div><h2>{{ ch.title }}</h2><p>{{ ch.text }}</p></div><span class="row-arrow" aria-hidden="true">↗</span></a></li>{% endfor %}</ol></section>
-<section class="canvas cta-section" aria-label="Get involved"><div class="container"><p class="cta-section__text">{{ page.extra.cta_text }}</p><a class="btn" href="{{ get_url(path='@/join.md') }}">Get involved ↗</a></div></section>
+{# ===== Page hero ===== #}
+<section class="page-hero page-hero--brandmark" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title wm wm--word">{{ page.title }}<span class="brand-dot">.</span></h1>
+    {% if page.description %}
+    <p class="page-hero__desc">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{# ===== Intro ===== #}
+{% if page.content %}
+<section class="canvas" aria-label="{{ page.extra.intro_title | default(value=page.title) }}">
+  <div class="container container--narrow" style="text-align: center;">
+    {{ page.content | safe }}
+  </div>
+</section>
+{% endif %}
+
+{# ===== Chapters — each its own section ===== #}
+{% if page.extra.chapters %}
+  {% for ch in page.extra.chapters %}
+  <section class="canvas canvas--content" aria-label="{{ ch.title }}">
+    <div class="container container--narrow">
+      <div class="program-chapter glass-card">
+        {% if ch.icon %}<p class="glass-card__icon">{{ icons::icon(name=ch.icon) }}</p>{% endif %}
+        <h2 class="program-chapter__title">{{ ch.title }}</h2>
+        <p class="program-chapter__text">{{ ch.text }}</p>
+        {% if ch.link %}
+        <a class="btn btn--outline" href="{{ get_url(path=ch.link, lang=lang) }}">{{ trans(key="cta_learn_more", lang=lang) }} →</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+{% endif %}
+
+{# ===== CTA ===== #}
+{% if page.extra.show_cta | default(value=false) %}
+<section class="canvas cta-section" aria-label="{{ trans(key='cta_join', lang=lang) }}">
+  <div class="container container--narrow" style="text-align: center;">
+    {% if page.extra.cta_text %}
+    <p class="cta-section__text">{{ page.extra.cta_text }}</p>
+    {% endif %}
+    <a class="btn btn--glow" href="{{ get_url(path='@/join.md') }}">{{ trans(key="cta_join", lang=lang) }}</a>
+  </div>
+</section>
+{% endif %}
 {% endblock %}

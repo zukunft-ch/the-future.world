@@ -1,4 +1,4 @@
-var CACHE = 'tf-v2-20261108';
+var CACHE = 'tf-v3-20261108';
 var SHELL = [
   '/',
   '/main.css',

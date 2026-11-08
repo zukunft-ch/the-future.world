@@ -1,0 +1,18 @@
+# World copies of avenir templates and the avenir blob each was last synced with.
+# Maintained by scripts/check_site.py --accept <file|all>; see the docstring there.
+# avenir HEAD at last accept: ca3e312
+
+[copies]
+"base.html" = "903779f427cd803621198ca8af287c10db9f27ab"
+"index.html" = "3e599e09360a315c1f75622810732b89795776dd"
+"info.html" = "81fab76281dd799f5bfe806831af1f1968e145aa"
+"kontakt.html" = "df3eb60da406f921b965713d4adb3e4d23c123e2"
+"macros/footer.html" = "195eef54203af13ce02588ac2bebf33ba8ce2ce7"
+"macros/jsonld.html" = "4a2df7822cd85b3d0a8329f1078bd5775a510091"
+"macros/nav.html" = "5e0ccd044a972acf955523d32da5e7d06681db8f"
+"manifest.html" = "27329288b0fa6391712d8238ad6e8eed3c4d0fe7"
+"mitmachen.html" = "43c2953e05b4752255f43e0ef1a825a014d4f322"
+"page.html" = "34250e6bcc71fe65f358d0840be8ad1014b4c827"
+"programm.html" = "4b6cf8ea368ed74f0dc856d409b2feff3b3ab192"
+"section.html" = "b27bac589c59fd7c78d26641f038c154859ce7d1"
+"vision.html" = "e8c80b6a32942e42de99c09bccef40606a1f43af"

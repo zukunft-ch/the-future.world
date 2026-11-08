@@ -1,0 +1,115 @@
+# Visual slots for the-future.world: one record per picture the site can show.
+#
+# A slot appears on the site only once its original exists at visuals/incoming/<slot>.png.
+# `mise run visuals` encodes it (AVIF/WebP/JPEG at 600/960/1536 px), writes visuals/catalog.json
+# (read by the shared avenir macros/visual.html) and records provenance in visuals/provenance.json.
+#
+# To generate a picture: paste `style` + the slot's `scene` as one prompt (landscape 3:2, 1536×1024),
+# save the result as visuals/incoming/<slot>.png and the exact prompt used as <slot>.txt.
+# Check the `alt` text against the actual picture before committing.
+#
+# Rules (same as the Swiss kit in assets/visuals/PROMPTS.md): always labelled as AI-generated,
+# no real people, no identifiable real places, no text/logos/flags, one look.
+
+caption = "Visualisation · AI-generated"
+note = "Imagined scene, not an existing project."
+
+style = """Documentary photograph, medium format, natural colours, subtle film grain, clear air and light haze. \
+Soft early-morning light: pale rose and violet in the sky, warm sun on the land. Nature, water and open sky take \
+about two thirds of the frame. Human-made structures are small, calm and well made: pale ceramic, light timber, \
+glass, low and integrated into the terrain. Technology is mature and quiet: matte white, rounded, functional, never \
+the subject. Few people, small in the frame, natural and unposed, seen from a distance, from behind or in profile, \
+no identifiable faces. The place is imagined and could be on any continent: no identifiable city, landmark or \
+country. One small accent of warm rose or violet. Wide composition, high horizon, a sense of order and calm. \
+No text, logos, flags, signs, screens, holograms, neon, chrome, flying vehicles, monumental skyscrapers, crowds, \
+dystopia or glossy CGI."""
+
+[[images]]
+slot = "world-tomorrow"
+page = "@/_index.md"
+scene = "An imagined near-future coastal city at dawn. View from a planted hillside terrace across a compact, green neighbourhood toward a broad sea and distant soft mountains. Human-scale buildings, rooftop solar, a quiet tram line, gardens and a tree-lined waterfront. A few small people walking and cycling in the middle distance."
+alt = "Imagined coastal neighbourhood with solar roofs, a tram and tree-lined streets overlooking the sea at dawn."
+
+[[images]]
+slot = "area-sovereign-ai"
+page = "@/sovereign-ai.md"
+scene = "A low, discreet compute building with a timber and glass façade set into a gentle hillside beside a wide river, its waste heat piped into a long greenhouse next to it; a slim wind farm and a small hydro weir in the distance."
+alt = "Imagined low compute building beside a river, its waste heat feeding a greenhouse, wind turbines in the distance."
+
+[[images]]
+slot = "area-basic-income"
+page = "@/basic-income.md"
+scene = "A woman in her thirties opens a small repair workshop in a former shop on the ground floor of a whitewashed house in a market town; a neighbour helps her carry a workbench through the door. Morning, a tree-lined street, low hills behind. Feeling: a calm new start."
+alt = "Imagined morning street in a small town where a woman and a neighbour carry a workbench into a newly opened workshop."
+
+[[images]]
+slot = "area-transitions"
+page = "@/transitions.md"
+scene = "A bright public training workshop on a riverside where adults of different ages and backgrounds learn to service a small matte-white robot arm with an instructor; large windows onto the water and a footbridge."
+alt = "Imagined training workshop by a river where adults of different ages learn to service a robot arm."
+
+[[images]]
+slot = "area-digital-sovereignty"
+page = "@/digital-sovereignty.md"
+scene = "A quiet, orderly server hall in a building on the edge of a forest, one tall window open to the trees and a misty valley; a technician in the distance inspects a rack. Daylight, calm."
+alt = "Imagined quiet server hall with a tall window onto a forest, a technician inspecting a rack in the distance."
+
+[[images]]
+slot = "area-robotics"
+page = "@/robotics.md"
+scene = "A small industrial campus of three low buildings with solar roofs in a broad green river plain, a freight rail siding alongside, through an open glass façade matte-white robot arms assembling small parts; fields and a line of poplars all around."
+alt = "Imagined small factory campus with solar roofs and a rail siding in a green river plain, robot arms visible inside."
+
+[[images]]
+slot = "area-life-science"
+page = "@/life-science.md"
+scene = "A small modern health centre of timber and glass at the edge of a coastal town, a nurse walking slowly with an elderly patient through its garden; dunes and the sea beyond."
+alt = "Imagined coastal health centre with a garden where a nurse walks with an elderly patient."
+
+[[images]]
+slot = "area-cities-housing"
+page = "@/cities-housing.md"
+scene = "A compact, green neighbourhood of mid-rise timber buildings around a small tram stop beside a river, prefabricated housing modules being lifted into place by a slim crane on one plot; people walking and cycling, trees and water dominate."
+alt = "Imagined green neighbourhood of timber buildings by a river, with a crane placing a prefabricated housing module."
+
+[[images]]
+slot = "area-research-innovation"
+page = "@/research-innovation.md"
+scene = "A university research garden on a hill: a small glass lab pavilion, two researchers with a field instrument among tall grasses and wildflowers, a city and a bay far below."
+alt = "Imagined research garden on a hill with a glass lab pavilion and two researchers among meadow plants above a bay."
+
+[[images]]
+slot = "area-energy-resilience"
+page = "@/energy-resilience.md"
+scene = "A mountain reservoir and dam at dawn with a slim new pumped-storage intake, a solar field on a terraced slope and power lines tracing the valley; one small maintenance vehicle, no people close."
+alt = "Imagined mountain reservoir at dawn with a pumped-storage intake, a solar field on terraces and power lines along the valley."
+
+[[images]]
+slot = "area-open-government"
+page = "@/open-government.md"
+scene = "A bright, open public hall in a small town hall with tall windows; a few residents at standing tables, a civil servant calmly explaining something at a low counter; trees and hills visible through the windows."
+alt = "Imagined bright public hall of a town hall where a civil servant explains something to residents at a low counter."
+
+[[images]]
+slot = "area-peace-neutrality"
+page = "@/peace-neutrality.md"
+scene = "A plain lakeside meeting house in early morning, a long wooden table seen through tall windows with empty chairs set on both sides for talks; mist on the water, wooded hills."
+alt = "Imagined lakeside meeting house in morning mist, a long table with empty chairs set for talks."
+
+[[images]]
+slot = "area-talent-integration"
+page = "@/talent-integration.md"
+scene = "A small group of researchers and founders of different backgrounds arriving with luggage at a regional railway station, a host greeting them on the platform; a harbour and hills behind. Seen from a distance."
+alt = "Imagined regional railway station where a host greets newly arrived researchers with luggage, a harbour behind."
+
+[[images]]
+slot = "area-language-understanding"
+page = "@/language-understanding.md"
+scene = "A shaded town square with a café terrace and a market stall, people of different ages in quiet conversation, a multilingual atmosphere without any visible text; old plane trees, low hills beyond."
+alt = "Imagined shaded town square with a café terrace and a market stall where people talk quietly."
+
+[[images]]
+slot = "join-together"
+page = "@/join.md"
+scene = "A long table in a bright community hall with doors open onto a garden, a handful of people of different ages working together over printed maps and notebooks, one standing to point something out; evening light."
+alt = "Imagined community hall with a few people of different ages working together at a long table, doors open to a garden."

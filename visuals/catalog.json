@@ -1,0 +1,19 @@
+{
+  "captions": {
+    "en": "Visualisation · AI-generated"
+  },
+  "notes": {
+    "en": "Imagined scene, not an existing project."
+  },
+  "images": [
+    {
+      "slot": "world-tomorrow",
+      "page": "@/_index.md",
+      "width": 1536,
+      "height": 1024,
+      "alt": {
+        "en": "Imagined coastal neighbourhood with solar roofs, a tram and tree-lined streets overlooking the sea at dawn."
+      }
+    }
+  ]
+}

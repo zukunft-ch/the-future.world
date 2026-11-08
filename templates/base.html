@@ -42,14 +42,19 @@
   <link rel="alternate" type="text/plain" title="llms.txt" href="{{ config.base_url }}/llms.txt">
 
   {# Open Graph #}
+  {% if page and page.date %}
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="{{ page.date }}">
+  {% else %}
   <meta property="og:type" content="website">
+  {% endif %}
   <meta property="og:title" content="{% block og_title %}{{ title }}{% endblock %}">
   <meta property="og:description" content="{{ description }}">
   {% set og_image_path = page.extra.og_image | default(value='og-en.png') %}
   <meta property="og:image" content="{{ get_url(path=og_image_path) }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{{ title }} — The Future">
+  <meta property="og:image:alt" content="{% if page and page.extra.og_image %}{{ title }} — The Future{% else %}The Future. A global movement: wordmark and wireframe globe{% endif %}">
   <meta property="og:locale" content="en_GB">
   <meta property="og:url" content="{{ self_canonical }}">
   <meta property="og:site_name" content="The Future">
@@ -449,7 +454,7 @@
        same topic (Manifesto 0x10, Digital sovereignty 0x20, …) — see
        the-future.world/README.md. Stability rule: never renumber. */
     var hexMap = {
-      '_index': 0x00, 'vision': 0x01, 'program': 0x02, 'join': 0x03,
+      '_index': 0x00, 'vision': 0x01, 'program': 0x02, 'join': 0x03, 'chapters': 0x04,
       'manifesto': 0x10, 'beyond-left-right': 0x11,
       'digital-sovereignty': 0x20, 'robotics': 0x21, 'transitions': 0x22,
       'life-science': 0x23, 'basic-income': 0x24, 'cities-housing': 0x25,

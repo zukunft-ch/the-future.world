@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import "macros/jsonld.html" as jsonld %}
-{% import "macros/world_visual.html" as visual %}
+{% import "macros/visual.html" as visual %}
+{% import "macros/visual_guide.html" as visual_guide %}
 
 {# Same markup as avenir page.html; no Zukunftslabor evidence/monitor blocks on this site. #}
 {% block head_extra %}
@@ -31,7 +32,7 @@
       <span>{{ author }}</span>
     </p>
     {% endif %}
-    {% if page.extra.hero_visual | default(value=false) %}{{ visual::scene(eager=true) }}{% endif %}
+    {{ visual::hero(url=page.permalink, lang=lang) }}
   </div>
 </section>
 
@@ -70,11 +71,18 @@
       {% endif %}
 
       {% if sec.items is defined %}
+      {% if sec.presentation is defined and sec.presentation == "evidence" %}
+      {{ visual_guide::evidence(items=sec.items, label=sec.title) }}
+      {% else %}
       <ul>
         {% for item in sec.items %}
         <li><strong>{{ item.label }}</strong>: {{ item.text | safe }}</li>
         {% endfor %}
       </ul>
+      {% endif %}
+      {% endif %}
+      {% if sec.steps is defined %}
+      {{ visual_guide::flow(steps=sec.steps, label=sec.title) }}
       {% endif %}
     </div>
   </section>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "macros/jsonld.html" as jsonld %}
+{% import "macros/forms.html" as forms %}
 {% block head_extra %}{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}{{ jsonld::contactpage(url=page.permalink, lang=lang) }}{% endblock %}
 {% block content %}
 <section class="page-hero" aria-label="{{ page.title }}">
@@ -8,13 +9,13 @@
     {% if page.description %}<p class="page-hero__desc">{{ page.description }}</p>{% endif %}
   </div>
 </section>
-{# No contact-form backend on this site: email only. #}
+{# Contact form via the shared form handler (macros/forms.html), email as the alternative. #}
 <section class="canvas canvas--content" aria-label="Write to us">
   <div class="container container--narrow">
     <h2>Write to us</h2>
-    <a class="contact-email" href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a>
-    <p>Tell us a little about yourself, where you are based and what you would like to work on. Research, local organising, design, software and policy all have a place here.</p>
-    {% if page.content %}{{ page.content | safe }}{% endif %}
+    <p>Tell us a little about yourself, where you are based and what you would like to work on. Research, local organising, design, software and policy all have a place here. Want to found a group in your country? See <a href="{{ get_url(path='@/chapters.md') }}">how chapters work</a>.</p>
+    {{ forms::message(lang=lang) }}
+    <p>Or by email: <a href="mailto:{{ config.extra.contact_email }}">{{ config.extra.contact_email }}</a></p>
   </div>
 </section>
 {% endblock %}

@@ -1,0 +1,126 @@
+{# Forms posting to the shared form handler (die-zukunft.ch/worker-forms, api.die-zukunft.ch).
+   Same markup/classes as avenir mitmachen.html (newsletter) and kontakt.html (contact form);
+   world additions: optional country field and a topic ("general" | "chapter"). The worker tags
+   records from this origin with site "world". #}
+
+{% macro newsletter(lang) %}
+<div class="glass-card">
+  <form class="newsletter-form newsletter-form--world" id="newsletter-form" novalidate>
+    <label for="newsletter-email" class="sr-only">{{ trans(key='label_email', lang=lang) }}</label>
+    <input class="form__input" id="newsletter-email" type="email" name="email" autocomplete="email" placeholder="{{ trans(key='label_email', lang=lang) }}" required>
+    <label for="newsletter-country" class="sr-only">{{ trans(key='label_country', lang=lang) }}</label>
+    <input class="form__input" id="newsletter-country" type="text" name="country" autocomplete="country-name" maxlength="100" placeholder="{{ trans(key='label_country', lang=lang) }}">
+    <div aria-hidden="true" style="position:absolute;left:-9999px">
+      <input type="text" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <button type="submit" class="btn btn--glow" id="newsletter-submit">{{ trans(key="btn_subscribe", lang=lang) }}</button>
+  </form>
+  <p class="form-note">{{ trans(key="sub_note", lang=lang) }} <a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="label_consent_link", lang=lang) }}</a>.</p>
+  <p class="form-status" id="newsletter-status" role="status" aria-live="polite"></p>
+</div>
+<script>
+(function() {
+  var form = document.getElementById('newsletter-form');
+  var status = document.getElementById('newsletter-status');
+  var btn = document.getElementById('newsletter-submit');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    btn.disabled = true;
+    btn.textContent = '...';
+    status.textContent = '';
+    fetch('{{ config.extra.forms_api | safe }}/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: form.elements.email.value,
+        country: form.elements.country.value,
+        website: form.elements.website.value,
+        lang: '{{ lang }}'
+      })
+    }).then(function(r) {
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      status.textContent = {{ trans(key="sub_success", lang=lang) | json_encode | safe }};
+      status.className = 'form-status form-status--ok';
+    }).catch(function() {
+      status.textContent = {{ trans(key="form_error", lang=lang) | json_encode | safe }};
+      status.className = 'form-status form-status--err';
+    }).finally(function() {
+      btn.disabled = false;
+      btn.textContent = {{ trans(key="btn_subscribe", lang=lang) | json_encode | safe }};
+    });
+  });
+})();
+</script>
+{% endmacro %}
+
+{% macro message(lang, topic="general", message_label="") %}
+<form class="contact-form" id="contact-form" novalidate>
+  <div>
+    <label for="contact-name">{{ trans(key="label_name", lang=lang) }}</label>
+    <input type="text" id="contact-name" name="name" autocomplete="name" maxlength="200" required>
+  </div>
+  <div>
+    <label for="contact-email">{{ trans(key="label_email", lang=lang) }}</label>
+    <input type="email" id="contact-email" name="email" autocomplete="email" required>
+  </div>
+  <div>
+    <label for="contact-country">{{ trans(key="label_country", lang=lang) }}{% if topic != "chapter" %} <span class="form-optional">({{ trans(key="label_optional", lang=lang) }})</span>{% endif %}</label>
+    <input type="text" id="contact-country" name="country" autocomplete="country-name" maxlength="100"{% if topic == "chapter" %} required{% endif %}>
+  </div>
+  <div>
+    <label for="contact-message">{% if message_label %}{{ message_label }}{% else %}{{ trans(key="label_message", lang=lang) }}{% endif %}</label>
+    <textarea id="contact-message" name="message" maxlength="5000" required></textarea>
+  </div>
+  <div aria-hidden="true" style="position:absolute;left:-9999px">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+  <div>
+    <label class="consent-label">
+      <input type="checkbox" id="contact-consent" required>
+      <span>{{ trans(key="label_consent_pre", lang=lang) }}<a href="{{ get_url(path='@/privacy.md') }}">{{ trans(key="label_consent_link", lang=lang) }}</a>{{ trans(key="label_consent_post", lang=lang) }}</span>
+    </label>
+  </div>
+  <button type="submit" class="btn btn--glow" id="contact-submit">{{ trans(key="btn_send", lang=lang) }}</button>
+  <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function() {
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('contact-status');
+  var btn = document.getElementById('contact-submit');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    btn.disabled = true;
+    btn.textContent = '...';
+    status.textContent = '';
+    fetch('{{ config.extra.forms_api | safe }}/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        country: form.elements.country.value,
+        message: form.elements.message.value,
+        website: form.elements.website.value,
+        topic: '{{ topic }}',
+        lang: '{{ lang }}'
+      })
+    }).then(function(r) {
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      status.textContent = {% if topic == "chapter" %}{{ trans(key="chapter_success", lang=lang) | json_encode | safe }}{% else %}{{ trans(key="form_success", lang=lang) | json_encode | safe }}{% endif %};
+      status.className = 'form-status form-status--ok';
+    }).catch(function() {
+      status.textContent = {{ trans(key="form_error", lang=lang) | json_encode | safe }};
+      status.className = 'form-status form-status--err';
+    }).finally(function() {
+      btn.disabled = false;
+      btn.textContent = {{ trans(key="btn_send", lang=lang) | json_encode | safe }};
+    });
+  });
+})();
+</script>
+{% endmacro %}

@@ -132,6 +132,10 @@ def render(fm, body, url):
             out += [bullets(sec["points"]), ""]
         if sec.get("items"):
             out += ["\n".join(f"- **{md(i['label'])}**: {md(i['text'])}" for i in sec["items"]), ""]
+        for i, st in enumerate(sec.get("steps", []), 1):
+            out += [f"{i}. **{md(st['label'])}**: {md(st['text'])}"]
+        if sec.get("steps"):
+            out += [""]
         if sec.get("link_text"):
             out += [f"[{md(sec['link_text'])}]({link_target(sec['link'])})", ""]
     if x.get("faq"):
@@ -192,7 +196,7 @@ def main():
         f"- What is the long-term vision? Use the [vision]({url_of('vision')}): the abundance stack (energy → compute → sovereign AI → talent → application in all sectors → dividend), sourced figures and dated goals.",
         f"- What does it propose on a topic? Use the matching area page below; most have concrete measures and an FAQ. The [programme]({url_of('program')}) lists all {len(home['extra']['pillars'])}.",
         "- Swiss specifics (votes, Swiss figures, research notes)? Use the Swiss chapter: https://die-zukunft.ch/en/.",
-        f"- How to take part or get in touch? [Get involved]({url_of('join')}), [contact]({url_of('contact')}), email hey@die-zukunft.ch.",
+        f"- How to take part or get in touch? [Get involved]({url_of('join')}), [start a chapter]({url_of('chapters')}) (how national chapters work), [contact]({url_of('contact')}), email hey@die-zukunft.ch.",
         f"- Every page has a Markdown twin: {BASE}/md/<path>.md (e.g. {BASE}/md/vision.md); each HTML page links it as rel=alternate type=text/markdown. Full corpus: {BASE}/llms-full.txt.",
         "",
         f"## The {len(home['extra']['pillars'])} areas",

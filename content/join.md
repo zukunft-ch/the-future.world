@@ -7,22 +7,21 @@ template = "mitmachen.html"
 intro = "The future takes people who research, build, write and organise. Bring what you know. Help shape what comes next."
 
 [[extra.sections]]
-title = "Become a contributor"
-text = "Join The Future network and actively shape the movement. Write to us to get started."
-link = "mailto:hey@die-zukunft.ch"
-link_text = "hey@die-zukunft.ch"
-
-[[extra.sections]]
 title = "Stay in touch"
-text = "Write to us to ask about current work and ways to take part."
-link = "mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20stay%20in%20touch"
-link_text = "Ask about updates"
+text = "Get occasional updates on the movement, new texts and new national chapters. Telling us your country helps us see where people are."
+shortcode = "newsletter_form"
 
 [[extra.sections]]
-title = "Volunteer"
-text = "Whether writing, organising, design or campaign work — we welcome any support."
+title = "Start a chapter"
+text = "The Future grows through national and local chapters: independent groups that adapt the programme to their own country. Switzerland was first. Find out what a chapter needs and tell us where you are."
+link = "/chapters/"
+link_text = "How chapters work"
+
+[[extra.sections]]
+title = "Contribute"
+text = "Research, writing, translation, design, software, organising: write to us with what you would like to work on. Everything on this site is open source and the texts are CC BY, so you can also start by improving them."
 link = "/contact/"
-link_text = "Contact us"
+link_text = "Write to us"
 
 [[extra.sections]]
 title = "Connect"
@@ -30,4 +29,3 @@ text = "Do you know experts, organisations or initiatives with similar goals? We
 link = "mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20partnership"
 link_text = "Introduce yourself"
 +++
-

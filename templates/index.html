@@ -2,7 +2,7 @@
 {% import "macros/icons.html" as icons %}
 {% import "macros/pin.html" as pin %}
 {% import "macros/brand.html" as brandmark %}
-{% import "macros/world_visual.html" as visual %}
+{% import "macros/visual.html" as visual %}
 
 {% block title %}{{ section.title }}{% endblock %}
 
@@ -94,7 +94,7 @@
         <p class="layer__intro">Better technology should mean a better life. More productive economies can give people room to learn, create, care and start again. Getting there takes institutions that protect dignity, distribute opportunity and remain under democratic control.</p>
         <p class="layer__more"><a class="link-arrow" href="{{ get_url(path='@/vision.md') }}">Explore the vision</a></p>
       </header>
-      {{ visual::scene() }}
+      {{ visual::scene(slot="world-tomorrow", lang=lang, sizes="(min-width: 1440px) 648px, (min-width: 1100px) calc(50vw - 72px), (max-width: 500px) calc(100vw - 40px), 92vw") }}
     </div>
   </div>
 </section>

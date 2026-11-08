@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "macros/jsonld.html" as jsonld %}
+{% import "macros/visual_guide.html" as visual_guide %}
+{% import "macros/forms.html" as forms %}
+
+{# World-only page (no avenir counterpart): how national chapters work + chapter enquiry form. #}
+{% block head_extra %}
+{{ jsonld::breadcrumb(title=page.title, url=page.permalink, lang=lang) }}
+{% if page.extra.faq is defined %}{{ jsonld::faqpage(faq_items=page.extra.faq) }}{% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero--brandmark" aria-label="{{ page.title }}">
+  <div class="container container--narrow">
+    <h1 class="page-hero__title wm wm--word">{{ page.title }}<span class="brand-dot">.</span></h1>
+    {% if page.description %}<p class="page-hero__desc">{{ page.description }}</p>{% endif %}
+  </div>
+</section>
+
+{% if page.extra.lead %}
+<section class="canvas" aria-label="{{ page.title }}">
+  <div class="container container--narrow" style="text-align: center;"><h2>{{ page.extra.lead }}</h2></div>
+</section>
+{% endif %}
+
+{% for sec in page.extra.sections | default(value=[]) %}
+<section class="canvas canvas--content" aria-label="{{ sec.title }}">
+  <div class="container container--narrow">
+    <h2>{{ sec.title }}</h2>
+    {% if sec.text is defined %}<p>{{ sec.text | safe }}</p>{% endif %}
+    {% if sec.points is defined %}
+    <ul>{% for point in sec.points %}<li>{{ point | safe }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if sec.steps is defined %}{{ visual_guide::flow(steps=sec.steps, label=sec.title) }}{% endif %}
+  </div>
+</section>
+{% endfor %}
+
+<section class="canvas canvas--content" id="enquiry" aria-labelledby="enquiry-title">
+  <div class="container container--narrow">
+    <h2 id="enquiry-title">Tell us where you are</h2>
+    <p>Who you are, which country or city, who else is involved and what you would like to build first. We read every enquiry and reply by email.</p>
+    {{ forms::message(lang=lang, topic="chapter", message_label="About you and your group") }}
+  </div>
+</section>
+
+{% if page.extra.faq is defined %}
+<section class="canvas canvas--content" aria-label="FAQ">
+  <div class="container container--narrow">
+    <h2>{{ page.extra.faq_title | default(value="Questions and answers") }}</h2>
+    {% for item in page.extra.faq %}
+    <details class="faq__item glass-card">
+      <summary>
+        {{ item.q }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="faq__answer"><p>{{ item.a }}</p></div>
+    </details>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

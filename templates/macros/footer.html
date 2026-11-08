@@ -33,7 +33,7 @@
 
       <div class="footer__col">
         <p class="footer__heading">{{ trans(key="nav_mitmachen", lang=lang) }}</p>
-        {% for slug in ["join", "people", "contact"] %}{% set p = get_page(path=slug ~ ".md") %}
+        {% for slug in ["join", "chapters", "people", "contact"] %}{% set p = get_page(path=slug ~ ".md") %}
         <a href="{{ p.permalink }}">{{ p.title }}</a>
         {% endfor %}
         <a href="https://die-zukunft.ch/en/" target="_blank" rel="noopener noreferrer">{{ trans(key="footer_movement_link", lang=lang) }}</a>

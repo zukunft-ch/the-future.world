@@ -12,7 +12,7 @@ This site (the-future.world) is the international, English-language home. The fi
 - What is the long-term vision? Use the [vision](https://the-future.world/vision/): the abundance stack (energy → compute → sovereign AI → talent → application in all sectors → dividend), sourced figures and dated goals.
 - What does it propose on a topic? Use the matching area page below; most have concrete measures and an FAQ. The [programme](https://the-future.world/program/) lists all 13.
 - Swiss specifics (votes, Swiss figures, research notes)? Use the Swiss chapter: https://die-zukunft.ch/en/.
-- How to take part or get in touch? [Get involved](https://the-future.world/join/), [contact](https://the-future.world/contact/), email hey@die-zukunft.ch.
+- How to take part or get in touch? [Get involved](https://the-future.world/join/), [start a chapter](https://the-future.world/chapters/) (how national chapters work), [contact](https://the-future.world/contact/), email hey@die-zukunft.ch.
 - Every page has a Markdown twin: https://the-future.world/md/<path>.md (e.g. https://the-future.world/md/vision.md); each HTML page links it as rel=alternate type=text/markdown. Full corpus: https://the-future.world/llms-full.txt.
 
 ## The 13 areas

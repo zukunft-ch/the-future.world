@@ -163,6 +163,62 @@ Institutions that make change possible, rather than merely administering it. Soc
 Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
 
 
+# Start a chapter
+
+> The Future grows country by country. How a national chapter works, what it needs and how to begin.
+
+Source: https://the-future.world/chapters/
+
+A chapter is an independent group, usually a party or an association, that takes the ideas of The Future into the politics of its own country. It shares the manifesto and the method; the programme, the people and the decisions are its own.
+
+## What a chapter shares
+
+Every chapter stands on the same ground, so that the movement means the same thing everywhere.
+
+- The [manifesto](https://the-future.world/manifesto/): the ten theses, the commitments and what we are not.
+- The method: engineering instead of ideology. Every proposal states its goal, how it will be measured and when it will be reviewed.
+- Openness: democratic inside, and open about who funds it, at least as far as local law requires.
+
+## What stays local
+
+A chapter is not a franchise. It writes its own programme for its own institutions, chooses its own legal form, elects its own people and decides its own positions on local questions. The Swiss chapter, for example, takes positions on Swiss popular votes that would make no sense anywhere else.
+
+## What you can use from day one
+
+- All texts on this site and on die-zukunft.ch, licensed CC BY 4.0: translate and adapt them, with credit.
+- The open-source website and design system (Zola, no tracking, no third-party services), ready to fork for your own language and domain.
+- The Swiss chapter's programme, research notes and sourced figures as a worked example.
+- Direct contact with the people who built the Swiss chapter.
+
+## How it works
+
+1. **Tell us**: Use the form below: who you are, where you are, who else is involved.
+2. **Talk it through**: A call about your country, your team and what you want to build.
+3. **Found locally**: Set up the association or party under your own country's law, with your own statutes.
+4. **Join the network**: Once the chapter is founded and shares the manifesto, it may use the name The Future and appears on this site.
+
+## Questions & answers
+
+### Do we have to be a political party?
+
+No. Many chapters will start as an association or a think tank and only later decide whether to stand in elections. What matters is that the group is independent, democratic inside and open about its money.
+
+### Can we change the programme?
+
+Yes, that is the point. The manifesto is shared; the programme is yours. Most measures on this site are written so they can be adapted to other institutions.
+
+### Who may use the name and the globe mark?
+
+The texts are free to use under CC BY 4.0. The name The Future, the wordmark and the globe mark are not covered by that licence: a chapter uses them once it has been founded and agreed with us, so the name keeps meaning the same thing everywhere.
+
+### Does it cost anything?
+
+No. There is no fee to start or run a chapter.
+
+---
+Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
+
+
 # Cities & Housing
 
 > Affordable housing and quality of life through densification at transit hubs — less sprawl, more comfort.
@@ -393,23 +449,21 @@ Source: https://the-future.world/join/
 
 The future takes people who research, build, write and organise. Bring what you know. Help shape what comes next.
 
-## Become a contributor
-
-Join The Future network and actively shape the movement. Write to us to get started.
-
-[hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
-
 ## Stay in touch
 
-Write to us to ask about current work and ways to take part.
+Get occasional updates on the movement, new texts and new national chapters. Telling us your country helps us see where people are.
 
-[Ask about updates](mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20stay%20in%20touch)
+## Start a chapter
 
-## Volunteer
+The Future grows through national and local chapters: independent groups that adapt the programme to their own country. Switzerland was first. Find out what a chapter needs and tell us where you are.
 
-Whether writing, organising, design or campaign work — we welcome any support.
+[How chapters work](https://the-future.world/chapters/)
 
-[Contact us](https://the-future.world/contact/)
+## Contribute
+
+Research, writing, translation, design, software, organising: write to us with what you would like to work on. Everything on this site is open source and the texts are CC BY, so you can also start by improving them.
+
+[Write to us](https://the-future.world/contact/)
 
 ## Connect
 
@@ -925,17 +979,21 @@ Email: [hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
 
 The protection of your personal data is important to us. We only collect data that is necessary for the operation of this website and our work.
 
-### Email contact
+### Contact form and chapter enquiries
 
-Contact links on this website open your email application. The website does not submit a contact form or newsletter subscription. If you email us, we use the information in your message to respond to your enquiry.
+If you use the contact form or the chapter enquiry form, we process your name, email address, country and message to answer you. The form is handled by our own small application on Cloudflare infrastructure, shared with our Swiss chapter Die Zukunft (api.die-zukunft.ch). Your message is stored for at most one year and is not shared with third parties. Your IP address is used only briefly to prevent abuse and is not stored with your message. You can also simply email us.
+
+### Newsletter
+
+If you subscribe, we store your email address and, if you give it, your country, for at most one year after subscribing. We use them only to send updates about The Future and its chapters. You can unsubscribe at any time by replying to any update or emailing us.
 
 ### Display preference
 
-If you switch between light and dark mode, the website stores that choice in your browser’s local storage. It is not sent to us. The website also caches public pages and assets in your browser to make repeat visits more reliable. You can remove this data in your browser’s site settings.
+If you switch between light and dark mode or pin sections, the website stores that in your browser’s local storage (keys `dz-theme` and `dz-pins-v1`). It is not sent to us. The website also caches public pages and assets in your browser to make repeat visits more reliable. You can remove this data in your browser’s site settings.
 
 ### Hosting
 
-This website is statically hosted. No cookies are set and no tracking tools are used.
+This website is statically hosted on Cloudflare's infrastructure. No cookies are set and no tracking tools are used. Fonts, scripts and images are served from this domain; the only other address the site talks to is the form handler named above, and only when you submit a form.
 
 ### Your rights
 

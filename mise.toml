@@ -14,4 +14,9 @@ depends = ["llms"]
 run = "zola build"
 
 [tasks.check]
-run = "zola check --skip-external-links"
+description = "zola check, drift against avenir templates, security.txt expiry"
+run = ["zola check --skip-external-links", "python scripts/check_site.py"]
+
+[tasks.visuals]
+description = "Encode visuals/incoming/*.png listed in visuals/slots.toml and write visuals/catalog.json (needs ImageMagick)"
+run = "python scripts/build_visuals.py"

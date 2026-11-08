@@ -43,3 +43,14 @@
 .shift-grid--3 {
   @media (min-width: $bp-md + 1) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+// ---- Forms (macros/forms.html) ----
+.form-note {
+  margin: $space-3 0 0;
+  font-size: $font-size-sm;
+  color: var(--color-text-muted);
+}
+.form-optional {
+  font-weight: normal;
+  color: var(--color-text-muted);
+}

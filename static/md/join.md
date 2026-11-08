@@ -6,23 +6,21 @@ Source: https://the-future.world/join/
 
 The future takes people who research, build, write and organise. Bring what you know. Help shape what comes next.
 
-## Become a contributor
-
-Join The Future network and actively shape the movement. Write to us to get started.
-
-[hey@die-zukunft.ch](mailto:hey@die-zukunft.ch)
-
 ## Stay in touch
 
-Write to us to ask about current work and ways to take part.
+Get occasional updates on the movement, new texts and new national chapters. Telling us your country helps us see where people are.
 
-[Ask about updates](mailto:hey@die-zukunft.ch?subject=The%20Future%20%E2%80%94%20stay%20in%20touch)
+## Start a chapter
 
-## Volunteer
+The Future grows through national and local chapters: independent groups that adapt the programme to their own country. Switzerland was first. Find out what a chapter needs and tell us where you are.
 
-Whether writing, organising, design or campaign work — we welcome any support.
+[How chapters work](https://the-future.world/chapters/)
 
-[Contact us](https://the-future.world/contact/)
+## Contribute
+
+Research, writing, translation, design, software, organising: write to us with what you would like to work on. Everything on this site is open source and the texts are CC BY, so you can also start by improving them.
+
+[Write to us](https://the-future.world/contact/)
 
 ## Connect
 

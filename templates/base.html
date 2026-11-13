@@ -21,6 +21,8 @@
 
   <title>{% block title %}{{ title }}{% endblock %} — The Future</title>
   <meta name="description" content="{% block description %}{{ description }}{% endblock %}">
+  {% set page_keywords = page.extra.keywords | default(value=section.extra.keywords | default(value="")) %}
+  {% if page_keywords %}<meta name="keywords" content="{{ page_keywords | join(sep=', ') }}">{% endif %}
   <meta name="author" content="The Future">
   <meta name="theme-color" content="#eef0ec" id="meta-theme-color">
   <script>
@@ -82,7 +84,7 @@
 
   {{ jsonld::organization() }}
   {{ jsonld::website(lang=lang) }}
-  {{ jsonld::webpage(title=title, description=description, url=self_canonical, lang=lang) }}
+  {{ jsonld::webpage(title=title, description=description, url=self_canonical, lang=lang, keywords=page_keywords) }}
 
   {% block head_extra %}{% endblock %}
 

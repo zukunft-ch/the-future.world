@@ -10,6 +10,7 @@
   "logo": "{{ config.base_url | trim_end_matches(pat='/') }}/favicon.svg",
   "email": "hey@die-zukunft.ch",
   "sameAs": ["https://github.com/zukunft-ch"],
+  "knowsAbout": ["Artificial intelligence policy", "Sovereign AI", "Compute infrastructure", "Robotics and automation", "Universal basic income", "AI dividend", "Automation dividend", "Universal basic wealth", "Open government"],
   "subOrganization": { "@type": "PoliticalParty", "name": "Die Zukunft", "url": "https://die-zukunft.ch" }
 }
 </script>
@@ -32,7 +33,7 @@
 {% endmacro %}
 
 {# ---- WebPage — every page ---- #}
-{% macro webpage(title, description, url, lang) %}
+{% macro webpage(title, description, url, lang, keywords="") %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -44,7 +45,9 @@
   "isPartOf": { "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#website" },
   "publisher": { "@id": "{{ config.base_url | trim_end_matches(pat='/') }}/#organization" },
   "mainEntityOfPage": {{ url | json_encode() | safe }},
-  "speakable": {
+  {% if keywords %}"keywords": {{ keywords | json_encode() | safe }},
+  "about": [{% for k in keywords %}{ "@type": "Thing", "name": {{ k | json_encode() | safe }} }{% if not loop.last %}, {% endif %}{% endfor %}],
+  {% endif %}"speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": [".page-hero__title", ".page-hero__desc", ".lede__claim", ".lede__lead"]
   }

@@ -1,9 +1,10 @@
 +++
 title = "Basic Income"
-description = "Basic income as the automation dividend: stability, freedom, simplification."
+description = "Basic income as the automation dividend, the AI dividend for everyone: stability, freedom, simplification."
 template = "page.html"
 
 [extra]
+keywords = ["AI dividend", "automation dividend", "universal basic income", "UBI", "basic income", "universal basic wealth"]
 show_cta = true
 cta_text = "Convinced? Get involved and help build the case for basic income."
 faq_title = "Frequently asked questions"
@@ -16,11 +17,12 @@ faq = [
   { q = "What happens to existing social benefits?", a = "Basic income replaces and simplifies existing transfer payments. The goal is not to add more on top, but to make the system simpler, more transparent and fairer." },
   { q = "Why a pilot and not immediate implementation?", a = "Because we are pragmatic. Pilots compare models (UBI, negative income tax, hybrid), measure impact and create a solid basis for decision-making — instead of ideology." },
   { q = "What is measured?", a = "Three core areas: well-being and security (existential stress, stability), entrepreneurship and startups, and bureaucracy costs and administrative burden." },
+  { q = "What is the long-term goal?", a = "Basic income is the foundation, not the destination. The long-term goal is universal basic wealth: as AI and robotics make energy, goods and services ever cheaper, a good standard of living becomes a commodity, as available as electricity or tap water today. Prosperity moves from a scarce good to a basic utility. This is a direction, not a promise with a date: the way there runs through compute, local production, lower everyday costs and a dividend that reaches everyone." },
 ]
 
 [[extra.sections]]
 title = "The Automation Dividend"
-text = "When machines produce a growing share of value, part of this dividend must flow back to society. Basic income is not charity — it is a structural answer to a structural change."
+text = "When machines produce a growing share of value, part of this dividend must flow back to society. Basic income is not charity — it is a structural answer to a structural change. It can also be called the AI dividend: the share of the productivity gains from AI and robotics that reaches everyone."
 
 [[extra.sections]]
 title = "From Productivity to Security"

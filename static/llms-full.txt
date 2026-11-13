@@ -28,13 +28,13 @@ Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): cre
 
 # Basic Income
 
-> Basic income as the automation dividend: stability, freedom, simplification.
+> Basic income as the automation dividend, the AI dividend for everyone: stability, freedom, simplification.
 
 Source: https://the-future.world/basic-income/
 
 ## The Automation Dividend
 
-When machines produce a growing share of value, part of this dividend must flow back to society. Basic income is not charity — it is a structural answer to a structural change.
+When machines produce a growing share of value, part of this dividend must flow back to society. Basic income is not charity — it is a structural answer to a structural change. It can also be called the AI dividend: the share of the productivity gains from AI and robotics that reaches everyone.
 
 ## From Productivity to Security
 
@@ -89,6 +89,10 @@ Because we are pragmatic. Pilots compare models (UBI, negative income tax, hybri
 ### What is measured?
 
 Three core areas: well-being and security (existential stress, stability), entrepreneurship and startups, and bureaucracy costs and administrative burden.
+
+### What is the long-term goal?
+
+Basic income is the foundation, not the destination. The long-term goal is universal basic wealth: as AI and robotics make energy, goods and services ever cheaper, a good standard of living becomes a commodity, as available as electricity or tap water today. Prosperity moves from a scarce good to a basic utility. This is a direction, not a promise with a date: the way there runs through compute, local production, lower everyday costs and a dividend that reaches everyone.
 
 ---
 Texts are licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): credit "The Future" and link the source. The name, wordmark and globe mark are not covered by the licence.
